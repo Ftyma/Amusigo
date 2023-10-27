@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div id="nav">
+    <div id="nav" >
         <img id="logo" src="image/logo.svg">
         <h1 id="nav-title">Amusigo.</h1>
         <div id="nav-menu">

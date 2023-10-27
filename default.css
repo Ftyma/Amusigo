@@ -5,6 +5,11 @@ body {
 /* Nav */
 #nav {
   display: flex;
+  position: fixed;
+  width: 100%;
+  background-color: #fdf4fe;
+  z-index: 3;
+  top: 0;
 }
 
 #logo {
@@ -61,6 +66,7 @@ body {
   margin: auto;
   justify-content: center;
   margin-left: 5rem;
+  margin-top: 10rem;
 }
 
 #body1 {
