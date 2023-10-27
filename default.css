@@ -1,0 +1,170 @@
+body {
+  background-color: #fdf4fe;
+}
+
+/* Nav */
+#nav {
+  display: flex;
+}
+
+#logo {
+  margin-left: 1rem;
+}
+
+#nav-title {
+  color: #bf52a2;
+  margin-left: 1rem;
+}
+
+#nav-menu {
+  display: flex;
+  align-self: center;
+  margin: auto;
+}
+
+.nav-menu-list {
+  color: black;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+#nav-button {
+  padding-inline: 1.7rem;
+  padding-block: 0.5rem;
+  margin-block: 1.5rem;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: double;
+  border-color: #8d2182;
+  margin-right: 1.5rem;
+  font-size: 1.2rem;
+}
+
+#title {
+  font-size: 4rem;
+}
+
+#btn-join {
+  background-color: #8d2182;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  padding-inline: 1.5rem;
+  padding-block: 10px;
+  font-size: 1rem;
+  margin-block: 1rem;
+}
+
+#nav-body {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  margin-left: 5rem;
+}
+
+#body1 {
+  justify-content: start;
+  width: 35rem;
+}
+
+#body2 {
+  position: relative;
+  z-index: 2;
+}
+.img1 {
+  position: absolute;
+  top: 10rem;
+  left: 10rem;
+  z-index: 1;
+}
+
+/* About */
+#about {
+  display: flex;
+  margin: 10rem;
+  justify-content: space-between;
+}
+
+.about-1 {
+  width: 50%;
+}
+.about-text1 {
+  color: white;
+  font-size: 2.5rem;
+  width: 40%;
+  margin-left: 2rem;
+  align-self: center;
+}
+.about-box1 {
+  background-color: #a890db;
+  display: flex;
+  border-radius: 20px;
+  height: 300px;
+  margin: auto;
+}
+.cassette {
+  height: 250px;
+  width: 250px;
+  align-self: center;
+}
+
+.about-box2 {
+  background-color: #843e71;
+  border-radius: 20px;
+  color: white;
+  height: full;
+  width: 45%;
+}
+
+.about-text2 {
+  align-self: center;
+  width: 40%;
+  font-size: 2.5rem;
+}
+.about-list2 {
+  font-size: 1.4rem;
+  margin-left: 3rem;
+}
+
+/* FAQ */
+#faq {
+  display: flex;
+  margin-inline: 10rem;
+  margin: 15rem;
+}
+
+/* Contact */
+#contact {
+  display: flex;
+  margin-inline: 10rem;
+  margin: 15rem;
+  justify-content: space-between;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+input[type="text"] {
+  font-size: 16px;
+  border: none;
+  padding-top: 0.8rem;
+  background-color: #fdf4fe;
+  border-bottom: 2px solid black;
+}
+
+/* Footer */
+#footer {
+  display: grid;
+  background-color: #8d2182;
+  color: white;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  margin: auto;
+  grid-gap: 10px;
+  width: full;
+  height: 100%;
+}
