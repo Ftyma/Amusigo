@@ -18,7 +18,7 @@
     <div id="nav" >
         <a href="#" style="display:flex; text-decoration: none;">
         <img id="logo" src="image/logo.svg">
-        <h1 id="nav-title">Amusigo.</h1>
+        <h1 id="nav-title">Amusigoooo.</h1>
 </a>
         
         <div id="nav-menu">
