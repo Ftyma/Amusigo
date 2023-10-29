@@ -4,7 +4,7 @@
 <html>
     
     <head>
-        <title>Amusigooo</title>
+        <title>Amusigo</title>
         <link rel="stylesheet" href="css/home.css">
         <link
             rel="stylesheet"
