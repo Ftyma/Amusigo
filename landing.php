@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Amusigo</title>
-<link rel="stylesheet" href="default.css">
+<link rel="stylesheet" href="css/default.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -16,8 +16,11 @@
 
 <body>
     <div id="nav" >
+        <a href="#" style="display:flex; text-decoration: none;">
         <img id="logo" src="image/logo.svg">
         <h1 id="nav-title">Amusigo.</h1>
+</a>
+        
         <div id="nav-menu">
             <a href="#about" class="nav-menu-list"><p>About Us</p></a>
             <a href="#faq" class="nav-menu-list"><p style="margin-inline: 2rem;">Faq</p></a>
@@ -71,6 +74,7 @@
             </ul>
         </div>
     </div>
+
 
     <hr/>
     <!-- FAQ -->
