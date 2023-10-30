@@ -21,10 +21,10 @@
 
 <body>
     <div id="nav" >
-        <a href="#" style="display:flex; text-decoration: none;">
-        <img id="logo" src="image/logo.svg">
-        <h1 id="nav-title">Amusigo.</h1>
-</a>
+        <a class="Amusigo-Nav" href="#" style="display:flex; text-decoration: none;">
+            <img class="logo" src="image/logo.svg">
+            <h1 id="nav-title">Amusigo.</h1>
+        </a>
         
         <div id="nav-menu">
             <a href="#about" class="nav-menu-list"><p>About Us</p></a>
@@ -69,7 +69,7 @@
         <div class="about-box2">
             <div style="display:flex; justify-content: center;">
                 <h1 class="about-text2">WITH US YOU COULD...</h1>
-                <img style="margin-top:1.5rem" src="image/headphone.svg">
+                <img class="headphone" style="margin-top:1.5rem" src="image/headphone.svg">
 
             </div>
             
@@ -139,7 +139,7 @@
             </form>
             
         </div>
-        <img src="image/contact.svg"/>
+        <img class="contact-img" src="image/contact.svg"/>
     </div>
     <script>
 const faqs = document.querySelectorAll(".faq");
@@ -156,7 +156,7 @@ faqs.forEach(faq => {
 <!-- Footer -->
 
 <div id="footer">
-        <div style="margin-left:5rem">
+        <div class="footer-1">
             <ul>
                 <p>Home</p>
                 <p>About Us</p>
@@ -164,17 +164,18 @@ faqs.forEach(faq => {
                 <p>FAQ</p>
             </ul>
         </div>
-        <div>
+        <div class="footer-2">
             <p>Address </p>
             <p>Sirindhorn International Institute of Technology, Thammasat University, Rangsit Campus, Pathum Thani, 12120</p>
             <p>View on map</p>
         </div>
-        <div style="margin-left:5rem">
+        <div class="footer-3">
             <p>Inquiries</p>
             <p>00-000-000</p>
             <p>Amusigo@emai.com</p>
         </div>
-        <div>
+
+        <div class="footer-4">
            <p> Follow us on</p>
            <div style="font-size:1.5rem;">
            <i class="fa-brands fa-facebook"></i>
