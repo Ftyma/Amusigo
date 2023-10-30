@@ -17,22 +17,52 @@
 <body id="music-bank">
     <h1>Log in page</h1>
     <div>
-        <form>
+        <form action="signin.php" method="post">
             <div>
-                <label>Email</label>
-                <input type="email">
+                <label>Username</label>
+                <input type="username" name="username">
             </div>
             
             <div>
                 <label>Password</label>
-                <input type="password">
+                <input type="password" name="passwd">
             </div>
            
-            <button type="submit">Submit</button>
+            <button type="submit" name="submit">Submit</button>
             <p>Dont have an account?<a href="signup.php">Sign up</a></p>
         </form>
     </div>
 
+    <?php
+    if (isset($_POST['submit'])) {
+	$username = $_POST["username"];
+	$pass = $_POST["passwd"];
+	$q="select * from login";
+	$result=$mysqli->query($q);
+	    if(!$result){
+	    echo "Select failed. Error: ".$mysqli->error ;
+	    return false;
+	    }
+	    while($row=$result->fetch_array()){ 
+            if ($row[0]==$username){
+                if($row[1]==$pass){
+                    if ($row[0]=="Rose" && $row[1]=="rose"){
+                        header("Location: addSong.php");
+                    }   
+                    else{
+                        header("Location: home.php");
+                    }
+                } 
+                else{
+                    echo "Incorrect password!";
+                }
+            }
+            else{
+                echo "Username does not exist!"
+            }
+        } 
+    }
+    ?>
 </body>
 
 </html>
