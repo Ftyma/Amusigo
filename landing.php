@@ -5,6 +5,7 @@
 
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Amusigo</title>
 <link rel="stylesheet" href="css/default.css">
 <link
@@ -39,7 +40,7 @@
             <h1 id="title">Find your <span style="color: #8d2182">music soulmate</span> today</h1>
             <p style="color: #480034; font-size: 1.2rem;">Your music mate is right around the corner!</p>
             <a href="signin.php"><button id="btn-join">Join Now</button></a>
-            <img style="margin: 6.3rem;" src="image/landing2.svg"/>
+            <img class="img2" style="margin: 6.3rem;" src="image/landing2.svg"/>
         </div>
         <div id="body2"  >
             <img src="image/bg-landing1.svg"/>
