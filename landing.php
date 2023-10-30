@@ -1,6 +1,8 @@
 <?php require_once('connect.php'); ?>
 
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <title>Amusigo</title>
@@ -12,28 +14,31 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    
 </head>
 
 <body>
     <div id="nav" >
         <a href="#" style="display:flex; text-decoration: none;">
         <img id="logo" src="image/logo.svg">
-        <h1 id="nav-title">Amusigoooo.</h1>
+        <h1 id="nav-title">Amusigo.</h1>
 </a>
         
         <div id="nav-menu">
             <a href="#about" class="nav-menu-list"><p>About Us</p></a>
-            <a href="#faq" class="nav-menu-list"><p style="margin-inline: 2rem;">Faq</p></a>
+            <a href="#faq-container" class="nav-menu-list"><p style="margin-inline: 2rem;">Faq</p></a>
             <a href="#contact" class="nav-menu-list"><p>Contact Us</p></a>
         </div>
-        <button type="submit" id="nav-button">Sign In</button>
+        <a href="signin.php"><button type="submit" id="nav-button">Sign In</button></a>
+        
     </div>
 
     <div  id="nav-body">
         <div id="body1">
             <h1 id="title">Find your <span style="color: #8d2182">music soulmate</span> today</h1>
             <p style="color: #480034; font-size: 1.2rem;">Your music mate is right around the corner!</p>
-            <button id="btn-join">Join Now</button>
+            <a href="signin.php"><button id="btn-join">Join Now</button></a>
             <img style="margin: 6.3rem;" src="image/landing2.svg"/>
         </div>
         <div id="body2"  >
@@ -78,13 +83,38 @@
 
     <hr/>
     <!-- FAQ -->
-    <div id="faq">
+    <div id="faq-container">
         <img src="image/faq.svg"/>
+        
         <div>
-          
+        <div class="faq">
+            <div class="question">
+                <h3>What is JavaScript?</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        
+            <div class="answer">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
         </div>
 
+        <div class="faq">
+            <div class="question">
+                <h3>What is JavaScript?</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        
+            <div class="answer">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        </div>
+        
+  
+        
     </div>
+
+  
 
     <hr/>
     <!-- Contact -->
@@ -110,10 +140,20 @@
         </div>
         <img src="image/contact.svg"/>
     </div>
+    <script>
+const faqs = document.querySelectorAll(".faq");
+
+faqs.forEach(faq => {
+  faq.addEventListener("click", () => {
+    faq.classList.toggle("active");
+  })
+})
+</script>
 </body>
 
 
 <!-- Footer -->
+
 <div id="footer">
         <div style="margin-left:5rem">
             <ul>
@@ -144,4 +184,6 @@
         </div>
 
     </div>
+
+
 </html>

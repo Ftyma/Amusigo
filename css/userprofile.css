@@ -16,3 +16,48 @@
   overflow-y: auto;
   margin-left: 500px;
 }
+
+#container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 20px;
+  width: 85%;
+  margin: auto;
+}
+
+#personal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#school-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  font-size: 16px;
+  border: none;
+  padding-top: 0.8rem;
+  background-color: transparent;
+  border-bottom: 2px solid #a890db;
+  width: 80%;
+}
+
+label {
+  margin-top: 3rem;
+}
+
+.btn-edit {
+  background-color: #a890db;
+  border-style: none;
+  border-radius: 20px;
+  font-weight: bolder;
+  font-size: 1.1rem;
+  margin: 1rem;
+  padding-inline: 2rem;
+}
+
+.top-container {
+  justify-content: space-between;
+}
