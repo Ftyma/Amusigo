@@ -56,7 +56,7 @@
                         <td>" . $row['Genre_name']."</td>
                         <td>
                             <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
-                            <a href='#'><i class='fa-solid fa-circle-minus' style='color: #ff2600;'></i></a>
+                            <a href='delete.php?id=<?php echo $row[0]; ?>'><i class='fa-solid fa-circle-minus' style='color: #ff2600;'></i></a>
                         </td>
                     </tr>";
                 }
