@@ -12,35 +12,39 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="sidebar.js" type="text/javascript" defer></script>
-    <script src="profile.js" type="text/javascript" defer></script>
 </head>
 
 <body id="playlist">
-    <sidebar-component></sidebar-component>
-
+<?php include('sidebar.php'); ?>
     <div class="playlist-right">
-        <div  style="display:flex; align-content:center; margin: 2rem;">
+        
+        <div class="top-container">
             <h1 style="color:#8328BA">Tyma's Playlist</h1>
 
             <!-- Search bar -->
-            <div class="input-container">
+            <div class="input-container-1">
                 <input class="search" type="text" placeholder="In your music bank ... ">            
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
 
             <!-- profile button -->
-            <profilebtn-component></profilebtn-component>
+            <?php include('profile.php'); ?>
+           
         </div>
 
-        <div>
-            
+        <!-- Search bar -->
+        <div class="input-container-2">
+                <input class="search" type="text" placeholder="In your music bank ... ">            
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <div>
-            
+       
+    </table>
         </div>
 
+        
+
+    </div>
 
 
 </body>

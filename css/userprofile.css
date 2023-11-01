@@ -14,7 +14,7 @@
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
-  margin-left: 500px;
+  margin-left: 400px;
 }
 
 #container {
@@ -23,6 +23,7 @@
   gap: 20px;
   width: 85%;
   margin: auto;
+  margin-bottom: 6rem;
 }
 
 #personal-container {
@@ -60,4 +61,32 @@ label {
 
 .top-container {
   justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .userprofile-right {
+    margin-left: 80px;
+  }
+
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #personal-container {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    width: 100%;
+  }
+
+  #school-container {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .btn-edit {
+    font-size: 0.8rem;
+    padding-inline: 1.5rem;
+  }
 }

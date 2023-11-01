@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Amusigo</title>
-<link rel="stylesheet" href="css/musicmate.css">
+<link rel="stylesheet" href="css/sidebar.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -58,7 +58,7 @@
                 }
             }
             else{
-                echo "Username does not exist!"
+                echo "Username does not exist!";
             }
         } 
     }

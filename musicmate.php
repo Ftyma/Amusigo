@@ -12,14 +12,33 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="sidebar.js" type="text/javascript" defer></script>
-    <script src="profile.js" type="text/javascript" defer></script>
 </head>
 
-<body id="music-bank">
-    <h1>music mate</h1>
-    <sidebar-component></sidebar-component> 
-    <profilebtn-component></profilebtn-component>
+<body id="music-mate">
+<?php include('sidebar.php'); ?>
+    <div class="musicmate-right">
+        
+        <div class="top-container">
+            <h1 style="color:#8328BA">Music Mate</h1>
+
+            <!-- Search bar -->
+            <div class="input-container-1">
+                <input class="search" type="text" placeholder="In your music bank ... ">            
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <!-- profile button -->
+            <?php include('profile.php'); ?>
+           
+        </div>
+
+        <!-- Search bar -->
+        <div class="input-container-2">
+                <input class="search" type="text" placeholder="In your music bank ... ">            
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+        </div>
+
+    </div>
 </body>
 
 </html>

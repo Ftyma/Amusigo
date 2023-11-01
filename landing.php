@@ -2,12 +2,11 @@
 
 
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Amusigo</title>
-<link rel="stylesheet" href="css/default.css">
+<link rel="stylesheet" href="css/landing.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -16,63 +15,63 @@
       referrerpolicy="no-referrer"
     />
 
-    
 </head>
 
 <body>
-    <div id="nav" >
-        <a class="Amusigo-Nav" href="#" style="display:flex; text-decoration: none;">
-            <img class="logo" src="image/logo.svg">
-            <h1 id="nav-title">Amusigo.</h1>
-        </a>
-        
-        <div id="nav-menu">
-            <a href="#about" class="nav-menu-list"><p>About Us</p></a>
-            <a href="#faq-container" class="nav-menu-list"><p style="margin-inline: 2rem;">Faq</p></a>
-            <a href="#contact" class="nav-menu-list"><p>Contact Us</p></a>
-        </div>
-        <a href="signin.php"><button type="submit" id="nav-button">Sign In</button></a>
-        
+  
+<div class="topnav" id="myTopnav">
+  <a href="#">
+    <div class="nav-title" style="margin-right: 20rem">
+      <img class="logo" src="image/logo.svg">
+      <h1 class="title">Amusigo.</h1>
     </div>
+  </a>
 
-    <div  id="nav-body">
-        <div id="body1">
-            <h1 id="title">Find your <span style="color: #8d2182">music soulmate</span> today</h1>
-            <p style="color: #480034; font-size: 1.2rem;">Your music mate is right around the corner!</p>
-            <a href="signin.php"><button id="btn-join">Join Now</button></a>
-            <img class="img2" style="margin: 6.3rem;" src="image/landing2.svg"/>
-        </div>
-        <div id="body2"  >
-            <img src="image/bg-landing1.svg"/>
-            <img class="img1"  src="image/landing1.svg"/>
-        </div>
-        
+  <a href="#about">About</a>
+  <a href="#faq-container">FAQ</a>
+  <a href="#contact">Contact</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+
+  <div id="home">
+    <div class="home-left">
+      <h1 classs="home-title">Find your <span style="color: #8d2182">music soulmate</span> today</h1>
+      <p style="color: #480034; font-size: 1.2rem;">Your music mate is right around the corner!</p>
+      <a href="signin.php"><button id="btn-join">Join Now</button></a>
+      <img class="img2" style="margin: 6.3rem;" src="image/landing2.svg"/>
     </div>
+      <div class="home-right"  >
+      <img src="image/bg-landing1.svg"/>
+      <img class="img1"  src="image/landing1.svg"/>
+    </div>   
+  </div>
 
-    <hr/>
+  <hr/>
 
 
-    <!-- About -->
-    <div id="about">
-        <div class="about-1">
-            <div style="color:#5F0099; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-            <h1 style="font-size: 3.5rem;">Welcome to Amusigo</h1>
-            <p style="font-size: 1.3rem; ">An overview of Amusigo benefits</p>
-            </div>
+  <!-- About -->
+  <div id="about">
+        <div class="about-left">
+          <div style="color:#5F0099; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+            <h1 class="title-left">Welcome to Amusigo</h1>
+            <p class="subtitle-left">An overview of Amusigo benefits</p>
+          </div>
            
             <div class="about-box1">
-                <p class="about-text1">We focus on what is more important to you</p>
+                <p class="box1-text">We focus on what is more important to you</p>
                 <img class="cassette" src="image/cassette.svg">
             </div>
-           
         </div>
-        <div class="about-box2">
+
+        <div class="about-right">
             <div style="display:flex; justify-content: center;">
                 <h1 class="about-text2">WITH US YOU COULD...</h1>
                 <img class="headphone" style="margin-top:1.5rem" src="image/headphone.svg">
-
             </div>
-            
+          
             <ul class="about-list2">
                 <li>Organize playlists seperately</li>
                 <li style="margin-block:1.5rem">Find people with same music taste as you</li>
@@ -80,12 +79,11 @@
             </ul>
         </div>
     </div>
-
-
     <hr/>
-    <!-- FAQ -->
-    <div id="faq-container">
-        <img src="image/faq.svg"/>
+  
+   <!-- FAQ -->
+   <div id="faq-container">
+        <img class="faq-img" src="image/faq.svg"/>
         
         <div>
         <div class="faq">
@@ -110,14 +108,10 @@
             </div>
         </div>
         </div>
-        
-  
-        
     </div>
-
-  
-
     <hr/>
+
+
     <!-- Contact -->
     <div id="contact">
         <div>
@@ -135,27 +129,14 @@
                 </div>
             
 
-            <button id="btn-join" style="margin-top:4rem"> Submit</button>
+            <button id="btn-join" style="margin-top:4rem; margin-left:2rem"> Submit</button>
             </form>
             
         </div>
         <img class="contact-img" src="image/contact.svg"/>
     </div>
-    <script>
-const faqs = document.querySelectorAll(".faq");
 
-faqs.forEach(faq => {
-  faq.addEventListener("click", () => {
-    faq.classList.toggle("active");
-  })
-})
-</script>
-</body>
-
-
-<!-- Footer -->
-
-<div id="footer">
+    <div id="footer">
         <div class="footer-1">
             <ul>
                 <p>Home</p>
@@ -188,4 +169,27 @@ faqs.forEach(faq => {
     </div>
 
 
+ 
+
+
+
+   
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+const faqs = document.querySelectorAll(".faq");
+faqs.forEach(faq => {
+  faq.addEventListener("click", () => {
+    faq.classList.toggle("active");
+  })
+})
+</script>
+</body>
 </html>

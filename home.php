@@ -1,8 +1,7 @@
 <?php require_once('connect.php'); ?>
 
 <!DOCTYPE html>
-<html>
-    
+<html class="bg-color">
     <head>
         <title>Amusigo</title>
         <link rel="stylesheet" href="css/home.css">
@@ -13,20 +12,16 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <script src="sidebar.js" type="text/javascript" defer></script>
-        <script src="profile.js" type="text/javascript" defer></script>
-
     </head>
- 
-    
     <body id="homepage">
 
-        <sidebar-component></sidebar-component>
+        <?php include('sidebar.php'); ?>
+
         <div class="homepage-right">
             <!-- profile button -->
-            <profilebtn-component></profilebtn-component>
-
-            <h1 style="color:#8328BA">Good Evening</h1>
+            <?php include('profile.php'); ?>
+           
+            <h1 class="home-title" style="color:#8328ba">Good Evening</h1>
 
             <!-- Search bar -->
             <div class="input-container">
@@ -34,17 +29,16 @@
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
 
-            <h2 style="margin-left:2rem">Your possible music mates...</h2>
+            <h2 class="subtitle">Your possible music mates...</h2>
             <div class="user-profile">
             <?php 
                 $userQ = 'SELECT * from Users;';
                 if($result=$mysqli->query($userQ)){
                     while($row=$result->fetch_array()){
                         echo '<div>';
-                        echo '<img src="' . $row[7] . '" style="width: 200px; height: 200px; border-radius:50%;" >';
-                        echo '<p style="text-align: center; font-size: larger; font-weight: bold;"> ' . $row[1] . ' </p>';
+                        echo '<img class="user-img" src="' . $row[7] . '" >';
+                        echo '<p class="user-name"> ' . $row[1] . ' </p>';
                         echo '</div>';
-
                     }
                 }else {
                     echo 'Query error: '.$mysqli->error;
@@ -53,26 +47,22 @@
             </div>
 
 
-            <h2 style="margin-left:2rem">Suggested Artists...</h2>
+            <h2 class="subtitle">Suggested Artists...</h2>
             <div class="user-profile">
-            <?php 
-                $userQ = 'SELECT * from Users;';
-                if($result=$mysqli->query($userQ)){
-                    while($row=$result->fetch_array()){
-                        echo '<div>';
-                        echo '<img src="' . $row[7] . '" style="width: 200px; height: 200px; border-radius:50%;" >';
-                        echo '<p style="text-align: center; font-size: larger; font-weight: bold;"> ' . $row[1] . ' </p>';
-                        echo '</div>';
-                        
-
+                <?php
+                    $userQ = 'SELECT * from Users;';
+                    if ($result = $mysqli->query($userQ)) {
+                        while ($row = $result->fetch_array()) {
+                            echo '<div>';
+                            echo '<img src="' . $row[7] . '" class="user-img">';
+                            echo '<p class="user-name" >' . $row[1] . '</p>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo 'Query error: ' . $mysqli->error;
                     }
-                }else {
-                    echo 'Query error: '.$mysqli->error;
-                }
-            ?>
+                ?>
             </div>
-            
-
         </div>
     </body>
 

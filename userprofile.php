@@ -12,12 +12,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="sidebar.js" type="text/javascript" defer></script>
+   
 
 </head>
 
 <body id="userprofile">
-    <sidebar-component></sidebar-component>
+    <?php include('sidebar.php')?>
     
     <div class="userprofile-right">
         <div  class="top-container" style="display:flex; align-content:center; margin: 2rem;  ">

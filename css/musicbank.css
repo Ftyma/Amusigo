@@ -14,10 +14,15 @@
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
-  margin-left: 500px;
+  margin-left: 400px;
+}
+.top-container {
+  display: flex;
+  align-content: center;
+  margin: 2rem;
 }
 
-.input-container {
+.input-container-1 {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -27,6 +32,10 @@
   justify-content: center;
   margin-inline: auto;
   margin-block: 1rem;
+}
+
+.input-container-2 {
+  display: none;
 }
 
 i.fas {
@@ -62,4 +71,26 @@ th {
 
 td {
   padding-block: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .musicbank-right {
+    margin-left: 80px;
+  }
+
+  .input-container-1 {
+    display: none;
+  }
+
+  .input-container-2 {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #e0d1ff;
+    width: 90%;
+    justify-content: center;
+    margin-inline: auto;
+    margin-bottom: 2.5rem;
+  }
 }
