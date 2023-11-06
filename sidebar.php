@@ -22,7 +22,7 @@
                     <p> Home</p>
                 </a>
             
-                <a  class="sidebar-menu-item" href="musicbank.php">
+                <a  class="sidebar-menu-item" href="musicbank.php?username=<?php echo $username; ?>">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <p> Music Bank</p>
                 </a>

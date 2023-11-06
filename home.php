@@ -14,15 +14,18 @@
         />
     </head>
     <body id="homepage">
-
+        <?php $username = $_GET["username"]; 
+        ?>
+        
         <?php include('sidebar.php'); ?>
 
         <div class="homepage-right">
             <!-- profile button -->
             <?php include('profile.php'); ?>
            
-            <h1 class="home-title" style="color:#8328ba">Good Evening</h1>
-
+            <h1 class="home-title" style="color:#8328ba">Welcome! <?php echo $username;?>
+</h1>
+            
             <!-- Search bar -->
             <div class="input-container">
                 <input class="search" type="text" placeholder="Search for music ... ">            
@@ -32,6 +35,7 @@
             <h2 class="subtitle">Your possible music mates...</h2>
             <div class="user-profile">
             <?php 
+                
                 $userQ = 'SELECT * from Users;';
                 if($result=$mysqli->query($userQ)){
                     while($row=$result->fetch_array()){

@@ -15,11 +15,12 @@
 </head>
 
 <body id="music-bank">
+    <?php $username = $_GET["username"]; ?>
 <?php include('sidebar.php'); ?>
     <div class="musicbank-right">
         
         <div class="top-container">
-            <h1 style="color:#8328BA">Tyma's Bank</h1>
+            <h1 style="color:#8328BA"><?php echo $username ?>'s Bank</h1>
 
             <!-- Search bar -->
             <div class="input-container-1">
@@ -48,14 +49,31 @@
         </tr>
         <?php
         // PHP code 
-            $songQ = 'SELECT Songs.*, A.name, G.Genre_name
-                    FROM Global_MusicBank as Songs 
-                    INNER JOIN Genre as G on Songs.Genre_ID = G.Genre_ID
-                    INNER JOIN Artist as A on Songs.Artist_ID = A.Artist_ID;';
+        //$username = $_GET["username"];
+        
+        // Use the username directly in the SQL query (not recommended for security)
+        $songQold = "SELECT * FROM users WHERE Username = '$username'";
+        $result1 = $mysqli->query($songQold);
+        if ($result1 !== false) {
+            while ($row1 = $result1->fetch_array()) {
+                //echo "<h1> this is my id " . $row1[0] . "</h1>";
+                $student_id = $row1[0];
+            }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }
+        
+
+            $songQ = "SELECT S.title, A.name, G.Genre_name
+                    FROM user_musicbank as Songs
+                    INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
+                    INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
+                    INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID
+                    WHERE Student_ID = $student_id";
             if($result=$mysqli->query($songQ)){
                 while($row=$result->fetch_array()){
                     echo "<tr>
-                        <td> " . $row[1]."</td>
+                        <td> " . $row['title']."</td>
                         <td>" . $row['name']."</td>
                         <td>" . $row['Genre_name']."</td>
                         <td>

@@ -15,12 +15,12 @@
 </head>
 
 <body id="music-bank">
-    <h1>Log in page</h1>
+    <h1>Sign in page</h1>
     <div>
         <form action="signin.php" method="post">
             <div>
                 <label>Username</label>
-                <input type="username" name="username">
+                <input type="text" name="username">
             </div>
             
             <div>
@@ -50,7 +50,8 @@
                         header("Location: addSong.php");
                     }   
                     else{
-                        header("Location: home.php");
+                       header("Location: home.php?username=$username");
+                        
                     }
                 } 
                 else{
