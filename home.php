@@ -40,7 +40,9 @@
                 if($result=$mysqli->query($userQ)){
                     while($row=$result->fetch_array()){
                         echo '<div>';
+                        echo '<a href="mateProfile.php">';
                         echo '<img class="user-img" src="' . $row[7] . '" >';
+                        echo '</a>';
                         echo '<p class="user-name"> ' . $row[1] . ' </p>';
                         echo '</div>';
                     }

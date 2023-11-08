@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Amusigo</title>
-<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/signin.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -15,24 +15,32 @@
 </head>
 
 <body id="music-bank">
-    <h1>Sign in page</h1>
-    <div>
-        <form action="signin.php" method="post">
-            <div>
-                <label>Username</label>
-                <input type="text" name="username">
-            </div>
+<?php include('navbar.php') ?>
+    <div class="container">
+        <div>
+            <form action="signin.php" method="post" class="signin-form">
+                <h1 style="text-align:center; margin-block:2rem 3rem">Login</h1>
+                <div class="input-form">
+                    <label>Email</label>
+                    <input type="text" name="username" placeholder="Enter your email">
+                </div>
+                
+                <div class="input-form">
+                    <label>Password</label>
+                    <input type="password" name="passwd" placeholder="Enter your password">
+                </div>
             
-            <div>
-                <label>Password</label>
-                <input type="password" name="passwd">
-            </div>
-           
-            <button type="submit" name="submit">Submit</button>
-            <p>Dont have an account?<a href="signup.php">Sign up</a></p>
-        </form>
+                <button class="btn-submit" type="submit" name="submit">Login</button>
+                <p style="text-align:center">Dont have an account?<a href="signup.php">Sign up</a></p>
+            </form>
+    </div>
+    <div class="container-right">
+        <h1 class="welcome-text">Welcome Back!</h1>
+        <img class="singin-img" src="image/signin.svg"/>
     </div>
 
+    </div>
+   
     <?php
     if (isset($_POST['submit'])) {
 	$username = $_POST["username"];
