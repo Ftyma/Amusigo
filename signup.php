@@ -121,6 +121,7 @@ if (isset($_POST['reg'])) {
     $line = $_POST["line"];
     $profile = $_POST["profile"];
 
+    $hashedPassword = password_hash($passwd, PASSWORD_DEFAULT);
     $duplicate = "SELECT * from users WHERE Username = '$username' OR Email = '$email' ";
     $check_dup = $mysqli-> query($duplicate);
     if(mysqli_num_rows($check_dup)>0){
@@ -136,11 +137,15 @@ if (isset($_POST['reg'])) {
         $insert="INSERT INTO users(Student_ID,Username,Email,Line_ID,Faculty,Year,Name,profile_url) 
             VALUES($stdid,'$username','$email','$line','$faculty','$year','$name','$profile')";
         $result=$mysqli->query($insert);
+
         if(!$result){
             echo "Insert failed. Error: ".$mysqli->error ;
             return false;
         }
         else{
+            $insertLogin = "Insert into login(Username, Password) values('$username','$hashedPassword')";
+            $qLogin = $mysqli->query($insertLogin);
+            
             echo "<script>
          Swal.fire({
             icon: 'success',

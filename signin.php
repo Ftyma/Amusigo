@@ -1,4 +1,42 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php');
+
+    if (isset($_POST['submit'])) {
+        $username = $_POST["username"];
+        $pass = $_POST["passwd"];
+        $q="SELECT login.*, users.role FROM login 
+        join users on login.Username = users.Username
+        WHERE login.Username = '$username';";
+        $result=$mysqli->query($q);
+
+       
+        if(mysqli_num_rows($result)>0) {
+            $row = mysqli_fetch_array($result);
+            $hashedPW = $row['Password'];
+            
+            if (password_verify($pass,$hashedPW)){
+                $_SESSION["login"] = true;
+                $_SESSION["id"] = $row["Username"];
+
+                //check user's role
+                $userRole = $row['role'];
+
+                if($userRole == 'admin'){
+                    header("Location: addSong.php");
+                }else {
+                    header("Location: home.php?username=$username");
+                }
+            
+
+            }else {
+                echo "<script> alert('Incorrect password'); </script>";
+            }
+        }
+        else{
+            echo "<script> alert('Username is not correct'); </script>";
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html>
@@ -40,38 +78,8 @@
     </div>
 
     </div>
-   
-    <?php
-    if (isset($_POST['submit'])) {
-	$username = $_POST["username"];
-	$pass = $_POST["passwd"];
-	$q="select * from login";
-	$result=$mysqli->query($q);
-	    if(!$result){
-	    echo "Select failed. Error: ".$mysqli->error ;
-	    return false;
-	    }
-	    while($row=$result->fetch_array()){ 
-            if ($row[0]==$username){
-                if($row[1]==$pass){
-                    if ($row[0]=="Rose" && $row[1]=="rose"){
-                        header("Location: addSong.php");
-                    }   
-                    else{
-                       header("Location: home.php?username=$username");
-                        
-                    }
-                } 
-                else{
-                    echo "Incorrect password!";
-                }
-            }
-            else{
-                echo "Username does not exist!";
-            }
-        } 
-    }
-    ?>
+
 </body>
 
 </html>
+
