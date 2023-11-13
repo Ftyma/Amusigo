@@ -48,10 +48,6 @@
             <th>Edit</th>
         </tr>
         <?php
-        // PHP code 
-        //$username = $_GET["username"];
-        
-        // Use the username directly in the SQL query (not recommended for security)
         $songQold = "SELECT * FROM users WHERE Username = '$username'";
         $result1 = $mysqli->query($songQold);
         if ($result1 !== false) {
