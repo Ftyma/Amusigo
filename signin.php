@@ -24,10 +24,9 @@ require_once('connect.php');
                 if($userRole == 'admin'){
                     header("Location: addSong.php");
                 }else {
-                    header("Location: home.php?username=$username");
+                    header("Location: home.php");
                 }
-            
-
+        
             }else {
                 echo "<script> alert('Incorrect password'); </script>";
             }

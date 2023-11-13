@@ -145,7 +145,7 @@ if (isset($_POST['reg'])) {
         else{
             $insertLogin = "Insert into login(Username, Password) values('$username','$hashedPassword')";
             $qLogin = $mysqli->query($insertLogin);
-            
+
             echo "<script>
          Swal.fire({
             icon: 'success',
@@ -153,7 +153,7 @@ if (isset($_POST['reg'])) {
             showConfirmButton: false,
             timer: 3000
          }).then(function() {
-            window.location.href = 'home.php?studentid=$stdid'; 
+            window.location.href = 'home.php'; 
          });
       </script>";
         }
