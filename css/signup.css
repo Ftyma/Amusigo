@@ -13,6 +13,11 @@ body {
   border-radius: 5px;
 }
 
+label.required::after {
+  content: " *";
+  color: red;
+}
+
 .title1 {
   font-size: 2rem;
   margin-top: 10rem;
