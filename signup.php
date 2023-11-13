@@ -20,75 +20,82 @@
     <div class="main">
         <h1 class="title1">Create your account</h1>
         <div class="container" >
-            <form action="signup.php" method="post" class="form1">
-                <h1 class="subtitle">Personal Information</h1>
-                <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
-                <div class="input-container">
-                    <label>Username</label>
-                    <input type="text" name="username">
+            <form action="signup.php" method="post" >
+                <div class="form1">
+                    <h1 class="subtitle">Personal Information</h1>
+                    <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
+                    <div class="input-container">
+                        <label>Username</label>
+                        <input type="text" name="username">
+                    </div>
+
+                    <div class="input-container">
+                        <label>First name</label>
+                        <input type="text" name="fname">
+                    </div>
+
+                    <div class="input-container">
+                        <label>Last name</label>
+                        <input type="text" name="lname">
+                    </div>
+
+                    <div class="input-container">
+                        <label>Email</label>
+                        <input type="email" name="email">
+                    </div>
+                    
+                    <div class="input-container">
+                        <label>Password</label>
+                        <input type="password" name="passwd">
+                    </div>
                 </div>
 
-                <div class="input-container">
-                    <label>First name</label>
-                    <input type="text" name="fname">
+                <div class="form2">
+                    <h1 class="subtitle">School Information</h1>
+                    <div  class="input-container">
+                        <label>Student ID</label>
+                        <input type="text" name="stdid" >
+                    </div>
+
+                    <div class="input-container">
+                        <label>Faculty</label>
+                        <input type="text" name="faculty">
+                    </div>
+
+                    <div class="input-container">
+                        <label>Current Study Year</label>
+                        <select name="year">
+                        <option value="Bachelor-1">Bachelor-1</option>
+                        <option value="Bachelor-2">Bachelor-2</option>
+                        <option value="Bachelor-3">Bachelor-3</option>
+                        <option value="Bachelor-4">Bachelor-4</option>
+                        <option value="Master-1">Master-1</option>
+                        <option value="Master-2">Master-2</option>
+                    </select>
+                    </div>
+
+                    <div class="input-container">
+                        <label>Line ID</label>
+                        <input type="text" name="line">
+                    </div>   
+                    
+                    <div class="input-container">
+                        <label>Profile URL</label>
+                        <input type="text" name="profile">
+                    </div>
                 </div>
 
-                <div class="input-container">
-                    <label>Last name</label>
-                    <input type="text" name="lname">
-                </div>
-
-                <div class="input-container">
-                    <label>Email</label>
-                    <input type="email" name="email">
+                <div class="btn-container">
+                    <button type="submit"  name="reg" class="btn-register">Register</button>
+                    <p>Already have an account?<a href="signin.php">Login</a></p>
                 </div>
                 
-                <div class="input-container">
-                    <label>Password</label>
-                    <input type="password" name="passwd">
-                </div>
             </form>
 
-            <form action="signup.php" method="post" class="form2">
-                <h1 class="subtitle">School Information</h1>
-                <div  class="input-container">
-                    <label>Student ID</label>
-                    <input type="text" name="stdid" >
-                </div>
-
-                <div class="input-container">
-                    <label>Faculty</label>
-                    <input type="text" name="faculty">
-                </div>
-
-                <div class="input-container">
-                    <label>Current Study Year</label>
-                    <select name="year">
-                    <option value="Bachelor-1">Bachelor-1</option>
-                    <option value="Bachelor-2">Bachelor-2</option>
-                    <option value="Bachelor-3">Bachelor-3</option>
-                    <option value="Bachelor-4">Bachelor-4</option>
-                    <option value="Master-1">Master-1</option>
-                    <option value="Master-2">Master-2</option>
-                </select>
-                </div>
-
-                <div class="input-container">
-                    <label>Line ID</label>
-                    <input type="text" name="line">
-                </div>   
-                
-                <div class="input-container">
-                <label>Profile URL</label>
-                <input type="text" name="profile">
-            </div>
-            </form>
+      
         </div>
 
-        <div class="btn-container">
-            <button type="submit" name="reg" class="btn-register">Register</button>
-            <p>Already have an account?<a href="signin.php">Login</a></p>
-        </div>
+        
     </div>
     
     <?php
@@ -116,7 +123,7 @@
     }    
     ?>
    
-   
+
 
 </body>
 
