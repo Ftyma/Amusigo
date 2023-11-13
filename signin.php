@@ -21,8 +21,8 @@
             <form action="signin.php" method="post" class="signin-form">
                 <h1 style="text-align:center; margin-block:2rem 3rem">Login</h1>
                 <div class="input-form">
-                    <label>Email</label>
-                    <input type="text" name="username" placeholder="Enter your email">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Enter your username">
                 </div>
                 
                 <div class="input-form">
@@ -35,7 +35,7 @@
             </form>
     </div>
     <div class="container-right">
-        <h1 class="welcome-text">Welcome Back!</h1>
+        <h1 class="welcome-text">Welcome!</h1>
         <img class="singin-img" src="image/signin.svg"/>
     </div>
 
