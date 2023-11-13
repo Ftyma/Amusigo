@@ -1,8 +1,13 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php'); 
+?>
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Amusigo</title>
 <link rel="stylesheet" href="css/signup.css">
 <link
@@ -12,6 +17,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body id="signup">
@@ -25,45 +31,45 @@
                     <h1 class="subtitle">Personal Information</h1>
                     <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
                     <div class="input-container">
-                        <label>Username</label>
-                        <input type="text" name="username">
+                        <label class="required">Username</label>
+                        <input type="text" name="username" required>
                     </div>
 
                     <div class="input-container">
-                        <label>First name</label>
-                        <input type="text" name="fname">
+                        <label class="required">First name</label>
+                        <input type="text" name="fname" required>
                     </div>
 
                     <div class="input-container">
-                        <label>Last name</label>
-                        <input type="text" name="lname">
+                        <label class="required">Last name</label>
+                        <input type="text" name="lname" required>
                     </div>
 
                     <div class="input-container">
-                        <label>Email</label>
-                        <input type="email" name="email">
+                        <label class="required">Email</label>
+                        <input type="email" name="email" required>
                     </div>
                     
                     <div class="input-container">
-                        <label>Password</label>
-                        <input type="password" name="passwd">
+                        <label class="required">Password</label>
+                        <input type="password" name="passwd" required>
                     </div>
                 </div>
 
                 <div class="form2">
                     <h1 class="subtitle">School Information</h1>
                     <div  class="input-container">
-                        <label>Student ID</label>
-                        <input type="text" name="stdid" >
+                        <label class="required">Student ID</label>
+                        <input type="text" name="stdid" required>
                     </div>
 
                     <div class="input-container">
-                        <label>Faculty</label>
-                        <input type="text" name="faculty">
+                        <label class="required">Faculty</label>
+                        <input type="text" name="faculty" required>
                     </div>
 
                     <div class="input-container">
-                        <label>Current Study Year</label>
+                        <label class="required">Current Study Year</label>
                         <select name="year">
                         <option value="Bachelor-1">Bachelor-1</option>
                         <option value="Bachelor-2">Bachelor-2</option>
@@ -84,7 +90,7 @@
                         <input type="text" name="profile">
                     </div>
                 </div>
-
+          
                 <div class="btn-container">
                     <button type="submit"  name="reg" class="btn-register">Register</button>
                     <p>Already have an account?<a href="signin.php">Login</a></p>
@@ -97,34 +103,57 @@
 
         
     </div>
-    
-    <?php
-    if (isset($_POST['reg'])) {
-	$username = $_POST["username"];
+</body>
+
+</html>
+
+<?php
+if (isset($_POST['reg'])) {
+    $username = $_POST["username"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $name = "$fname $lname";
     $email = $_POST["email"];
-	$passwd = $_POST["passwd"];
+    $passwd = $_POST["passwd"];
     $stdid = $_POST["stdid"];
     $faculty = $_POST["faculty"];
     $year = $_POST["year"];
     $line = $_POST["line"];
     $profile = $_POST["profile"];
-	$insert="INSERT INTO users(Student_ID,Username,Email,Line_ID,Faculty,Year,Name,profile_url) VALUES($stdid,'$username','$email','$line','$faculty','$year','$name','$profile')";
-	$result=$mysqli->query($insert);
-	    if(!$result){
-	    echo "Insert failed. Error: ".$mysqli->error ;
-	    return false;
-	    }
-	    else{
-            header("Location: home.php?studentid=$stdid");
+
+    $duplicate = "SELECT * from users WHERE Username = '$username' OR Email = '$email' ";
+    $check_dup = $mysqli-> query($duplicate);
+    if(mysqli_num_rows($check_dup)>0){
+        echo "<script>
+            Swal.fire({
+               icon: 'error',
+               title: 'Username or Email is already exist',
+               showConfirmButton: false,
+               timer: 1500
+            });
+         </script>";
+    }else {
+        $insert="INSERT INTO users(Student_ID,Username,Email,Line_ID,Faculty,Year,Name,profile_url) 
+            VALUES($stdid,'$username','$email','$line','$faculty','$year','$name','$profile')";
+        $result=$mysqli->query($insert);
+        if(!$result){
+            echo "Insert failed. Error: ".$mysqli->error ;
+            return false;
         }
-    }    
-    ?>
-   
+        else{
+            echo "<script>
+         Swal.fire({
+            icon: 'success',
+            title: 'Register successfully',
+            showConfirmButton: false,
+            timer: 3000
+         }).then(function() {
+            window.location.href = 'home.php?studentid=$stdid'; 
+         });
+      </script>";
+        }
+    }  
+}
+?>
 
 
-</body>
-
-</html>
