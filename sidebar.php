@@ -27,7 +27,7 @@
                     <p> Music Bank</p>
                 </a>
 
-                <a class="sidebar-menu-item" href="musicmate.php">
+                <a class="sidebar-menu-item" href="musicmate?username=<?php echo $username; ?>.php">
                     <i class="fa-solid fa-user-group"></i>
                     <p>Music Mates</p>
                 </a>

@@ -24,7 +24,7 @@
             <img class="profile-pic"src="image/contact.svg"/>
             <div>
                 <h2>Username: <?php echo $friend;?> </h2>
-                <button class="add-friend-btn">Add Friend</button>
+                <button class="add-friend-btn">Follow</button>
             </div>
         </div>
         
