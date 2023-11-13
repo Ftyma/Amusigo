@@ -74,3 +74,23 @@ input[type="text"] {
     margin-bottom: 2.5rem;
   }
 }
+table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 95%;
+}
+
+th,
+td {
+  padding-inline: 2rem;
+  text-align: left;
+}
+
+th {
+  background: #e9baff;
+  padding-block: 1rem;
+}
+
+td {
+  padding-block: 0.5rem;
+}

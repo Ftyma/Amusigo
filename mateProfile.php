@@ -19,7 +19,7 @@
 <?php $friend = $_GET["friend"]; ?>
     <div class="container">
         
-        <h1 style="color:#8328BA">Mate Profile</h1>
+        <h1 style="color:#8328BA">User Profile</h1>
         <div class="top-container">
             <img class="profile-pic"src="image/contact.svg"/>
             <div>

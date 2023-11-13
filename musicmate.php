@@ -16,6 +16,7 @@
 
 <body id="music-mate">
 <?php include('sidebar.php'); ?>
+<?php $username = $_GET["username"]; ?>
     <div class="musicmate-right">
         
         <div class="top-container">
@@ -38,6 +39,42 @@
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
         </div>
 
+        <div>
+        <table>
+        <tr>
+            <th>Username</th>
+            <th>Remove</th>
+        </tr>
+        <?php
+        $stdid = "SELECT * FROM users WHERE Username = '$username'";
+        $result1 = $mysqli->query($stdid);
+        if ($result1 !== false) {
+            while ($row1 = $result1->fetch_array()) {
+                //echo "<h1> this is my id " . $row1[0] . "</h1>";
+                $student_id = $row1[0];
+            }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }
+        
+
+            $frnd = "SELECT u.username from users as u
+            INNER JOIN friend as ff on u.Student_ID = ff.friend_id
+                    WHERE ff.user_id = $student_id";
+            if($result=$mysqli->query($frnd)){
+                while($row=$result->fetch_array()){
+                    echo "<tr>
+                        <td> " . $row['username']."</td>
+                        <td>
+                            <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
+                        </td>
+                    </tr>";
+                }
+            }
+       
+        ?>
+    </table>
+        </div>
     </div>
 </body>
 
