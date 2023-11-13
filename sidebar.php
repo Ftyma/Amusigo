@@ -1,4 +1,23 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php'); 
+session_start(); 
+
+if(isset($_GET['logout'])){{
+    //check if user logged in 
+    if(!empty($_SESSION["id"])){
+        //clear session
+        $_SESSION = array();
+        session_destroy();
+
+        header("Location: signin.php");
+        exit;
+    }else {
+        header("Location: signin.php");
+        exit;
+    }
+}}
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +58,7 @@
             </div>
                     
             <div class="logout">
-                <a  class="sidebar-menu-item" href="playlist.php">
+                <a  href="?logout=1" class="sidebar-menu-item">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <p> Logout</p>
                 </a>
