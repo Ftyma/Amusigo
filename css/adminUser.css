@@ -1,0 +1,67 @@
+#user {
+  height: 100%;
+  display: grid;
+  background: rgb(242, 214, 255);
+}
+
+.user-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  margin-left: 400px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  width: 95%;
+}
+
+th,
+td {
+  padding-inline: 2rem;
+  text-align: left;
+}
+
+th {
+  background: #e9baff;
+  padding-block: 1rem;
+}
+
+td {
+  padding-block: 0.5rem;
+}
+
+.view-btn:hover {
+  background-color: lightgreen;
+}
+
+.edit-btn:hover {
+  background-color: lightblue;
+}
+
+.delete-btn:hover {
+  background-color: lightcoral;
+}
+
+button {
+  background-color: transparent;
+  width: 60px;
+  text-align: center;
+  border-radius: 20px;
+  padding-block: 5px;
+  border-style: 0.5px solid;
+  border-color: black;
+}
+
+button:hover {
+  scale: 110%;
+  border-style: none;
+}
+
+.user-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}

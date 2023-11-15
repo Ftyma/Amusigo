@@ -1,25 +1,7 @@
 <?php 
 require_once('connect.php'); 
-session_start(); 
-
-if(isset($_GET['logout'])){{
-    //check if user logged in 
-    if(!empty($_SESSION["id"])){
-        //clear session
-        $_SESSION = array();
-        session_destroy();
-
-        header("Location: signin.php");
-        exit;
-    }else {
-        header("Location: signin.php");
-        exit;
-    }
-}}
 
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -36,27 +18,26 @@ if(isset($_GET['logout'])){{
             <img src="image/logo.svg">
             <h1 class="title">Amusigo.</h1>
         </div>
+
+        <div>
+            <h3 style="margin-left:2.5rem; margin-bottom:2rem;color: #8d2182">Admin ID: </h3>
+        </div>
         
         <div class="sidebar-menu">
             <div>
-                <a  class="sidebar-menu-item" href="home.php">
+                <a  class="sidebar-menu-item" href="adminDashboard.php">
                     <i class="fa-solid fa-house"></i>
-                    <p> Home</p>
+                    <p> Dashboard</p>
                 </a>
             
-                <a  class="sidebar-menu-item" href="musicbank.php?username=<?php echo $username; ?>">
+                <a  class="sidebar-menu-item" href="adminUser.php">
                     <i class="fa-solid fa-clipboard-list"></i>
-                    <p> Music Bank</p>
+                    <p> Users list</p>
                 </a>
 
-                <a class="sidebar-menu-item" href="musicmate.php?username=<?php echo $username; ?>">
+                <a class="sidebar-menu-item" href="adminGlobal.php">
                     <i class="fa-solid fa-user-group"></i>
-                    <p>Music Mates</p>
-                </a>
-
-                <a  class="sidebar-menu-item" href="playlist.php">
-                    <i class="fa-solid fa-music"></i>
-                    <p> Playlists</p>
+                    <p>Global Music Bank</p>
                 </a>
             </div>
                     

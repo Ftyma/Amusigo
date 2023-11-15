@@ -1,9 +1,9 @@
 <?php 
 require_once('connect.php');
-
     if (isset($_POST['submit'])) {
         $username = $_POST["username"];
         $pass = $_POST["passwd"];
+
         $q="SELECT login.*, users.role FROM login 
         join users on login.Username = users.Username
         WHERE login.Username = '$username';";
@@ -28,7 +28,17 @@ require_once('connect.php');
                 }
         
             }else {
-                echo "<script> alert('Incorrect password'); </script>";
+                if ($pass == $row['Password']){
+                    $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+                    $updateQuery = "UPDATE login SET Password = '$hashedPassword' WHERE Username = '$username';";
+                    $mysqli->query($updateQuery);
+
+                    $_SESSION["login"] = true;
+                    $_SESSION["id"] = $row["Username"];
+                    header("Location: home.php?username=$username");
+                }else {
+                    echo "<script> alert('Incorrect password'); </script>";
+                }
             }
         }
         else{

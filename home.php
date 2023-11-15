@@ -1,4 +1,15 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php'); 
+
+session_start();
+
+if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
+    header("Location: signin.php");
+    exit();
+}
+
+$userName = $_SESSION["id"]; 
+?>
 
 <!DOCTYPE html>
 <html class="bg-color">
@@ -14,8 +25,7 @@
         />
     </head>
     <body id="homepage">
-        <?php $username = $_GET["username"]; 
-        ?>
+
         
         <?php include('sidebar.php'); ?>
 
@@ -23,7 +33,7 @@
             <!-- profile button -->
             <?php include('profile.php'); ?>
            
-            <h1 class="home-title" style="color:#8328ba">Welcome! <?php echo $username;?>
+            <h1 class="home-title" style="color:#8328ba">Welcome! <?php echo $userName;?>
 </h1>
             
             <!-- Search bar -->
