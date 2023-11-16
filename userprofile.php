@@ -1,4 +1,5 @@
-<?php require_once('connect.php'); ?>
+<?php require_once('connect.php');
+session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,8 @@
 </head>
 
 <body id="userprofile">
-    <?php include('sidebar.php')?>
+    <?php $username = $_SESSION["username"]; 
+    include('sidebar.php')?>
     
     <div class="userprofile-right">
         <div  class="top-container" style="display:flex; align-content:center; margin: 2rem;  ">
@@ -28,40 +30,42 @@
         <div id="container">
             <div id="personal-container">
                 <h2>Personal Information</h2>
-                
-                    <label>Username</label>
-                    <text placeholder="In your music bank ... ">
-        
-               
-             
-                    <label>First name</label>
-                    <input type="text">
-      
-                
-   
-                    <label>Last name</label>
-                    <input type="text">
-   
-                
-  
-                    <label>Email</label>
-                    <input type="text">
+                <?php
+        $userprofile = "SELECT * FROM users WHERE Username = '$username'";
+        $result1 = $mysqli->query($userprofile);
+        if ($result1 !== false && $result1->num_rows) {
+            while ($row1 = $result1->fetch_array()) {
+               $student_id = $row1[0];
+               $uname = $row1[1];
+               $email = $row1[2];
+               $line = $row1[3];
+               $faculty = $row1[4];
+               $year = $row1[5];
+               $name = $row1[6];
+               $newname = explode(" ", $name);
+            }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }?>
+                    <label><b>Username: </b><?php echo $uname; ?></label>
+                    
+                    <label><b>First name: </b><?php echo $newname[0]; ?></label>
+ 
+                    <label><b>Last name: </b><?php echo $newname[1]; ?></label>
+
+                    <label><b>Email: </b><?php echo $email; ?></label>
       
                
             </div>
             <div id="school-container">
                 <h2>School Information</h2>
-                <label>Student ID</label>
-                <input type="text">
+                <label><b>Student ID: </b><?php echo $student_id; ?></label>
 
-                <label>Faculty</label>
-                <input type="text">
+                <label><b>Faculty: </b><?php echo $faculty; ?></label>
 
-                <label>Current Study Year</label>
-                <input type="text">
+                <label><b>Current Study Year: </b><?php echo $year; ?></label>
 
-                <label>Line ID</label>
-                <input type="text">
+                <label><b>Line ID: </b><?php echo $line; ?></label>
             </div>
         </div>
             
