@@ -88,3 +88,14 @@ input {
     justify-content: center;
   }
 }
+
+.button {
+  background-color: #8d2182;
+  border-style: none;
+  border-radius: 5px;
+  color: white;
+  padding-inline: 1.5rem;
+  padding-block: 10px;
+  font-size: 1rem;
+  margin-block: 1rem;
+}

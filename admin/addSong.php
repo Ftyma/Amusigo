@@ -8,15 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $date = $_POST["date"];
     $album = $_POST["album"];
 
-    $artistIDQ = "SELECT Artist_ID from artist where Artist_Name = $artist;";
+    $artistIDQ = "SELECT Artist_ID from artist where Name = '$artist';";
     $resArtist = mysqli_query($mysqli, $artistIDQ );
     $artist_ID = mysqli_fetch_row($resArtist );
 
-    $genreIDQ = "SELECT Genre_ID from album where Genre_Name = $genre;"
+    $genreIDQ = "SELECT Genre_ID from genre where Genre_name = '$genre';";
     $resGenre = mysqli_query($mysqli, $genreIDQ );
     $genre_ID = mysqli_fetch_row($resGenre );
 
-    $albumIDQ = "SELECT Album_ID from album where Album_Name = $album; ";
+    $albumIDQ = "SELECT Album_ID from album where Album_Name = '$album'; ";
     $resAlbum = mysqli_query($mysqli, $albumIDQ );
     $album_ID = mysqli_fetch_row($resArtist );
 
@@ -77,29 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div class = "dropdown">
                 <label>Genre</label>
-<<<<<<< HEAD
-                <?php
-    
-                $sql = "SELECT Genre_name FROM genre";
-                $result = $mysqli->query($sql);
-
-                if ($result && $result->num_rows > 0) {
-                    echo '<select name="genre">';
-                    echo '<option value="">Select a genre</option>'; // Default empty option
-
-                    // Fetch data and generate options
-                    while ($row = $result->fetch_assoc()) {
-                    $genreName = $row['Genre_name'];
-
-                    // Output an option with song name and value as song ID
-                    echo '<option value="' . $genreName . '">' . $genreName . '</option>';
-                }
-                    echo '</select>';
-                } else {
-                    echo "No songs found";
-                }
-                ?>
-=======
                 <select name="genre">
                     <?php
                     $genreQ = "SELECT * FROM genre"; 
@@ -111,12 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                     ?>                
                 </select>
->>>>>>> 9c09fa6ff34da0f8a075471c53bde65b8be54a94
             </div>
             
             <div class="input-label">
                 <label>Released Date</label>
-                <input type="text" name="date" placeholder="released date">
+                <input type="date" name="date" placeholder="released date">
             </div>
 
             <div class="input-label">
