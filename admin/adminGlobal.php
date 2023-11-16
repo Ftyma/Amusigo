@@ -23,7 +23,9 @@ session_start();
     <body id="global">
 
         
-        <?php include('adminSidebar.php'); ?>
+        <?php 
+            include('adminSidebar.php');
+         ?>
 
         <div class="global-right">
            
@@ -69,7 +71,7 @@ if ($result = $mysqli->query($songQ)) {
                 </td>";
         }else {
             echo "<td>
-                    <a href='#'><button>+</button></a>
+                    <a href='../add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
                 </td>";
         }
 

@@ -52,9 +52,9 @@ if(isset($_GET['logout'])) {
                     <p>Music Mates</p>
                 </a>
 
-                <a  class="sidebar-menu-item" href="playlist.php">
+                <a  class="sidebar-menu-item" href="admin/adminGlobal.php">
                     <i class="fa-solid fa-music"></i>
-                    <p> Playlists</p>
+                    <p> Global Music Bank</p>
                 </a>
             </div>
                     

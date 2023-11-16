@@ -15,9 +15,12 @@ $song = "SELECT * FROM users WHERE Username = '$username'";
             echo "Error in query execution: " . $mysqli->error;
         }
         
-$q="DELETE FROM user_musicbank WHERE Song_ID=$song_id and Student_ID = $student_id";
-if(!$mysqli->query($q)){
-	echo "DELETE failed. Error: ".$mysqli->error;}
+        $insert="INSERT INTO user_musicbank VALUES($song_id,$student_id)";
+    
+if(!$mysqli->query($insert)){
+	echo "INSERT failed. Error: ".$mysqli->error;
+    return false;
+}
 $mysqli->close();
 header("Location: musicbank.php");
 }
