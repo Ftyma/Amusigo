@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check for success
     if ($result) {
         echo "Insert successful!";
+        header("Location:adminArtist.php");
     } else {
         echo "Insert failed: " . $stmt->error;
     }

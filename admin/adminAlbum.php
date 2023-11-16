@@ -55,9 +55,8 @@ if ($result = $mysqli->query($songQ)) {
             <td>" . $row['ArtistName'] . "</td>
 
             <td>
-                <a href='#'><button class='view-btn'>View</button></a>
-                <a href='editAlbum.php?albumid=" .$row['Album_ID']. "'><button class='edit-btn'>Edit</button></a>
-                <a href='deleteAlbum.php?albumid=" . $row['Album_ID'] . "'><button class='delete-btn'>Delete</button></a>
+                <a href='adminEdit.php?albumid=" .$row['Album_ID']. "'><button class='edit-btn'>Edit</button></a>
+                <a href='adminDelete.php?albumid=" . $row['Album_ID'] . "'><button class='delete-btn'>Delete</button></a>
             </td>
         </tr>";
     }
