@@ -16,7 +16,9 @@
 
 <body id="mateProfile">
 <?php include('sidebar.php'); ?>
-<?php $friend = $_GET["friend"]; ?>
+<?php $friend = $_GET["friend"];
+$userName = $_SESSION["username"]; 
+ ?>
     <div class="container">
         
         <h1 style="color:#8328BA">User Profile</h1>
@@ -24,7 +26,7 @@
             <img class="profile-pic"src="image/contact.svg"/>
             <div>
                 <h2>Username: <?php echo $friend;?> </h2>
-                <button class="add-friend-btn">Follow</button>
+                <button class="add-friend-btn" name="follow">Follow</button>
             </div>
         </div>
         
@@ -67,6 +69,10 @@
                         </td>
                     </tr>";
                 }
+            }
+            if (isset($_POST['follow'])) {
+                $songQ = "INSERT INTO friend values ($userName,$friend)";
+        $result=$mysqli->query($songQ)
             }
        
         ?>
