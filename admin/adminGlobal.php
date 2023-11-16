@@ -39,11 +39,13 @@ session_start();
                 <input class="search" type="text" placeholder="In your music bank ... ">            
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
+            
             <?php
                 if ($_SESSION['role'] == 'admin') {
                     echo "<a href='addSong.php'>
                             <button class='add-btn'> + Add Song</button>
-                        </a>";
+                        </a>
+                        <br></br>";
                 }
             ?>
             <table>
