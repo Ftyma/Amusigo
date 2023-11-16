@@ -12,6 +12,8 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
     <head>
         <title>Amusigo</title>
         <link rel="stylesheet" href="../css/adminGlobal.css">
+
+        <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel="stylesheet" >
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
