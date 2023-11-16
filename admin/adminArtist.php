@@ -51,8 +51,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     <th>Action</th>
                 </tr>
                 <?php
-                    $songQ = "SELECT * 
-                            FROM artist";
+                    $songQ = "SELECT * FROM artist";
                     if($result=$mysqli->query($songQ)){
                         while($row=$result->fetch_array()){
                             echo "<tr>
@@ -63,12 +62,9 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                                 <td>" . $row['Website']."</td>
                                 <td>" . $row['Birth_Date']."</td>
                                 <td> " . $row['Age']."</td>
-                
-        
                                 <td>
-                                    <a href='#'><button class='view-btn'>View</button></a>
-                                    <a href='#'><button class='edit-btn'>Edit</button></a>
-                                    <a href='#'><button class='delete-btn'>Delete</button></a>
+                                    <a href='adminEdit.php?artistid=" .$row[0]. "'><button class='edit-btn'>Edit</button></a>
+                                    <a href='adminDelete.php?artistid=" . $row[0] . "'><button class='delete-btn'>Delete</button></a>
                                 </td>
                             </tr>";
                         }

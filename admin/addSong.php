@@ -4,11 +4,23 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST["title"];
     $artist = $_POST["artist"];
-    $genre = $_POST["title"];
+    $genre = $_POST["genre"];
     $date = $_POST["date"];
     $album = $_POST["album"];
 
-   
+    $artistIDQ = "SELECT Artist_ID from artist where Artist_Name = $artist;";
+    $resArtist = mysqli_query($mysqli, $artistIDQ );
+    $artist_ID = mysqli_fetch_row($resArtist );
+
+    $genreIDQ = "SELECT Genre_ID from album where Genre_Name = $genre;"
+    $resGenre = mysqli_query($mysqli, $genreIDQ );
+    $genre_ID = mysqli_fetch_row($resGenre );
+
+    $albumIDQ = "SELECT Album_ID from album where Album_Name = $album; ";
+    $resAlbum = mysqli_query($mysqli, $albumIDQ );
+    $album_ID = mysqli_fetch_row($resArtist );
+
+    
 
 }
 ?>
@@ -39,22 +51,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <div>
                 <label>Artist</label>
-                <input type="text" name="artist" placeholder="artist name" >
+                <select name="artist">
+                    <?php
+                    $artistQ = "SELECT Name FROM artist"; 
+                    if ($result = $mysqli->query($artistQ)) {
+                        echo "<option value='' selected disabled>Select an artist</option>";
+                        while ($row = $result->fetch_array()) {
+                            echo "<option value='" . $row['Name'] . "'>" . $row['Name'] . "</option>";
+                        }
+                    }
+                    ?>                
+                </select>
             </div>
 
             <div>
                 <label>Genre</label>
-                <input type="text" name="genre" placeholder="song genre">
+                <select name="genre">
+                    <?php
+                    $genreQ = "SELECT * FROM genre"; 
+                    if ($result = $mysqli->query($genreQ)) {
+                        echo "<option value='' selected disabled>Select a genre</option>";
+                        while ($row = $result->fetch_array()) {
+                            echo "<option value='" . $row['Genre_ID'] . "'>" . $row['Genre_name'] . "</option>";
+                        }
+                    }
+                    ?>                
+                </select>
             </div>
             
             <div>
                 <label>Released Date</label>
-                <input type="text" name="date" placeholder="song genre">
+                <input type="text" name="date" placeholder="released date">
             </div>
 
             <div>
                 <label>Album</label>
-                <input type="text" name="album" placeholder="song album name">
+                <select name="album">
+                    <?php
+                    $albumQ = "SELECT * FROM album"; 
+                    if ($result = $mysqli->query($albumQ)) {
+                        echo "<option value='' selected disabled>Select album</option>";
+                        while ($row = $result->fetch_array()) {
+                            echo "<option value='" . $row['Album_ID'] . "'>" . $row['Album_Name'] . "</option>";
+                        }
+                    }
+                    ?>                
+                </select>
             </div>
            
             <button type="submit">Add</button>
