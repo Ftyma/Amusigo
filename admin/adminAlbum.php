@@ -46,25 +46,24 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     <th>Action</th>
                 </tr>
                 <?php
-                    $songQ = "SELECT album.*, artist.Name as ArtistName
-                            FROM album join artist on album.Artist_ID = artist.Artist_ID ";
-                    if($result=$mysqli->query($songQ)){
-                        while($row=$result->fetch_array()){
-                            echo "<tr>
-                                <td> " . $row['Album_Name']."</td>
-                                <td> " . $row['ArtistName']."</td>
-        
-                                <td>
-                                    <a href='#'><button class='view-btn'>View</button></a>
-                                    <a href='#'><button class='edit-btn'>Edit</button></a>
-                                    <a href='deleteAlbum.php?albumid=<?php echo $row['Album_ID']; ?>' <button class='delete-btn'>Delete</button> </a>
+$songQ = "SELECT album.*, artist.Name as ArtistName
+          FROM album join artist on album.Artist_ID = artist.Artist_ID ";
+if ($result = $mysqli->query($songQ)) {
+    while ($row = $result->fetch_array()) {
+        echo "<tr>
+            <td>" . $row['Album_Name'] . "</td>
+            <td>" . $row['ArtistName'] . "</td>
 
-                                </td>
-                            </tr>";
-                        }
-                    }
-            
-                ?>
+            <td>
+                <a href='#'><button class='view-btn'>View</button></a>
+                <a href='editAlbum.php?albumid=" .$row['Album_ID']. "'><button class='edit-btn'>Edit</button></a>
+                <a href='deleteAlbum.php?albumid=" . $row['Album_ID'] . "'><button class='delete-btn'>Delete</button></a>
+            </td>
+        </tr>";
+    }
+}
+?>
+
             </table>
 
         </div>

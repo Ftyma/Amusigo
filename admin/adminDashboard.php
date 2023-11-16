@@ -5,6 +5,16 @@ session_start();
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
     header("Location: ../signin.php"); 
 } 
+$uname = $_SESSION['username'];
+$q = "SELECT * FROM users where Username='$uname';";
+$result = $mysqli->query($q);
+$row = mysqli_fetch_row($result);
+
+$id = $row[0];
+$email = $row[2];
+$name = $row[6];
+$line= $row[3];
+$role = $row[8];
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +61,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="adminArtist.php">
                     <div class="list-card">
                         <h2>Artist List</h2>
                         <?php
@@ -63,7 +73,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="adminAlbum.php">
                     <div class="list-card">
                         <h2>Album List</h2>
                         <?php
@@ -87,18 +97,18 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                 <div class="profile-body">
                     <div class="body-label">
                         <p class="label">Admin ID: </p>
-                        <p class="label">First Name: </p>
-                        <p class="label">Last Name: </p>
+                        <p class="label">Full Name: </p>
                         <p class="label">Email: </p>
-                        <p class="label">Phone Number: </p>
+                        <p class="label">Line ID: </p>
+                        <p class="label">Role: </p>
                     </div>
                     
                     <div class="body-info">
-                        <p class="text">5502</p>
-                        <p class="text">5502</p>
-                        <p class="text">5502</p>
-                        <p class="text">5502</p>
-                        <p class="text">5502</p>
+                        <p ><?php echo $id;?></p>
+                        <p ><?php echo $name;?></p>
+                        <p ><?php echo $email;?></p>
+                        <p ><?php echo $line;?></p>
+                        <p ><?php echo $role;?></p>
                     </div>
                 </div>
                 
