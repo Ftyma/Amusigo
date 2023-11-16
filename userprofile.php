@@ -30,7 +30,7 @@
                 <h2>Personal Information</h2>
                 
                     <label>Username</label>
-                    <input type="text">
+                    <text placeholder="In your music bank ... ">
         
                
              
