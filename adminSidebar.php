@@ -1,6 +1,20 @@
 <?php 
 require_once('connect.php'); 
 
+if(isset($_GET['logout'])) {
+
+    //check if user login
+    if(!empty($_SESSION["id"])) {
+        $_SESSION = array();
+        session_destroy();
+
+        header("Location: signin.php");
+        exit;
+    } else {
+        header("Location: signin.php");
+        exit;
+    }
+}
 ?>
 
 
@@ -12,6 +26,20 @@ require_once('connect.php');
 
 </head>
 
+<style>
+    .admin-id{
+        margin-left:2.5rem; 
+        margin-bottom:2rem;
+        color: #8d2182;
+    }
+    @media screen and (max-width: 768px) {
+    .admin-id {
+        display: none;
+    }
+}
+
+</style>
+
 <body>
     <div class="sidenav">
         <div class="logo">
@@ -20,7 +48,7 @@ require_once('connect.php');
         </div>
 
         <div>
-            <h3 style="margin-left:2.5rem; margin-bottom:2rem;color: #8d2182">Admin ID: </h3>
+            <h3 class="admin-id">Admin ID: </h3>
         </div>
         
         <div class="sidebar-menu">
@@ -38,6 +66,21 @@ require_once('connect.php');
                 <a class="sidebar-menu-item" href="adminGlobal.php">
                     <i class="fa-solid fa-user-group"></i>
                     <p>Global Music Bank</p>
+                </a>
+
+                <a class="sidebar-menu-item" href="adminArtist.php">
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>Artist</p>
+                </a>
+
+                <a class="sidebar-menu-item" href="adminGlobal.php">
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>Album</p>
+                </a>
+
+                <a class="sidebar-menu-item" href="adminGlobal.php">
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>Genre</p>
                 </a>
             </div>
                     

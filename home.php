@@ -3,13 +3,18 @@ require_once('connect.php');
 
 session_start();
 
-if (!isset($_SESSION["login"]) || $_SESSION["login"] !== true) {
+if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
     header("Location: signin.php");
     exit();
 }
 
-$userName = $_SESSION["id"]; 
+$userName = $_SESSION["username"]; 
 ?>
+
+<script>
+    console.log(document.cookie);
+</script>
+
 
 <!DOCTYPE html>
 <html class="bg-color">

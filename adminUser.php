@@ -1,5 +1,10 @@
 <?php 
 require_once('connect.php'); 
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
+    header("Location: signin.php"); 
+} 
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +29,9 @@ require_once('connect.php');
             <h1 class="home-title" style="color:#8328ba">Users List</h1>
 
             <div>
+            <a href='#'>
+                <button class="add-btn"> + Add User</button>
+            </a>
             <table>
                 <tr>
                     <th></th>
@@ -41,10 +49,21 @@ require_once('connect.php');
                                 <td>" . $row['Email']."</td>
 
                                 <td>
-                                    <a href='#'><button class='view-btn'>View</button></a>
-                                    <a href='#'><button class='edit-btn'>Edit</button></a>
-                                    <a href='#'><button class='delete-btn'>Delete</button></a>
+                                    <a href='#'>
+                                        <button class='view-btn'>View</button>
+                                    </a>
+
+                                    <a href='#'>
+                                        <button class='edit-btn'>Edit</button>
+                                    </a>
+                  
+                                   <a href='#'>
+                                        <button class='delete-btn'>Delete</button>
+                                    </a>
+
                                 </td>
+
+     
                             </tr>";
                         }
                     }

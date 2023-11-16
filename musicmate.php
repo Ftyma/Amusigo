@@ -1,4 +1,13 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php'); 
+
+session_start();
+
+if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
+    header("Location: signin.php");
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +25,8 @@
 
 <body id="music-mate">
 <?php include('sidebar.php'); ?>
-<?php $username = $_GET["username"]; ?>
+
+<?php $username = $_SESSION["username"]; ?>
     <div class="musicmate-right">
         
         <div class="top-container">
@@ -53,11 +63,7 @@
                 //echo "<h1> this is my id " . $row1[0] . "</h1>";
                 $student_id = $row1[0];
             }
-        } else {
-            echo "Error in query execution: " . $mysqli->error;
-        }
-        
-
+            
             $frnd = "SELECT u.username from users as u
             INNER JOIN friend as ff on u.Student_ID = ff.friend_id
                     WHERE ff.user_id = $student_id";
@@ -70,7 +76,15 @@
                         </td>
                     </tr>";
                 }
+            }else {
+                echo "Error in second query execution: " . $mysqli->error;
             }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }
+        
+
+            
        
         ?>
     </table>

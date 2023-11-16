@@ -1,4 +1,14 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php'); 
+
+session_start();
+
+if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
+    header("Location: signin.php");
+    exit();
+}
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -15,11 +25,12 @@
 </head>
 
 <body id="playlist">
+<?php $username = $_SESSION["username"]; ?>
 <?php include('sidebar.php'); ?>
     <div class="playlist-right">
         
         <div class="top-container">
-            <h1 style="color:#8328BA">Tyma's Playlist</h1>
+            <h1 style="color:#8328BA"><?php echo $username ?>'s Playlist</h1>
 
             <!-- Search bar -->
             <div class="input-container-1">

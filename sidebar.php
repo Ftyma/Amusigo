@@ -1,24 +1,22 @@
 <?php 
 require_once('connect.php'); 
-session_start(); 
 
-if(isset($_GET['logout'])){{
-    //check if user logged in 
-    if(!empty($_SESSION["id"])){
-        //clear session
+
+if(isset($_GET['logout'])) {
+
+    //check if user login
+    if(!empty($_SESSION["id"])) {
         $_SESSION = array();
         session_destroy();
 
         header("Location: signin.php");
         exit;
-    }else {
+    } else {
         header("Location: signin.php");
         exit;
     }
-}}
-
+}
 ?>
-
 
 
 
@@ -44,12 +42,12 @@ if(isset($_GET['logout'])){{
                     <p> Home</p>
                 </a>
             
-                <a  class="sidebar-menu-item" href="musicbank.php?username=<?php echo $username; ?>">
+                <a  class="sidebar-menu-item" href="musicbank.php">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <p> Music Bank</p>
                 </a>
 
-                <a class="sidebar-menu-item" href="musicmate.php?username=<?php echo $username; ?>">
+                <a class="sidebar-menu-item" href="musicmate.php">
                     <i class="fa-solid fa-user-group"></i>
                     <p>Music Mates</p>
                 </a>

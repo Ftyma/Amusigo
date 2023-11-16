@@ -1,5 +1,10 @@
 <?php 
 require_once('connect.php'); 
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
+    header("Location: signin.php"); 
+} 
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +38,7 @@ require_once('connect.php');
                         
                     </div>
                 </a>
+
                 <a href="adminUser.php">
                     <div class="list-card">
                         <h2>Users List</h2>
@@ -41,6 +47,30 @@ require_once('connect.php');
                             $result = $mysqli->query($q);
                             $row=$result->fetch_array();
                             echo "<p>" . $row['count'] ." users</p>";
+                        ?>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="list-card">
+                        <h2>Artist List</h2>
+                        <?php
+                            $q= "SELECT COUNT(*) as count from artist";
+                            $result = $mysqli->query($q);
+                            $row=$result->fetch_array();
+                            echo "<p>" . $row['count'] ." artists</p>";
+                        ?>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="list-card">
+                        <h2>Album List</h2>
+                        <?php
+                            $q= "SELECT COUNT(*) as count from album";
+                            $result = $mysqli->query($q);
+                            $row=$result->fetch_array();
+                            echo "<p>" . $row['count'] ." albums</p>";
                         ?>
                     </div>
                 </a>

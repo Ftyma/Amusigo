@@ -94,11 +94,8 @@ button.add-btn {
   width: 150px;
 }
 
-.bio-txt {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 1;
-  width: 150px; /* Adjust the width according to your needs */
+.user-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
 }

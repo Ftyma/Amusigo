@@ -1,4 +1,15 @@
-<?php require_once('connect.php'); ?>
+<?php 
+require_once('connect.php'); 
+
+session_start();
+
+if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
+    header("Location: signin.php");
+    exit();
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +26,7 @@
 </head>
 
 <body id="music-bank">
-    <?php $username = $_GET["username"]; ?>
+    <?php $username = $_SESSION["username"];  ?>
 <?php include('sidebar.php'); ?>
     <div class="musicbank-right">
         

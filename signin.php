@@ -1,6 +1,9 @@
 <?php 
 require_once('connect.php');
-    if (isset($_POST['submit'])) {
+
+    session_start();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST["username"];
         $pass = $_POST["passwd"];
 
@@ -8,7 +11,6 @@ require_once('connect.php');
         join users on login.Username = users.Username
         WHERE login.Username = '$username';";
         $result=$mysqli->query($q);
-
        
         if(mysqli_num_rows($result)>0) {
             $row = mysqli_fetch_array($result);
@@ -16,15 +18,19 @@ require_once('connect.php');
             
             if (password_verify($pass,$hashedPW)){
                 $_SESSION["login"] = true;
-                $_SESSION["id"] = $row["Username"];
+                $_SESSION['username'] = $row["Username"];
 
                 //check user's role
                 $userRole = $row['role'];
 
                 if($userRole == 'admin'){
-                    header("Location: addSong.php");
+                    $_SESSION['role'] = 'admin';
+                    header("Location: adminDashboard.php");
+                    exit;
                 }else {
+                    $_SESSION['role'] = 'user'; 
                     header("Location: home.php");
+                    exit;
                 }
         
             }else {
@@ -35,7 +41,8 @@ require_once('connect.php');
 
                     $_SESSION["login"] = true;
                     $_SESSION["id"] = $row["Username"];
-                    header("Location: home.php?username=$username");
+                    header("Location: home.php");
+                    exit;
                 }else {
                     echo "<script> alert('Incorrect password'); </script>";
                 }
@@ -46,6 +53,7 @@ require_once('connect.php');
         }
     }
 ?>
+
 
 <!DOCTYPE html>
 <html>

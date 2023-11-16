@@ -1,4 +1,17 @@
-<?php require_once('connect.php'); ?>
+<?php require_once('connect.php'); 
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title = $_POST["title"];
+    $artist = $_POST["artist"];
+    $genre = $_POST["title"];
+    $date = $_POST["date"];
+    $album = $_POST["album"];
+
+   
+
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -17,31 +30,31 @@
 <body id="admin">
     <h1>Admin Page</h1>
     <div>
-        <form>
+        <form method="post">
             <h2>Add Song</h2>
             <div>
                 <label>Title</label>
-                <input type="text">
+                <input type="text" name="title" placeholder="Song title">
             </div>
 
             <div>
                 <label>Artist</label>
-                <input type="text">
+                <input type="text" name="artist" placeholder="artist name" >
             </div>
 
             <div>
                 <label>Genre</label>
-                <input type="text">
+                <input type="text" name="genre" placeholder="song genre">
             </div>
             
             <div>
                 <label>Released Date</label>
-                <input type="text">
+                <input type="text" name="date" placeholder="song genre">
             </div>
 
             <div>
                 <label>Album</label>
-                <input type="text">
+                <input type="text" name="album" placeholder="song album name">
             </div>
            
             <button type="submit">Add</button>
