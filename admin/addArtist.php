@@ -1,29 +1,5 @@
-<!-- <?php require_once('connect.php'); 
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $imgUrl = $_POST["imgUrl"];
-    $name = $_POST["name"];
-    $bio = $_POST["bio"];
-    $country = $_POST["country"];
-    $website = $_POST["website"];
-    $birthdate = $_POST["date"];
-    $mysqlFormattedDate = date('Y-m-d H:i:s', strtotime($birthdate));
-    // $age = floor((time() - strtotime($birthdate)) / 31556926);
-    $q = "INSERT into artist (Name, Bio, Image_Url, Country, Website, Birth_Date) values ('$name', '$bio', '$imgUrl', '$country','$website', $mysqlFormattedDate); ";
-
-    $result=$mysqli->query($q);
-
-    if ($result){
-        echo "Insert successful!";
-    } else {
-        echo "Insert failed: " . $stmt->error;
-    }
-}
-?> -->
-
 <?php
-require_once('connect.php');
+require_once('../connect.php');
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -36,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mysqlFormattedDate = date('Y-m-d H:i:s', strtotime($birthdate));
 
     // Use prepared statement to prevent SQL injection
-    $q = "INSERT INTO artist (Name, Bio, Image_Url, Country, Website, Birth_Date) VALUES (?, ?, ?, ?, ?, ?)";
+    $q = "INSERT INTO artist (Name, Bio, Image_Url, Country, Website) VALUES (?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($q);
 
     // Bind parameters
-    $stmt->bind_param("ssssss", $name, $bio, $imgUrl, $country, $website, $mysqlFormattedDate);
+    $stmt->bind_param("sssss", $name, $bio, $imgUrl, $country, $website);
 
     // Execute the query
     $result = $stmt->execute();
@@ -62,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
 <title>Amusigo</title>
-<link rel="stylesheet" href="css/musicmate.css">
+<link rel="stylesheet" href="../css/musicmate.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"

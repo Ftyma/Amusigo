@@ -25,7 +25,7 @@ require_once('connect.php');
 
                 if($userRole == 'admin'){
                     $_SESSION['role'] = 'admin';
-                    header("Location: adminDashboard.php");
+                    header("Location: admin/adminDashboard.php");
                     exit;
                 }else {
                     $_SESSION['role'] = 'user'; 

@@ -1,4 +1,4 @@
-<?php require_once('connect.php'); 
+<?php require_once('../connect.php'); 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
 <title>Amusigo</title>
-<link rel="stylesheet" href="css/musicmate.css">
+<link rel="stylesheet" href="../css/musicmate.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"

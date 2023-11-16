@@ -1,9 +1,9 @@
 <?php 
-require_once('connect.php'); 
+require_once('../connect.php'); 
 session_start();
 
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
-    header("Location: signin.php"); 
+    header("Location: ../signin.php"); 
 } 
 ?>
 
@@ -11,7 +11,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 <html class="bg-color">
     <head>
         <title>Amusigo</title>
-        <link rel="stylesheet" href="css/adminDashboard.css">
+        <link rel="stylesheet" href="../css/adminDashboard.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"

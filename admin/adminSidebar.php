@@ -1,5 +1,5 @@
 <?php 
-require_once('connect.php'); 
+require_once('../connect.php'); 
 
 if(isset($_GET['logout'])) {
 
@@ -8,10 +8,10 @@ if(isset($_GET['logout'])) {
         $_SESSION = array();
         session_destroy();
 
-        header("Location: signin.php");
+        header("Location: ../signin.php");
         exit;
     } else {
-        header("Location: signin.php");
+        header("Location: ../signin.php");
         exit;
     }
 }
@@ -22,7 +22,7 @@ if(isset($_GET['logout'])) {
 <html>
 <head>
 
-<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="../css/sidebar.css">
 
 </head>
 
@@ -43,7 +43,7 @@ if(isset($_GET['logout'])) {
 <body>
     <div class="sidenav">
         <div class="logo">
-            <img src="image/logo.svg">
+            <img src="../image/logo.svg">
             <h1 class="title">Amusigo.</h1>
         </div>
 
@@ -73,14 +73,9 @@ if(isset($_GET['logout'])) {
                     <p>Artist</p>
                 </a>
 
-                <a class="sidebar-menu-item" href="adminGlobal.php">
+                <a class="sidebar-menu-item" href="adminAlbum.php">
                     <i class="fa-solid fa-user-group"></i>
                     <p>Album</p>
-                </a>
-
-                <a class="sidebar-menu-item" href="adminGlobal.php">
-                    <i class="fa-solid fa-user-group"></i>
-                    <p>Genre</p>
                 </a>
             </div>
                     

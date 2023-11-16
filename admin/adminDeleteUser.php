@@ -1,5 +1,5 @@
 <?php
-require_once('connect.php');
+require_once('../connect.php');
 
 $u_id = $_GET['id'];
 $q="DELETE FROM user_musicbank WHERE Song_ID=$p_id";
