@@ -27,7 +27,7 @@ $username = $_SESSION["username"];
             <div>
                 <h2>Username: <?php echo $friend;?> </h2>
                 <form action='mateProfile.php' method='post'>
-                            <input type='hidden' name='friend' value='<?php echo $friend; ?>'>
+                            <input type='hidden' name='friend_name' value='<?php echo $friend; ?>'>
                             <input class="add-friend-btn" type='submit' name='follow' value='Follow'>
                         </form>
                 <!-- <button class="add-friend-btn" name="follow">Follow</button> -->
@@ -82,19 +82,30 @@ $username = $_SESSION["username"];
                     </tr>";
                 }
             }
-            if (isset($_POST['follow'])) {
-                // Retrieve friend_id from the form submission
-                //$friend_name = $_POST['friend'];
+//             if (isset($_POST['follow'])) {
+//                 // Retrieve friend_id from the form submission
+//                 $friend_name = $_POST['friend_name'];
+//                 $fr = "SELECT * FROM users WHERE Username = '$friend_name'";
+//         $result = $mysqli->query($fr);
+//         if ($result !== false) {
+//             while ($row = $result->fetch_array()) {
+//                 $friendid = $row[0];
+//             }
+//         } else {
+//             echo "Error in query execution: " . $mysqli->error;
+//         }
+//         echo "Student ID: " . $student_id . "<br>";
+// echo "Friend ID: " . $friend_id . "<br>";
+
+//                 $insert = "INSERT INTO friend VALUES ($student_id,$friendid)";
+//                 $result3 = $mysqli->query($insert);
         
-                $insert = "INSERT INTO friend VALUES ($student_id, $friend_id)";
-                $result3 = $mysqli->query($insert);
-        
-                if ($result3) {
-                    echo "Followed successfully!";
-                } else {
-                    echo "Error in query execution: " . $mysqli->error;
-                }
-            }
+//                 if ($result3) {
+//                     echo "Followed successfully!";
+//                 } else {
+//                     echo "Error in query execution: " . $mysqli->error;
+//                 }
+//             }
        
         ?>
         </table>
