@@ -53,7 +53,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         <table>
         <tr>
             <th>Username</th>
-            <th>Remove</th>
+            <th>Unfollow</th>
         </tr>
         <?php
         $stdid = "SELECT * FROM users WHERE Username = '$username'";
@@ -63,7 +63,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                 $student_id = $row1[0];
             }
             
-            $frnd = "SELECT u.username from users as u
+            $frnd = "SELECT ff.friend_id, u.username from users as u
             INNER JOIN friend as ff on u.Student_ID = ff.friend_id
                     WHERE ff.user_id = $student_id";
             if($result=$mysqli->query($frnd)){
@@ -71,7 +71,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                     echo "<tr>
                         <td> " . $row['username']."</td>
                         <td>
-                            <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
+                            <a href='delete.php?mate_id=" . $row['friend_id'] . "'><i class='fa-regular fa-circle-plus'></i></a>
                         </td>
                     </tr>";
                 }

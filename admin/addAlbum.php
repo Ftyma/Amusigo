@@ -6,29 +6,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST["name"];
     $artist_Name = $_POST["artist"];
 
-    $sql = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name'; ";
+    $sql = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
     $res = mysqli_query($mysqli, $sql);
     $artistID = mysqli_fetch_row($res);
 
-   
-    $q = "INSERT INTO album (Album_Name, Artist_ID) VALUES (?, ?)";
-    $stmt = $mysqli->prepare($q);
+    $q = "INSERT INTO album (Album_Name, Artist_ID) VALUES ('$name', $artistID[0])";
+    $result = mysqli_query($mysqli, $q);
 
-    // Bind parameters
-    $stmt->bind_param("si",$name, $artistID[0]);
-
-    // Execute the query
-    $result = $stmt->execute();
-
-    // Check for success
     if ($result) {
         echo "Insert successful!";
+        header("Location: adminAlbum.php");
     } else {
-        echo "Insert failed: " . $stmt->error;
+        echo "Insert failed: " . mysqli_error($mysqli);
     }
-
-    // Close the statement
-    $stmt->close();
 }
 ?>
 
