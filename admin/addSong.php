@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="text" name="title" placeholder="Song title">
                     </div>
 
-                    <div class="input-label">
+                    <div class="dropdown">
                         <label for="artist">Artist</label>
                         <select name="artist">
                         <?php

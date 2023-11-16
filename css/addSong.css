@@ -20,7 +20,7 @@
     
       
       justify-content: space-between;
-      height: 60vh;
+      height: 65vh;
       width: 90%;
       margin: auto;
       padding-block: 1rem;
@@ -43,6 +43,11 @@
     margin: auto;
     margin-block: 0px;
     width: 60%;
+  }
+
+  .dropdown {
+    min-width: 350px;
+    position: relative;
   }
 
   @media screen and (max-width: 768px) {
@@ -86,6 +91,22 @@
     color: #8328ba;
     background-color: transparent;
   }
+  
+  select {
+    appearance: none;
+    /*  safari  */
+    -webkit-appearance: none;
+    /*  other styles for aesthetics */
+    width: 90%;
+    font-size: 1.10rem;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.5rem;
+    color: #000;
+    cursor: pointer;
+  }
+
   
   table {
     border-collapse: collapse;
