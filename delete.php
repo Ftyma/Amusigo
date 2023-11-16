@@ -10,7 +10,6 @@ $songQold = "SELECT * FROM users WHERE Username = '$username'";
         $result1 = $mysqli->query($songQold);
         if ($result1 !== false) {
             while ($row1 = $result1->fetch_array()) {
-                //echo "<h1> this is my id " . $row1[0] . "</h1>";
                 $student_id = $row1[0];
             }
         } else {

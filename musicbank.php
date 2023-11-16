@@ -84,7 +84,6 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                         <td>" . $row['name']."</td>
                         <td>" . $row['Genre_name']."</td>
                         <td>
-                            <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
                             <a href='delete.php?song_id=" . $row['Song_ID'] . "'><i class='fa-solid fa-circle-minus' style='color: #ff2600;'></i></a>
                         </td>
                     </tr>";
