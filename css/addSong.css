@@ -1,3 +1,4 @@
+
 #global {
     height: 100%;
     display: grid;
@@ -10,8 +11,40 @@
     flex: 1;
     overflow-y: auto;
     margin-left: 400px;
-    font-family: 'noto sans';
+    
   }
+  .container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    font-size: 20px;
+    
+      
+      justify-content: space-between;
+      height: 60vh;
+      width: 90%;
+      margin: auto;
+      padding-block: 1rem;
+      border-radius: 10px;
+      background: rgb(239, 212, 255);
+      background: rgb(239, 212, 255);
+      
+    
+  }
+  .form-left {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 60%;
+  }
+  
+  .form-right {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-block: 0px;
+    width: 60%;
+  }
+
   @media screen and (max-width: 768px) {
     .global-right {
       margin-left: 80px;
@@ -27,6 +60,21 @@
     justify-content: center;
     margin-inline: auto;
     margin-block: 1rem;
+  }
+  
+  .input-label{
+    margin-block: 10px;
+  }
+
+  .previewlabel{
+    margin-block: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info{
+    color:#a654d8;
+    font-size: 15px;
   }
   
   input[type="text"] {
@@ -82,7 +130,7 @@
     border-color: black;
   }*/
 
-  button{
+ #preview {
     background: linear-gradient(
     90.11deg,
     rgba(200, 83, 219, 0.18) 32.29166567325592%,
@@ -91,11 +139,27 @@
     border-style: solid;
     border-color: #a654d8;
     border-width: 3px;
-    width: 220px;
+    width: 200px;
     height: 30px;
     position: relative;
     font: 600 16px "NotoSans-SemiBold", sans-serif;
     color: #a654d8;
+  }
+
+  #add {
+    background: linear-gradient(
+    90.11deg,
+    rgba(83, 219, 142, 0.18) 32.29166567325592%,
+    rgba(83, 219, 103, 0.1) 100% );
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #15d383;
+    border-width: 3px;
+    width: 200px;
+    height: 30px;
+    position: relative;
+    font: 600 16px "NotoSans-SemiBold", sans-serif;
+    color: #15d383;
   }
   
   button:hover {

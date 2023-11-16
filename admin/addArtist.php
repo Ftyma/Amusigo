@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html>
 <head>
 <title>Amusigo</title>
+<link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
 <link rel="stylesheet" href="../css/musicmate.css">
 <link
       rel="stylesheet"

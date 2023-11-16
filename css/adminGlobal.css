@@ -1,8 +1,10 @@
+
+
 #global {
   height: 100%;
   display: grid;
   background: rgb(242, 214, 255);
-  
+ 
 }
 .global-right {
   display: flex;

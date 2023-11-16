@@ -13,7 +13,7 @@ session_start();
         <title>Amusigo</title>
         <link rel="stylesheet" href="../css/adminGlobal.css">
 
-        <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel="stylesheet" >
+        <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -32,7 +32,7 @@ session_start();
         <div class="global-right">
            
            
-            <h1 class="home-title" style="color:#8328ba">Global Music Bank</h1>
+            <h1 class="home-title" style="color:#8328ba"><strong>Global Music Bank</strong></h1>
 
             <!-- Search bar -->
             <div class="input-container">
