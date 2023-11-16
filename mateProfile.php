@@ -17,7 +17,7 @@
 <body id="mateProfile">
 <?php include('sidebar.php'); ?>
 <?php $friend = $_GET["friend"];
-$userName = $_SESSION["username"]; 
+$username = $_SESSION["username"]; 
  ?>
     <div class="container">
         
@@ -26,7 +26,11 @@ $userName = $_SESSION["username"];
             <img class="profile-pic"src="image/contact.svg"/>
             <div>
                 <h2>Username: <?php echo $friend;?> </h2>
-                <button class="add-friend-btn" name="follow">Follow</button>
+                <form action='mateProfile.php' method='post'>
+                            <input type='hidden' name='friend' value='<?php echo $friend; ?>'>
+                            <input class="add-friend-btn" type='submit' name='follow' value='Follow'>
+                        </form>
+                <!-- <button class="add-friend-btn" name="follow">Follow</button> -->
             </div>
         </div>
         
@@ -40,11 +44,19 @@ $userName = $_SESSION["username"];
                 <th>Add song</th>
             </tr>
             <?php
-        $songQold = "SELECT * FROM users WHERE Username = '$friend'";
+        $frnd = "SELECT * FROM users WHERE Username = '$friend'";
+        $result = $mysqli->query($frnd);
+        if ($result !== false) {
+            while ($row = $result->fetch_array()) {
+                $friend_id = $row[0];
+            }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }
+        $songQold = "SELECT * FROM users WHERE Username = '$username'";
         $result1 = $mysqli->query($songQold);
         if ($result1 !== false) {
             while ($row1 = $result1->fetch_array()) {
-                //echo "<h1> this is my id " . $row1[0] . "</h1>";
                 $student_id = $row1[0];
             }
         } else {
@@ -57,13 +69,13 @@ $userName = $_SESSION["username"];
                     INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
                     INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
                     INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID
-                    WHERE Student_ID = $student_id";
-            if($result=$mysqli->query($songQ)){
-                while($row=$result->fetch_array()){
+                    WHERE Student_ID = $friend_id";
+            if($result2=$mysqli->query($songQ)){
+                while($row2=$result2->fetch_array()){
                     echo "<tr>
-                        <td> " . $row['title']."</td>
-                        <td>" . $row['name']."</td>
-                        <td>" . $row['Genre_name']."</td>
+                        <td> " . $row2['title']."</td>
+                        <td>" . $row2['name']."</td>
+                        <td>" . $row2['Genre_name']."</td>
                         <td>
                             <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
                         </td>
@@ -71,8 +83,17 @@ $userName = $_SESSION["username"];
                 }
             }
             if (isset($_POST['follow'])) {
-                $songQ = "INSERT INTO friend values ($userName,$friend)";
-        $result=$mysqli->query($songQ)
+                // Retrieve friend_id from the form submission
+                //$friend_name = $_POST['friend'];
+        
+                $insert = "INSERT INTO friend VALUES ($student_id, $friend_id)";
+                $result3 = $mysqli->query($insert);
+        
+                if ($result3) {
+                    echo "Followed successfully!";
+                } else {
+                    echo "Error in query execution: " . $mysqli->error;
+                }
             }
        
         ?>

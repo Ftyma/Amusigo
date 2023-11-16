@@ -60,7 +60,6 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         $result1 = $mysqli->query($stdid);
         if ($result1 !== false) {
             while ($row1 = $result1->fetch_array()) {
-                //echo "<h1> this is my id " . $row1[0] . "</h1>";
                 $student_id = $row1[0];
             }
             
@@ -82,10 +81,6 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         } else {
             echo "Error in query execution: " . $mysqli->error;
         }
-        
-
-            
-       
         ?>
     </table>
         </div>
