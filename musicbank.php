@@ -71,7 +71,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         }
         
 
-            $songQ = "SELECT S.title, A.name, G.Genre_name
+            $songQ = "SELECT Songs.Song_ID, S.title, A.name, G.Genre_name
                     FROM user_musicbank as Songs
                     INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
                     INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
@@ -85,7 +85,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                         <td>" . $row['Genre_name']."</td>
                         <td>
                             <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
-                            <a href='delete.php?id=<?php echo $row[0]; ?>'><i class='fa-solid fa-circle-minus' style='color: #ff2600;'></i></a>
+                            <a href='delete.php?song_id=" . $row['Song_ID'] . "'><i class='fa-solid fa-circle-minus' style='color: #ff2600;'></i></a>
                         </td>
                     </tr>";
                 }
