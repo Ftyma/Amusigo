@@ -24,7 +24,7 @@ session_start(); ?>
     <div class="userprofile-right">
         <div  class="top-container" style="display:flex; align-content:center; margin: 2rem;  ">
             <h1 style="color:#8328BA">Your Account</h1>
-            <button class="btn-edit">Edit</button>
+            <a href='edituser.php'><button class="btn-edit">Edit</button></a>
         </div>
         <img style="border-radius: 50%; width: 150px; margin-left:3.5rem" class="profile-img" src="https://miro.medium.com/v2/resize:fit:1400/1*YMJDp-kqus7i-ktWtksNjg.jpeg">
         <div id="container">
