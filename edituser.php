@@ -20,7 +20,8 @@ require_once('connect.php');
 
 <body id="signup">
     <!-- <?php include('sidebar.php')?> -->
- 
+    <?php session_start();
+        $uname= $_SESSION['username'];?>
     <div class="main">
         <h1 class="title1">Edit your profile</h1>
         <div class="container" >
@@ -30,7 +31,8 @@ require_once('connect.php');
                     <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
                     <div class="input-container">
                         <label class="required">Username</label>
-                        <input type="text" name="username" required>
+                        <!-- <input type="text" name="username" required> -->
+                        <input type="text" name="uname" placeholder="Username" value="<?php echo $uname; ?>">
                     </div>
 
                     <div class="input-container">
@@ -89,14 +91,10 @@ require_once('connect.php');
                         <input type="text" name="profile">
                     </div>
                 </div>
-          
-                
-                
-            </form>
                 <div class="btn-container">
                     <button type="submit"  name="confirm" class="btn-register">Confirm</button>
                 </div>
-      
+            </form>
         </div>
 
         
@@ -107,7 +105,7 @@ require_once('connect.php');
 
 <?php
 if (isset($_POST['confirm'])) {
-    $username = $_POST["username"];
+    //$username = $_POST["username"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $name = "$fname $lname";
@@ -120,43 +118,30 @@ if (isset($_POST['confirm'])) {
     $profile = $_POST["profile"];
 
     $hashedPassword = password_hash($passwd, PASSWORD_DEFAULT);
-    $duplicate = "SELECT * from users WHERE Username = '$username' OR Email = '$email' ";
-    $check_dup = $mysqli-> query($duplicate);
-    if(mysqli_num_rows($check_dup)>0){
-        echo "<script>
-            Swal.fire({
-               icon: 'error',
-               title: 'Username or Email is already exist',
-               showConfirmButton: false,
-               timer: 1500
-            });
-         </script>";
-    }else {
-        $insert="INSERT INTO users(Student_ID,Username,Email,Line_ID,Faculty,Year,Name,profile_url) 
-            VALUES($stdid,'$username','$email','$line','$faculty','$year','$name','$profile')";
-        $result=$mysqli->query($insert);
+
+        $update="UPDATE users SET Student_ID=$stdid,Email='$email',Line_ID='$line',Faculty='$faculty',Year='$year',Name='$name',profile_url='$profile' 
+        WHERE Username='$uname'";
+        $result=$mysqli->query($update);
+
 
         if(!$result){
-            echo "Insert failed. Error: ".$mysqli->error ;
+            echo "Update failed. Error: ".$mysqli->error ;
             return false;
         }
         else{
-            $insertLogin = "Insert into login(Username, Password) values('$username','$hashedPassword')";
-            $qLogin = $mysqli->query($insertLogin);
-
+            $updatelogin="UPDATE login SET, Password=' $hashedPassword' 
+        WHERE Username='$uname'";
+        $result1=$mysqli->query($updatelogin);
             echo "<script>
          Swal.fire({
             icon: 'success',
-            title: 'Register successfully',
+            title: 'Update successfully',
             showConfirmButton: false,
             timer: 3000
          }).then(function() {
-            window.location.href = 'home.php'; 
+            window.location.href = 'userprofile.php'; 
          });
       </script>";
         }
-    }  
-}
+    }
 ?>
-
-

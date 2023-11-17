@@ -15,7 +15,9 @@
 </head>
 
 <body id="mateProfile">
-<?php include('sidebar.php'); ?>
+
+<?php include('sidebar.php'); 
+session_start();?>
 <?php $friend = $_GET["friend"];
 $username = $_SESSION["username"]; 
  ?>

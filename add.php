@@ -2,7 +2,7 @@
 require_once('connect.php');
 session_start();
 $username = $_SESSION["username"];
-$song_id = $_GET['song_id'];
+$song_id = $_GET['songid'];
 
 if (isset($song_id)) {
 $song = "SELECT * FROM users WHERE Username = '$username'";

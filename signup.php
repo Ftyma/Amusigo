@@ -92,12 +92,11 @@ require_once('connect.php');
           
                 
                 
-            </form>
                 <div class="btn-container">
                     <button type="submit"  name="reg" class="btn-register">Register</button>
                     <p>Already have an account? <a href="signin.php">Login</a></p>
                 </div>
-      
+                </form>
         </div>
 
         
