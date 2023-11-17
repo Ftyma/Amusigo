@@ -14,8 +14,8 @@
     
   }
   .container-main {
-    display: block;
-    
+    display: grid;
+    grid-template-columns: 40% 60%;
     font-size: 20px;
     margin: 50px;
       
@@ -32,10 +32,7 @@
   }
   form {
     padding-block: 1rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    margin-left: 50px;
-    margin-right: 50px ;
+    
     display: block;
     flex-direction: column;
     justify-content: space-between;
@@ -129,7 +126,10 @@
     margin: auto;
     width: 95%;
   }
-  
+  tr:first-child th:first-child { border-top-left-radius: 10px; }
+tr:first-child th:first-child { border-bottom-left-radius: 10px; }
+tr:first-child th:last-child { border-top-right-radius: 10px; }
+tr:first-child th:last-child { border-bottom-right-radius: 10px; }
   th,
   td {
     padding-inline: 2rem;
@@ -166,22 +166,29 @@
     border-style: 0.5px solid;
     border-color: black;
   }*/
-
+  button {
+    background-color: transparent;
+    width: 60px;
+    text-align: center;
+    border-radius: 20px;
+    padding-block: 5px;
+    border-style: 0.5px solid;
+    border-color: black;
+  }
   #btn-add{
-    justify-content: center;
-        background: linear-gradient(
+    background: linear-gradient(
         90.11deg,
-        rgba(83, 219, 142, 0.18) 32.29166567325592%,
-        rgba(83, 219, 103, 0.1) 100% );
+        rgba(200, 83, 219, 0.18) 32.29166567325592%,
+        rgba(200, 83, 219, 0.1) 100% );
         border-radius: 25px;
         border-style: solid;
-        border-color: #15d383;
+        border-color: #a654d8;
         border-width: 3px;
-        width: 200px;
-        height: 30px;
+        width: 150px;
+        height: 40px;
         position: relative;
         font: 600 16px "NotoSans-SemiBold", sans-serif;
-        color: #15d383;
+        color: #a654d8;
   }
 .forbtn{
     display: flex;

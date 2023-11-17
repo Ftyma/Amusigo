@@ -41,7 +41,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     <th>Action</th>
                 </tr>
                 <?php
-$songQ = "SELECT genre.Genre_name 
+$songQ = "SELECT genre.Genre_name, genre.Genre_ID
           FROM genre";
 if ($result = $mysqli->query($songQ)) {
     while ($row = $result->fetch_array()) {
@@ -50,7 +50,7 @@ if ($result = $mysqli->query($songQ)) {
 
             <td>
                 
-                <a href='adminDelete.php?albumid=" . $row['Genre_name'] . "'><button class='delete-btn'>Delete</button></a>
+                <a href='adminDelete.php?genreid=" . $row['Genre_ID'] . "'><button class='delete-btn'>Delete</button></a>
             </td>
         </tr>";
     }

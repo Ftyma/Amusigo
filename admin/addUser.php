@@ -11,7 +11,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 <html class="bg-color">
     <head>
         <title>Amusigo</title>
-        
+        <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link rel="stylesheet" href="../css/adminUser.css">
         <link
             rel="stylesheet"
@@ -27,15 +27,12 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
         <?php include('adminSidebar.php'); ?>
 
         <div class="user-right">
-            <h1 class="home-title" style="color:#8328ba; font-size:50px">Users List</h1>
-            <div class="forbtn">
-                    <a href='#'>
-                        <button class="btn-add" type="submit"> + Add User</button>
-                    </a>
-                </div>
+            <h1 class="home-title" style="color:#8328ba">Users List</h1>
+
             <div>
-                
-            
+            <a href='#'>
+                <button class="add-btn"> + Add User</button>
+            </a>
             <table>
                 <tr>
                     <th></th>
