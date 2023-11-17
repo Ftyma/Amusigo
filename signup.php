@@ -89,22 +89,12 @@ require_once('connect.php');
                         <input type="text" name="profile">
                     </div>
                 </div>
-          
                 
-                
-<<<<<<< HEAD
-=======
-            
->>>>>>> 97f56f8b7c8e23250dd8eff5ca1dc14bd72c709a
                 <div class="btn-container">
                     <button type="submit"  name="reg" class="btn-register">Register</button>
                     <p>Already have an account? <a href="signin.php">Login</a></p>
                 </div>
-<<<<<<< HEAD
                 </form>
-=======
-            </form>
->>>>>>> 97f56f8b7c8e23250dd8eff5ca1dc14bd72c709a
         </div>
 
         
