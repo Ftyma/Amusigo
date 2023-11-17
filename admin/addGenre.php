@@ -35,29 +35,32 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                 <button class="add-btn"> + Add genre</button>
             </a>
             <br></br>
-            <table>
+            <div class= "for table">
+                <table>
                 <tr>
                     <th>Genre Name</th>
                     <th>Action</th>
                 </tr>
                 <?php
-$songQ = "SELECT genre.Genre_name 
-          FROM genre";
-if ($result = $mysqli->query($songQ)) {
-    while ($row = $result->fetch_array()) {
-        echo "<tr>
-            <td>" . $row['Genre_name'] . "</td>
-
-            <td>
-                <a href='adminEdit.php?albumid=" .$row['Genre_name']. "'><button class='edit-btn'>Edit</button></a>
+                    $songQ = "SELECT genre.Genre_name FROM genre";
+                    if ($result = $mysqli->query($songQ)) {
+                    while ($row = $result->fetch_array()) {
+                    echo "<tr>
+                            <td>" . $row['Genre_name'] . "</td>
+                            <td>
+                
                 <a href='adminDelete.php?albumid=" . $row['Genre_name'] . "'><button class='delete-btn'>Delete</button></a>
             </td>
-        </tr>";
-    }
-}
+                        </tr>";
+                    }
+                    }
 ?>
+
             </table>
 
+            </div>
+
+            
         </div>
     </body>
 

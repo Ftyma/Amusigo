@@ -13,11 +13,11 @@
     margin-left: 400px;
     
   }
-  .container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    font-size: 20px;
+  .container-main {
+    display: block;
     
+    font-size: 20px;
+    margin: 50px;
       
       justify-content: space-between;
       height: 65vh;
@@ -30,15 +30,24 @@
       
     
   }
-  .form-left {
-    display: flex;
+  form {
+    padding-block: 1rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    margin-left: 50px;
+    margin-right: 50px ;
+    display: block;
     flex-direction: column;
+    justify-content: space-between;
     margin: auto;
-    width: 60%;
+    width: 70%;
+    align-items: left;
   }
   
-  .form-right {
+  .form-inside {
     display: flex;
+    padding-left: 5rem;
+    padding-right: 5rem;
     flex-direction: column;
     margin: auto;
     margin-block: 0px;
@@ -158,38 +167,29 @@
     border-color: black;
   }*/
 
- #preview {
-    background: linear-gradient(
-    90.11deg,
-    rgba(200, 83, 219, 0.18) 32.29166567325592%,
-    rgba(200, 83, 219, 0.1) 100% );
-    border-radius: 25px;
-    border-style: solid;
-    border-color: #a654d8;
-    border-width: 3px;
-    width: 200px;
-    height: 30px;
-    position: relative;
-    font: 600 16px "NotoSans-SemiBold", sans-serif;
-    color: #a654d8;
+  #btn-add{
+    justify-content: center;
+        background: linear-gradient(
+        90.11deg,
+        rgba(83, 219, 142, 0.18) 32.29166567325592%,
+        rgba(83, 219, 103, 0.1) 100% );
+        border-radius: 25px;
+        border-style: solid;
+        border-color: #15d383;
+        border-width: 3px;
+        width: 200px;
+        height: 30px;
+        position: relative;
+        font: 600 16px "NotoSans-SemiBold", sans-serif;
+        color: #15d383;
   }
+.forbtn{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+}
 
-  #add {
-    background: linear-gradient(
-    90.11deg,
-    rgba(83, 219, 142, 0.18) 32.29166567325592%,
-    rgba(83, 219, 103, 0.1) 100% );
-    border-radius: 25px;
-    border-style: solid;
-    border-color: #15d383;
-    border-width: 3px;
-    width: 200px;
-    height: 30px;
-    position: relative;
-    font: 600 16px "NotoSans-SemiBold", sans-serif;
-    color: #15d383;
-  }
-  
   button:hover {
     scale: 110%;
     border-style: none;

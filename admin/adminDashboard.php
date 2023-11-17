@@ -86,6 +86,18 @@ $role = $row[8];
                         ?>
                     </div>
                 </a>
+
+                <a href="adminGenre.php">
+                    <div class="list-card">
+                        <h2>Genre List</h2>
+                        <?php
+                            $q= "SELECT COUNT(*) as count from genre";
+                            $result = $mysqli->query($q);
+                            $row=$result->fetch_array();
+                            echo "<p>" . $row['count'] ." genres</p>";
+                        ?>
+                    </div>
+                </a>
                 
             </div>
             <br/>

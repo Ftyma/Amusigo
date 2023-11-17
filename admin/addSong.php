@@ -1,12 +1,14 @@
 <?php require_once('../connect.php'); 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST["title"];
-    $artist = $_POST["artist"];
-    $genre = $_POST["genre"];
-    $reldate = $_POST["reldate"];
-    $album = $_POST["album"];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+       
+        $title = $_POST['title'];
+        $artist = $_POST['artist'];
+        $genre = $_POST['genre'];
+        $reldate = $_POST['reldate'];
+        $mysqlFormattedDate = date('Y-m-d H:i:s', strtotime($reldate));
+        $album = $_POST['album'];
 
     $artistIDQ = "SELECT Artist_ID from artist where Name = '$artist';";
     $resArtist = mysqli_query($mysqli, $artistIDQ );
@@ -16,13 +18,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $resGenre = mysqli_query($mysqli, $genreIDQ );
     $genre_ID = mysqli_fetch_row($resGenre );
 
-    $albumIDQ = "SELECT Album_ID from album where Album_Name = '$album'; ";
+    echo $albumIDQ = "SELECT Album_ID from album where Album_Name = '$album' and Artist_ID = '$artist_ID[0]' ";
     $resAlbum = mysqli_query($mysqli, $albumIDQ );
-    $album_ID = mysqli_fetch_row($resArtist );
+    echo $album_ID = mysqli_fetch_row($resAlbum );
 
+                            // Use prepared statement to prevent SQL injection
+                            $q = "INSERT INTO global_musicbank (Title, Artist_ID, Genre_ID, Release_Date, Album_ID) VALUES (?,?,?,?,?)";
+                            //$result = mysqli_query($q);
+                            //$row = mysqli_fetch_array($result);
+                            $stmt = $mysqli->prepare($q);
     
+                             // Bind parameters
+                            $stmt->bind_param("siisi", $title, $artist_ID[0], $genre_ID[0], $reldate, $album_ID[0]);
+    
+                            // // Execute the query
+                            $result = $stmt->execute();
+    
+                            // Check for success
+                            if ($result) {
+                                echo "Insert successful!";
+                                header("Location:adminGlobal.php");
+                            } else {
+                                echo "Insert failed: " . $stmt->error;
+                            }
+    
+        
+                             $stmt->close();
+            
+
 
 }
+
+    
+    
+
+// }
 ?>
 
 <!DOCTYPE html>
@@ -113,107 +143,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         ?>                
                         </select>
                     </div>
+                    
                     <br></br>
-                    <button id = "preview" type="submit">Preview Information</button>
-                    <br></br>
-                    <button id="add" name= "addsong" type="submit">Add Song</button>
+                    <div class="forbtn">
+                        <button id="add" name= "addsong" type="submit">Add Song</button>
+                    </div>
+                    
                 </form>  
+
             </div>
-                <div class="form-right"> 
-                    <h2>Preview Song Info</h2>
-                    <p class="info">The information you entered will be displayed here for confirmation.</p>
-                    <?php
-                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                        if (isset($_POST['reldate'])) {
-                            $reldate = $_POST['reldate'];
-                           
-                        } else {
-                            
-                            echo "Release date is not set.";
-                        }
-            
-                    $title = $_POST['title'];
-                    $artist = $_POST['artist'];
-                    $genre = $_POST['genre'];
-                    $reldate = $_POST['reldate'];
-                    $album = $_POST['album'];
-                    
-                    echo "<p><strong>Title:</strong> $title</p>";
-                    echo "<p><strong>Artist:</strong> $artist</p>";
-                    echo "<p><strong>Genre:</strong> $genre</p>";
-                    echo "<p><strong>Release Date:</strong> $reldate</p>";
-                    echo "<p><strong>Album:</strong> $album</p>";
 
-                    }
-                    
-                    if (isset($_POST['addsong'])) {
-                        $title = $_POST["title"];
-                        $artist = $_POST['artist'];
-                        $genre = $_POST['genre'];
-                        $reldate = $_POST['reldate'];
-                        $album = $_POST['album'];
-                        
-                        if ($resGenre) {
-                            $genre_ID = mysqli_fetch_row($resGenre);
-                            // Check if Genre_ID is retrieved successfully
-                            if ($genre_ID) {
-                                // Use $genre_ID[0] in your code (it contains the Genre_ID)
-                                
-                                // Later, if needed, you can fetch the genre name using the ID
-                                $getGenreNameQ = "SELECT Genre_name FROM genre WHERE Genre_ID = '$genre_ID[0]'";
-                                $resGenreName = mysqli_query($mysqli, $getGenreNameQ);
-                                $genreData = mysqli_fetch_assoc($resGenreName);
-                                $genre_name = $genreData['Genre_name'];
-                                // Use $genre_name in your code
-                            } else {
-                                echo"no genre ID found";
-                            }
-                        } else {
-                            echo"query failed";
-                        }
-                        
-                        $duplicate = "SELECT * from global_musicbank WHERE Title = '$title' AND Artist_ID = '$album_ID' ";
-                        $check_dup = $mysqli-> query($duplicate);
-                        if(mysqli_num_rows($check_dup)>0){
-                            echo "<script>
-                                Swal.fire({
-                                   icon: 'error',
-                                   title: 'Song already exists',
-                                   showConfirmButton: false,
-                                   timer: 1500
-                                });
-                             </script>";
-                        }else {
-                            $insert="INSERT INTO global_musicbank(Title,Artist_ID,Genre_ID,Release_Date,Album_ID) 
-                                VALUES($title,'$artist','$genre','$reldate','$album')";
-                            $result=$mysqli->query($insert);
-                    
-                            if(!$result){
-                                echo "Insert failed. Error: ".$mysqli->error ;
-                                return false;
-                            }
-
-                            //I havent touched after this
-                            else{
-                                $insertLogin = "Insert into login(Username, Password) values('$username','$hashedPassword')";
-                                $qLogin = $mysqli->query($insertLogin);
-                    
-                                echo "<script>
-                             Swal.fire({
-                                icon: 'success',
-                                title: 'Register successfully',
-                                showConfirmButton: false,
-                                timer: 3000
-                             }).then(function() {
-                                window.location.href = 'home.php'; 
-                             });
-                          </script>";
-                            }
-                        }  
-                    }
-
-                    ?>
-                </div>
         </div>
     </div>
 </body>

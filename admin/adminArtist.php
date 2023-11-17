@@ -40,6 +40,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
             <a href='addArtist.php'>
                 <button class="add-btn"> + Add Artists</button>
             </a>
+            <br></br>
             <table>
                 <tr>
                     <th>Profile</th>
