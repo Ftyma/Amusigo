@@ -17,15 +17,22 @@
   color: #bf52a2;
 }
 
+
+
 .topnav a {
   float: left;
-  display: block;
-  color: black;
+  display: flex;
+  
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
 }
+
+
 
 .topnav a:not(:first-child):hover {
   color: #bf52a2;
@@ -76,3 +83,5 @@
     padding-block: 5px;
   }
 }
+
+

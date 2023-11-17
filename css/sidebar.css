@@ -1,3 +1,5 @@
+
+
 .sidenav {
   height: 100%;
   width: 350px;
@@ -8,7 +10,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   transition: 0.5s;
-
+ 
   background: rgb(238, 202, 255);
   background: linear-gradient(
     180deg,
@@ -17,7 +19,9 @@
     rgba(255, 253, 253, 0) 97%,
     rgba(255, 253, 253, 0) 100%,
     rgba(255, 253, 253, 0) 118%
+    
   );
+  
 }
 
 .logo {
@@ -36,6 +40,7 @@
   display: flex;
   margin-left: 2rem;
   text-decoration: none;
+  font-family: 'Noto Sans';
   font-size: 18px;
   color: black;
   transition: 0.3s;

@@ -1,14 +1,19 @@
+
+
 #dashboard {
   height: 100%;
   display: grid;
   background: rgb(242, 214, 255);
+  
 }
+
 .dashboard-right {
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow-y: auto;
   margin-left: 400px;
+ 
 }
 
 @media screen and (max-width: 768px) {

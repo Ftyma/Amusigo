@@ -66,9 +66,10 @@ require_once('connect.php');
                         <input type="text" name="faculty" required>
                     </div>
 
-                    <div class="input-container">
+                    <div class="year-container">
                         <label class="required">Current Study Year</label>
                         <select name="year">
+                            <option value="" disabled selected>select your year</option>
                             <option value="Bachelor-1">Bachelor-1</option>
                             <option value="Bachelor-2">Bachelor-2</option>
                             <option value="Bachelor-3">Bachelor-3</option>
@@ -77,7 +78,7 @@ require_once('connect.php');
                             <option value="Master-2">Master-2</option>
                          </select>
                     </div>
-
+                    <br></br>
                     <div class="input-container">
                         <label>Line ID</label>
                         <input type="text" name="line">
@@ -89,13 +90,13 @@ require_once('connect.php');
                     </div>
                 </div>
           
-                <div class="btn-container">
-                    <button type="submit"  name="reg" class="btn-register">Register</button>
-                    <p>Already have an account?<a href="signin.php">Login</a></p>
-                </div>
+                
                 
             </form>
-
+                <div class="btn-container">
+                    <button type="submit"  name="reg" class="btn-register">Register</button>
+                    <p>Already have an account? <a href="signin.php">Login</a></p>
+                </div>
       
         </div>
 

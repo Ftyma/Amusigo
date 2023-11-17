@@ -11,6 +11,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 <html class="bg-color">
     <head>
         <title>Amusigo</title>
+        
         <link rel="stylesheet" href="../css/adminArtist.css">
         <link
             rel="stylesheet"

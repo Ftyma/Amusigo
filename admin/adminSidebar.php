@@ -15,6 +15,14 @@ if(isset($_GET['logout'])) {
         exit;
     }
 }
+
+$uname = $_SESSION['username'];
+$q = "SELECT * FROM users where Username='$uname';";
+$result = $mysqli->query($q);
+$row = mysqli_fetch_row($result);
+
+$id = $row[0];
+
 ?>
 
 
@@ -48,7 +56,7 @@ if(isset($_GET['logout'])) {
         </div>
 
         <div>
-            <h3 class="admin-id">Admin ID: </h3>
+            <h3 class="admin-id">Admin ID: <?php echo $id;?></h3>
         </div>
         
         <div class="sidebar-menu">
@@ -76,6 +84,11 @@ if(isset($_GET['logout'])) {
                 <a class="sidebar-menu-item" href="adminAlbum.php">
                     <i class="fa-solid fa-user-group"></i>
                     <p>Album</p>
+                </a>
+
+                <a class="sidebar-menu-item" href="adminGenre.php">
+                    <i class="fa-solid fa-user-group"></i>
+                    <p>Genre</p>
                 </a>
             </div>
                     

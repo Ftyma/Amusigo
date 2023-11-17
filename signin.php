@@ -77,16 +77,16 @@ require_once('connect.php');
                 <h1 style="text-align:center; margin-block:2rem 3rem">Login</h1>
                 <div class="input-form">
                     <label>Username</label>
-                    <input type="text" name="username" placeholder="Enter your username">
+                    <input type="text" name="username" placeholder=" Enter your username">
                 </div>
                 
                 <div class="input-form">
                     <label>Password</label>
-                    <input type="password" name="passwd" placeholder="Enter your password">
+                    <input type="password" name="passwd" placeholder=" Enter your password">
                 </div>
             
                 <button class="btn-submit" type="submit" name="submit">Login</button>
-                <p style="text-align:center">Dont have an account?<a href="signup.php">Sign up</a></p>
+                <p style="text-align:center">Dont have an account? <a href="signup.php">Sign up</a></p>
             </form>
     </div>
     <div class="container-right">

@@ -1,7 +1,11 @@
+
+
 #user {
+
   height: 100%;
   display: grid;
   background: rgb(242, 214, 255);
+ 
 }
 
 .user-right {
@@ -10,6 +14,7 @@
   flex: 1;
   overflow-y: auto;
   margin-left: 400px;
+
 }
 
 @media screen and (max-width: 768px) {
