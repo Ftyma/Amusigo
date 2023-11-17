@@ -11,8 +11,8 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 <html class="bg-color">
     <head>
         <title>Amusigo</title>
-        <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
-        <link rel="stylesheet" href="../css/adminArtist.css">
+        
+        <link rel="stylesheet" href="../css/addGenre.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -35,7 +35,20 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                 <button class="add-btn"> + Add genre</button>
             </a>
             <br></br>
-            <div class= "for table">
+            <div class="container-main">
+                <div class="to add">
+                <form action= "addGenre.php" method="post">
+                    <div class="input-label">
+                        <label for="genreName">Genre name</label>
+                        <input type="text" name="title" placeholder="Song title">
+                    </div>
+                    <div class="forbtn">
+                        <button id = "btn-add" type="submit">Add</button>
+                    </div>
+                </form>
+                
+                </div>
+                <div class= "for table">
                 <table>
                 <tr>
                     <th>Genre Name</th>
@@ -49,17 +62,19 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                             <td>" . $row['Genre_name'] . "</td>
                             <td>
                 
-                <a href='adminDelete.php?albumid=" . $row['Genre_name'] . "'><button class='delete-btn'>Delete</button></a>
-            </td>
+                            <a href='adminDelete.php?albumid=" . $row['Genre_name'] . "'><button class='delete-btn'>Delete</button></a>
+                            </td>
                         </tr>";
                     }
                     }
-?>
+                ?>
 
-            </table>
+                </table>
+
+                </div>
 
             </div>
-
+            
             
         </div>
     </body>

@@ -17,7 +17,7 @@
   <a href="landing.php#about">About</a>
   <a href="landing.php#faq-container">FAQ</a>
   <a href="landing.php#contact">Contact</a>
-  <a href="signin.php"><button id="btn-join"
+  <div><a href="signin.php"><button id="btn-join"
   style = " background-color: #8d2182;
   border-style: none;
   border-radius: 5px;
@@ -26,7 +26,8 @@
   padding-block: 10px;
   font-size: 1rem;
   margin-block: 1rem;"
-  >Sign In</button></a>
+  >Sign In</button></a></div>
+  
   
   
 

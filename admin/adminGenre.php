@@ -49,7 +49,7 @@ if ($result = $mysqli->query($songQ)) {
             <td>" . $row['Genre_name'] . "</td>
 
             <td>
-                <a href='adminEdit.php?albumid=" .$row['Genre_name']. "'><button class='edit-btn'>Edit</button></a>
+                
                 <a href='adminDelete.php?albumid=" . $row['Genre_name'] . "'><button class='delete-btn'>Delete</button></a>
             </td>
         </tr>";
