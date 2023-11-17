@@ -65,7 +65,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                                 <td>" . $row['Birth_Date']."</td>
                                 <td> " . $row['Age']."</td>
                                 <td>
-                                    <a href='adminEdit.php?artistid=" .$row[0]. "'><button class='edit-btn'>Edit</button></a>
+                                    <a href='adminEditArtist.php?artistid=" .$row[0]. "'><button class='edit-btn'>Edit</button></a>
                                     <a href='adminDelete.php?artistid=" . $row[0] . "'><button class='delete-btn'>Delete</button></a>
                                 </td>
                             </tr>";

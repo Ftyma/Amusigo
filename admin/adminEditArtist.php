@@ -2,7 +2,7 @@
 require_once('../connect.php');
 session_start();
 
-$id = $_GET['albumid'];
+$id = $_GET['artistid'];
 $updateQ = "SELECT album.*, artist.Name FROM album JOIN artist ON artist.Artist_ID = album.Artist_ID WHERE album.Album_ID = $id";
 $resUpdate = mysqli_query($mysqli, $updateQ);
 $row = mysqli_fetch_array($resUpdate);
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 <head>
     <title>Amusigo</title>
     <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
-    <link rel="stylesheet" href="../css/musicmate.css">
+    <link rel="stylesheet" href="../css/addAlbum.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous"
@@ -50,8 +50,11 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body id="admin">
-<h1>Admin Page</h1>
-<div>
+<?php include('adminSidebar.php'); ?>
+<div class = "global-right">
+    <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
+    <br></br>
+    <div class="container-main">
     <form method="post">
         <h2>Update Album</h2>
 
@@ -76,10 +79,15 @@ if (isset($_POST['submit'])) {
                 ?>
             </select>
         </div>
-
-        <button type="submit" name="submit">Update</button>
+        <br></br>
+        <div class="forbtn">
+             <button id = "btn-add" type="submit" name="submit">Update</button>
+        </div>
+       
 
     </form>
+</div>
+
 </div>
 
 </body>

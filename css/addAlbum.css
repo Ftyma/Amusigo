@@ -1,12 +1,11 @@
 
-#user {
+#admin {
     height: 100%;
     display: grid;
-    background: rgb(241, 222, 250);
+    background: rgb(242, 223, 250);
     
   }
-
-  .user-right {
+  .global-right {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -14,10 +13,9 @@
     margin-left: 400px;
     
   }
-
-
-  .container{
+  .container-main {
     display: block;
+    
     font-size: 20px;
     margin: 50px;
       
@@ -33,22 +31,20 @@
     
   }
   form {
-    display: grid !important;
-    grid-template-columns: 50% 50%;
     padding-block: 1rem;
-    /* padding-left: 5rem;
-    padding-right: 5rem; */
-    /* margin-left: 50px;
-    margin-right: 50px ; */
+    padding-left: 5rem;
+    padding-right: 5rem;
+    margin-left: 50px;
+    margin-right: 50px ;
     display: block;
     flex-direction: column;
     justify-content: space-between;
     margin: auto;
-    width: 100%;
+    width: 70%;
     align-items: left;
   }
   
-  .form1 {
+  .form-inside {
     display: flex;
     padding-left: 5rem;
     padding-right: 5rem;
@@ -57,15 +53,7 @@
     margin-block: 0px;
     width: 60%;
   }
-  .form2 {
-    display: flex;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    flex-direction: column;
-    margin: auto;
-    margin-block: 0px;
-    width: 60%;
-  }
+
   .dropdown {
     min-width: 350px;
     position: relative;
@@ -178,10 +166,7 @@
     border-style: 0.5px solid;
     border-color: black;
   }*/
-.btn-container{
-    justify-content: center;
-    padding-left: 100px;
-}
+
   #btn-add{
     justify-content: center;
         background: linear-gradient(
@@ -197,7 +182,6 @@
         position: relative;
         font: 600 16px "NotoSans-SemiBold", sans-serif;
         color: #15d383;
-        
   }
 .forbtn{
     display: flex;
