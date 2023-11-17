@@ -32,7 +32,7 @@ require_once('connect.php');
                     <div class="input-container">
                         <label class="required">Username</label>
                         <!-- <input type="text" name="username" required> -->
-                        <input type="text" name="uname" placeholder="Username" value="<?php echo $uname; ?>">
+                        <input type="text" name="username" placeholder="Username" value="<?php echo $uname; ?>">
                     </div>
 
                     <div class="input-container">
@@ -105,7 +105,7 @@ require_once('connect.php');
 
 <?php
 if (isset($_POST['confirm'])) {
-    //$username = $_POST["username"];
+    $username = $_POST["username"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
     $name = "$fname $lname";
@@ -118,7 +118,7 @@ if (isset($_POST['confirm'])) {
     $profile = $_POST["profile"];
 
     $hashedPassword = password_hash($passwd, PASSWORD_DEFAULT);
-
+        if($username==$uname){
         $update="UPDATE users SET Student_ID=$stdid,Email='$email',Line_ID='$line',Faculty='$faculty',Year='$year',Name='$name',profile_url='$profile' 
         WHERE Username='$uname'";
         $result=$mysqli->query($update);
@@ -143,5 +143,17 @@ if (isset($_POST['confirm'])) {
          });
       </script>";
         }
+    }else{
+        echo "<script>
+        Swal.fire({
+           icon: 'success',
+           title: 'Cannot Change Username',
+           showConfirmButton: false,
+           timer: 3000
+        }).then(function() {
+           window.location.href = 'userprofile.php'; 
+        });
+     </script>";
+    }
     }
 ?>
