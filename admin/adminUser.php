@@ -27,18 +27,20 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
         <?php include('adminSidebar.php'); ?>
 
         <div class="user-right">
-            <h1 class="home-title" style="color:#8328ba; font-size:50px">Users List</h1>
-            <div class="forbtn">
-                    <a href='#'>
-                        <button class="btn-add" type="submit"> + Add User</button>
-                    </a>
-                </div>
-            <div>
-                
+            <h1 class="home-title" style="color:#8328ba; font-size:50px;">Users List</h1>
+            <!-- Search bar -->
+            <div class="input-container">
+                <input class="search" type="text" placeholder="In your music bank ... ">            
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+            </div>
+            <a href='addUser.php'>
+                <button id = "add-btn" class="add-btn" type="submit"> + Add User</button>
+            </a>
+            <br></br>
             
             <table>
                 <tr>
-                    <th></th>
+                    <th>Profile Pic</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Action</th>

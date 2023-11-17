@@ -1,4 +1,6 @@
-<?php require_once('connect.php'); ?>
+<?php require_once('connect.php'); 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html>
