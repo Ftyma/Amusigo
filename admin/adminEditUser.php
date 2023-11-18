@@ -3,7 +3,7 @@ require_once('../connect.php');
 session_start();
 
 $id = $_GET['userid'];
-echo $updateQ = "SELECT * FROM users WHERE Student_ID = $id";
+$updateQ = "SELECT * FROM users WHERE Student_ID = $id";
 $resUpdate = mysqli_query($mysqli, $updateQ);
 $row = mysqli_fetch_array($resUpdate);
 
@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
         //$artistID = mysqli_fetch_row($res)[0];
 
         $sql = "UPDATE `users` SET Username = '$username', Email = '$email', Line_ID='$lineid', Faculty='$faculty',
-        Year='$year', Name = '$name', profile_url='$profileUrl' WHERE Student_ID = $id";
+        Year='$year', Name = '$name', profile_url='$profile' WHERE Student_ID = $id";
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
@@ -136,6 +136,9 @@ if (isset($_POST['submit'])) {
                         <label>Profile URL</label>
                         <input type="text" name="profile">
                     </div>
+
+           
+
                 </div>
         <br></br>
         <div class="forbtn">
