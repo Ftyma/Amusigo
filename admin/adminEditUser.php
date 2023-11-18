@@ -3,7 +3,7 @@ require_once('../connect.php');
 session_start();
 
 $id = $_GET['userid'];
-echo $updateQ = "SELECT * FROM users WHERE Student_ID = $id";
+$updateQ = "SELECT * FROM users WHERE Student_ID = $id";
 $resUpdate = mysqli_query($mysqli, $updateQ);
 $row = mysqli_fetch_array($resUpdate);
 
@@ -16,8 +16,12 @@ $name = $row['Name'];
 $profileUrl = $row['profile_url'];
 $stdid = $row['Student_ID'];
 
+$nameParts = explode(' ', $name);
+$fName = $nameParts[0];
+$lName = $nameParts[1];
+
 if (isset($_POST['submit'])) {
-    echo "Form submitted";
+
     $username = $_POST["username"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
@@ -29,6 +33,7 @@ if (isset($_POST['submit'])) {
     $year = $_POST["year"];
     $line = $_POST["line"];
     $profile = $_POST["profile"];
+    $role = $_POST["role"];
 
     // $q = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
     // $res = mysqli_query($mysqli, $q);
@@ -37,13 +42,14 @@ if (isset($_POST['submit'])) {
         //$artistID = mysqli_fetch_row($res)[0];
 
         $sql = "UPDATE `users` SET Username = '$username', Email = '$email', Line_ID='$lineid', Faculty='$faculty',
-        Year='$year', Name = '$name', profile_url='$profileUrl' WHERE Student_ID = $id";
+        Year='$year', Name = '$name', profile_url='$profile', role='$role' WHERE Student_ID = $id";
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
-            echo "update successful!";
-            header("Location: adminUser.php");
+            echo '<script>alert("Updated successfully!");
+            window.location.href = "adminUser.php";</script>';
             exit(); 
+            
         } else {
             echo "update failed: " . mysqli_error($mysqli);
         }
@@ -83,12 +89,12 @@ if (isset($_POST['submit'])) {
 
                     <div class="input-label">
                         <label class="required">First name</label>
-                        <input type="text" name="fname" required>
+                        <input type="text" name="fname" required value="<?php echo $fName; ?>">
                     </div>
 
                     <div class="input-label">
                         <label class="required">Last name</label>
-                        <input type="text" name="lname" required>
+                        <input type="text" name="lname" required value="<?php echo $lName; ?>">
                     </div>
 
                     <div class="input-label">
@@ -96,10 +102,15 @@ if (isset($_POST['submit'])) {
                         <input type="email" name="email" required value="<?php echo $email; ?>">
                     </div>
                     
-                    <!-- <div class="input-label">
-                        <label class="required">Password</label>
-                        <input type="password" name="passwd" required>
-                    </div> -->
+                    <div class="input-label">
+                        <label class="required">Role</label>
+                        <select name="role" required>
+                            <option value="" disabled selected>Select Role</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                         </select>
+          
+                    </div>
                 </div>
 
                 <div class="form2">
@@ -134,7 +145,7 @@ if (isset($_POST['submit'])) {
                     
                     <div class="input-label">
                         <label>Profile URL</label>
-                        <input type="text" name="profile">
+                        <input type="text" name="profile" value="<?php echo $profileUrl; ?>" >
                     </div>
                 </div>
         <br></br>
