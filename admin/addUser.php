@@ -19,22 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $year = $_POST["year"];
     $line = $_POST["line"];
     $profile = $_POST["profile"];
+    $role = $_POST["role"];
 
     $hashedPassword = password_hash($passwd, PASSWORD_DEFAULT);
     $duplicate = "SELECT * from users WHERE Username = '$username' OR Email = '$email' ";
     $check_dup = $mysqli-> query($duplicate);
     if(mysqli_num_rows($check_dup)>0){
-        echo "<script>
-            Swal.fire({
-               icon: 'error',
-               title: 'Username or Email is already exist',
-               showConfirmButton: false,
-               timer: 1500
-            });
-         </script>";
+        echo "username already exist";
+    
     }else {
-        $insert="INSERT INTO users(Student_ID,Username,Email,Line_ID,Faculty,Year,Name,profile_url) 
-            VALUES($stdid,'$username','$email','$line','$faculty','$year','$name','$profile')";
+        $insert="INSERT INTO users(Student_ID,Username,Email,Line_ID,Faculty,Year,Name,profile_url,role) 
+            VALUES($stdid,'$username','$email','$line','$faculty','$year','$name','$profile','$role')";
         $result=$mysqli->query($insert);
 
         if(!$result){
@@ -44,17 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         else{
             $insertLogin = "Insert into login(Username, Password) values('$username','$hashedPassword')";
             $qLogin = $mysqli->query($insertLogin);
-
-            echo "<script>
-         Swal.fire({
-            icon: 'success',
-            title: 'Register successfully',
-            showConfirmButton: false,
-            timer: 3000
-         }).then(function() {
-            window.location.href = 'home.php'; 
-         });
-      </script>";
+            echo '<script>alert("Updated successfully!");
+            window.location.href = "adminUser.php";</script>';
         }
     }  
 }
@@ -73,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
     <body id="user">
 
@@ -81,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="user-right">
             <div class="titles">
-                <h1 class="home-title" style="color:#8328ba">Users List</h1>
-                <h3 class="title1">Add a user account</h3>
+                <h1 class="home-title" style="color:#8328ba">Add User Account</h1>
+            
             </div>
             
         
@@ -116,6 +103,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="input-label">
                         <label class="required">Password</label>
                         <input type="password" name="passwd" required>
+                    </div>
+
+                    <div class="input-label">
+                        <label class="required">Role</label>
+                        <select name="role" required>
+                            <option value="" disabled selected>Select Role</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                         </select>          
                     </div>
                 </div>
 
