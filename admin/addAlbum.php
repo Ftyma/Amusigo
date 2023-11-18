@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
 <title>Amusigo</title>
 <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
-<link rel="stylesheet" href="../css/musicmate.css">
+<link rel="stylesheet" href="../css/addAlbum.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -39,11 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body id="admin">
-    <h1>Admin Page</h1>
-    <div>
+<?php include('adminSidebar.php'); ?>
+<div class="global-right">
+    <h1 style="color:#8328ba">Admin Page</h1>
+    <br></br>
+    <div class="container-main">
         <form action="addAlbum.php" method="post">
             <h2>Add Album</h2>
-            <div>
+            <div class="input-label">
                 <label>Album Name</label>
                 <input type="text" name="name" placeholder="Album name">
             </div>
@@ -62,13 +65,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     ?>                
                 </select>
             </div>
+            <br></br>
 
 
-           
-            <button type="submit">Add</button>
+           <div class="forbtn">
+            <button id = "btn-add" type="submit">Add</button>
+           </div>
+            
           
         </form>
     </div>
+</div>
+    
 
 </body>
 

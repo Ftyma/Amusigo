@@ -2,9 +2,9 @@
 require_once('../connect.php'); 
 session_start();
 
-// if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
-//     header("Location: ../signin.php"); 
-// } 
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
+    header("Location: ../signin.php"); 
+} 
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +70,7 @@ if ($result = $mysqli->query($songQ)) {
 
         if ($_SESSION['role'] == 'admin') {
             echo "<td>
-                    <a href='adminEdit.php?songid=" . $row['Song_ID'] . "'><button class='edit-btn'>Edit</button></a>
+                    <a href='adminEditSongInfo.php?songid=" . $row[0] . "'><button class='edit-btn'>Edit</button></a>
                     <a href='adminDelete.php?songid=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
                 </td>";
         }else {
