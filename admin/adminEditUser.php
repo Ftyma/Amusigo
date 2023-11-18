@@ -20,6 +20,8 @@ $nameParts = explode(' ', $name);
 $fName = $nameParts[0];
 $lName = $nameParts[1];
 
+
+
 if (isset($_POST['submit'])) {
 
     $username = $_POST["username"];
@@ -27,13 +29,15 @@ if (isset($_POST['submit'])) {
     $lname = $_POST["lname"];
     $name = "$fname $lname";
     $email = $_POST["email"];
-    //$passwd = $_POST["passwd"];
+    $passwd = $_POST["pw"];
     $stdid = $_POST["stdid"];
     $faculty = $_POST["faculty"];
     $year = $_POST["year"];
     $line = $_POST["line"];
     $profile = $_POST["profile"];
     $role = $_POST["role"];
+
+    $hashedPassword = password_hash($passwd, PASSWORD_DEFAULT);
 
     // $q = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
     // $res = mysqli_query($mysqli, $q);
@@ -46,10 +50,13 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
+            $updatelogin="UPDATE login SET Password='$hashedPassword' 
+        WHERE Username='$username'";
+        $result1=$mysqli->query($updatelogin);
+
             echo '<script>alert("Updated successfully!");
             window.location.href = "adminUser.php";</script>';
             exit(); 
-            
         } else {
             echo "update failed: " . mysqli_error($mysqli);
         }
@@ -68,12 +75,13 @@ if (isset($_POST['submit'])) {
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer"/>
+
 </head>
 
 <body id="admin">
-<?php include('adminSidebar.php');
+<?php include('adminSidebar.php');?>
 
-?>
+
 <div class = "global-right">
     <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
     <br></br>
@@ -103,13 +111,18 @@ if (isset($_POST['submit'])) {
                     </div>
                     
                     <div class="input-label">
+                        <label class="required">Password</label>
+                        <input type="password" name="pw" required>
+                    </div>
+                    
+
+                    <div class="input-label">
                         <label class="required">Role</label>
                         <select name="role" required>
                             <option value="" disabled selected>Select Role</option>
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
-                         </select>
-          
+                         </select>          
                     </div>
                 </div>
 
@@ -148,8 +161,7 @@ if (isset($_POST['submit'])) {
                         <input type="text" name="profile" value="<?php echo $profileUrl; ?>" >
                     </div>
 
-           
-
+    
                 </div>
         <br></br>
         <div class="forbtn">
@@ -164,6 +176,8 @@ if (isset($_POST['submit'])) {
 
 </body>
 </html>
+
+
 
 <?php
 //$id = $_GET['userid'];
