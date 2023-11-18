@@ -2,19 +2,121 @@
 require_once('../connect.php');
 session_start();
 
-$id = $_GET['userid'];
-$updateQ = "SELECT * FROM users WHERE student_ID = $id";
+$username = $_GET['Username'];
+echo $updateQ = "SELECT * FROM users WHERE Username = $username";
 $resUpdate = mysqli_query($mysqli, $updateQ);
 $row = mysqli_fetch_array($resUpdate);
 
-$username = $row['Username'];
+//$username = $row['Username'];
 $email = $row['Email'];
 $lineid = $row['Line_ID'];
 $faculty = $row['Faculty'];
 $year = $row['Year'];
 $name = $row['Name'];
 $profileUrl = $row['profile_url'];
+$stdid = $row['Student_ID'];
+?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amusigo</title>
+    <link rel="stylesheet" href="../css/addAlbum.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
+</head>
+
+<body id="admin">
+<?php include('adminSidebar.php');
+
+?>
+<div class = "global-right">
+    <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
+    <br></br>
+    <div class="container-main">
+    <form action="adminEditUser.php" method="post" >
+                <div class="form1">
+                    <h1 class="subtitle">Personal Information</h1>
+                    <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
+                    <div class="input-label">
+                        <label class="required">Username</label>
+                        <input type="text" name="username" required value="<?php echo $username; ?>">
+                    </div>
+
+                    <div class="input-label">
+                        <label class="required">First name</label>
+                        <input type="text" name="fname" required>
+                    </div>
+
+                    <div class="input-label">
+                        <label class="required">Last name</label>
+                        <input type="text" name="lname" required>
+                    </div>
+
+                    <div class="input-label">
+                        <label class="required">Email</label>
+                        <input type="email" name="email" required value="<?php echo $email; ?>">
+                    </div>
+                    
+                    <div class="input-label">
+                        <label class="required">Password</label>
+                        <input type="password" name="passwd" required>
+                    </div>
+                </div>
+
+                <div class="form2">
+                    <h1 class="subtitle">School Information</h1>
+                    <div  class="input-label">
+                        <label class="required">Student ID</label>
+                        <input type="text" name="stdid" required value="<?php echo $stdid; ?>">
+                    </div>
+
+                    <div class="input-label">
+                        <label class="required">Faculty</label>
+                        <input type="text" name="faculty" required value="<?php echo $faculty; ?>">
+                    </div>
+
+                    <div class="dropdown">
+                        <label class="required">Current Study Year</label>
+                        <select name="year">
+                            <option value="" disabled selected>select your year</option>
+                            <option value="Bachelor-1">Bachelor-1</option>
+                            <option value="Bachelor-2">Bachelor-2</option>
+                            <option value="Bachelor-3">Bachelor-3</option>
+                            <option value="Bachelor-4">Bachelor-4</option>
+                            <option value="Master-1">Master-1</option>
+                            <option value="Master-2">Master-2</option>
+                         </select>
+                    </div>
+              
+                    <div class="input-label">
+                        <label>Line ID</label>
+                        <input type="text" name="line" value="<?php echo $lineid; ?>">
+                    </div>   
+                    
+                    <div class="input-label">
+                        <label>Profile URL</label>
+                        <input type="text" name="profile">
+                    </div>
+                </div>
+        <br></br>
+        <div class="forbtn">
+             <button id = "btn-add" type="submit" name="submit">Update</button>
+        </div>
+       
+
+    </form>
+</div>
+
+</div>
+
+</body>
+</html>
+
+<?php
+//$id = $_GET['userid'];
 
 if (isset($_POST['submit'])) {
     echo "Form submitted";
@@ -52,100 +154,3 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Amusigo</title>
-    <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
-    <link rel="stylesheet" href="../css/addAlbum.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"/>
-</head>
-
-<body id="admin">
-<?php include('adminSidebar.php'); ?>
-<div class = "global-right">
-    <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
-    <br></br>
-    <div class="container-main">
-    <form action="adminEditUser.php" method="post" >
-                <div class="form1">
-                    <h1 class="subtitle">Personal Information</h1>
-                    <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
-                    <div class="input-container">
-                        <label class="required">Username</label>
-                        <input type="text" name="username" required>
-                    </div>
-
-                    <div class="input-container">
-                        <label class="required">First name</label>
-                        <input type="text" name="fname" required>
-                    </div>
-
-                    <div class="input-container">
-                        <label class="required">Last name</label>
-                        <input type="text" name="lname" required>
-                    </div>
-
-                    <div class="input-container">
-                        <label class="required">Email</label>
-                        <input type="email" name="email" required>
-                    </div>
-                    
-                    <div class="input-container">
-                        <label class="required">Password</label>
-                        <input type="password" name="passwd" required>
-                    </div>
-                </div>
-
-                <div class="form2">
-                    <h1 class="subtitle">School Information</h1>
-                    <div  class="input-container">
-                        <label class="required">Student ID</label>
-                        <input type="text" name="stdid" required>
-                    </div>
-
-                    <div class="input-container">
-                        <label class="required">Faculty</label>
-                        <input type="text" name="faculty" required>
-                    </div>
-
-                    <div class="year-container">
-                        <label class="required">Current Study Year</label>
-                        <select name="year">
-                            <option value="" disabled selected>select your year</option>
-                            <option value="Bachelor-1">Bachelor-1</option>
-                            <option value="Bachelor-2">Bachelor-2</option>
-                            <option value="Bachelor-3">Bachelor-3</option>
-                            <option value="Bachelor-4">Bachelor-4</option>
-                            <option value="Master-1">Master-1</option>
-                            <option value="Master-2">Master-2</option>
-                         </select>
-                    </div>
-                    <br></br>
-                    <div class="input-container">
-                        <label>Line ID</label>
-                        <input type="text" name="line">
-                    </div>   
-                    
-                    <div class="input-container">
-                        <label>Profile URL</label>
-                        <input type="text" name="profile">
-                    </div>
-                </div>
-        <br></br>
-        <div class="forbtn">
-             <button id = "btn-add" type="submit" name="submit">Update</button>
-        </div>
-       
-
-    </form>
-</div>
-
-</div>
-
-</body>
-</html>

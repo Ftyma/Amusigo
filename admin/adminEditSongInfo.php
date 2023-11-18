@@ -2,38 +2,48 @@
 require_once('../connect.php');
 session_start();
 
-$id = $_GET['songid'];
+$title = '';
+$artist_Name = '';
+$genre = '';
 
-$updateQ = "SELECT global_musicbank.*, artist.Name, genre.Genre_name 
-FROM global_musicbank join artist on artist.Artist_ID = global_musicbank.Artist_ID 
-join genre on genre.Genre_ID =  global_musicbank.Genre_ID
-where global_musicbank.Song_ID = $id";
+if (isset($_GET['songid'])){
+    $id = $_GET['songid'];
+    $updateQ = "SELECT global_musicbank.*, artist.Name, genre.Genre_name 
+    FROM global_musicbank join artist on artist.Artist_ID = global_musicbank.Artist_ID 
+    join genre on genre.Genre_ID =  global_musicbank.Genre_ID
+    where global_musicbank.Song_ID = $id";
 
-$resUpdate = mysqli_query($mysqli, $updateQ);
-$row = mysqli_fetch_array($resUpdate);
+    $resUpdate = mysqli_query($mysqli, $updateQ);
+    $row = mysqli_fetch_array($resUpdate);
 
-$title = $row['Title'];
-$artist_Name = $row['Name'];
-$genre = $row['Genre_name'];
+    if ($row) {
+        $title = $row['Title'];
+        $artist_Name = $row['Name'];
+        $genre = $row['Genre_name'];
+    } else {
+    // Handle case where the song ID isn't found or there's no data retrieved
+        echo "Song not found or data retrieval issue.";
+         exit();
+}
 
 
-if (isset($_POST['submit'])&&isset($_GET['songid'])) {
-    echo "Form submitted";
-    $title = $_POST["title"];
-    $artist_Name = $_POST["artist"];
-    $genre = $_POST["genre"];
+    if (isset($_POST['submit'])) {
+        echo "Form submitted";
+        $title = $_POST["title"];
+        $artist_Name = $_POST["artist"];
+        $genre = $_POST["genre"];
     
 
-    $artistq = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
-    $resArtist = mysqli_query($mysqli, $q);
-    $artist_ID = mysqli_fetch_row($resArtist );
+        $artistq = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
+        $resArtist = mysqli_query($mysqli, $artistq);
+        $artist_ID = mysqli_fetch_row($resArtist );
 
-    $genreIDQ = "SELECT Genre_ID from genre where Genre_name = '$genre';";
-    $resGenre = mysqli_query($mysqli, $genreIDQ );
-    $genre_ID = mysqli_fetch_row($resGenre );
+        $genreIDQ = "SELECT Genre_ID from genre where Genre_name = '$genre';";
+        $resGenre = mysqli_query($mysqli, $genreIDQ );
+        $genre_ID = mysqli_fetch_row($resGenre );
         //$artistID = mysqli_fetch_row($resUpdate)[0];
 
-        $sql = "UPDATE `global` SET Title='$title', Artist_ID=$artist_ID, Genre_ID=$genre_ID where Song_ID = $id";
+        $sql = "UPDATE `global_musicbank` SET Title='$title', Artist_ID=$artist_ID, Genre_ID=$genre_ID where Song_ID = $id";
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
@@ -44,6 +54,12 @@ if (isset($_POST['submit'])&&isset($_GET['songid'])) {
             echo "update failed: " . mysqli_error($mysqli);
         }
     } 
+} else{
+    echo "cant get songid";
+}
+
+
+
     //else {
     //     echo "Error fetching artist: " . mysqli_error($mysqli);
     // }
@@ -71,7 +87,7 @@ if (isset($_POST['submit'])&&isset($_GET['songid'])) {
                     <h2>Edit Song Information</h2>
                     <div class="input-label">
                         <label for="title">Title</label>
-                        <input type="text" name="title" placeholder="Song title" value="<?php echo $title; ?>">
+                        <input type="text" name="title" placeholder="Song title" value="<?php echo isset($title) ? $title : ''; ?>">
                     </div>
                         
                     <div class="dropdown">
