@@ -129,7 +129,7 @@ if (isset($_POST['confirm'])) {
             return false;
         }
         else{
-            $updatelogin="UPDATE login SET, Password=' $hashedPassword' 
+            $updatelogin="UPDATE login SET Password='$hashedPassword' 
         WHERE Username='$uname'";
         $result1=$mysqli->query($updatelogin);
             echo "<script>
