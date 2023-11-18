@@ -1,4 +1,9 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+</html>
 <?php
 require_once('connect.php');
 session_start();
@@ -34,13 +39,33 @@ if (isset($song_id)) {
         if (!$mysqli->query($insert)) {
             echo "INSERT failed. Error: " . $mysqli->error;
             return false;
-        } 
+        } else{
+            echo "<script>
+            Swal.fire({
+               icon: 'success',
+               title: 'Song Added',
+               showConfirmButton: false,
+               timer: 3000
+            }).then(function() {
+               window.location.href = 'global.php'; 
+            });
+         </script>";
+        }
     }
     else {
-       return false;
+        echo "<script>
+        Swal.fire({
+           icon: 'success',
+           title: 'Song Alraedy In Music Bank',
+           showConfirmButton: false,
+           timer: 3000
+        }).then(function() {
+           window.location.href = 'global.php'; 
+        });
+     </script>";
     }
 
     $mysqli->close();
-    header("Location:global.php");
+   // header("Location:global.php");
 }
 ?>

@@ -69,7 +69,6 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         } else {
             echo "Error in query execution: " . $mysqli->error;
         }
-        
 
             $songQ = "SELECT Songs.Song_ID, S.title, A.name, G.Genre_name
                     FROM user_musicbank as Songs
