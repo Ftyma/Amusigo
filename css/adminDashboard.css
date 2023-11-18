@@ -45,12 +45,20 @@
 }
 
 .edit-btn {
-  background-color: transparent;
-  border: 1px solid #8328ba;
-  padding: 10px 30px;
-  align-self: center;
-  border-radius: 20px;
-  margin-right: 3rem;
+  margin: 25px;
+  background: linear-gradient(
+  90.11deg,
+  rgba(200, 83, 219, 0.18) 32.29166567325592%,
+  rgba(200, 83, 219, 0.1) 100% );
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #a654d8;
+  border-width: 3px;
+  width: 150px;
+  height: 40px;
+  position: relative;
+  font: 600 16px "NotoSans-SemiBold", sans-serif;
+  color: #a654d8;
 }
 .edit-btn:hover {
   scale: 110%;
