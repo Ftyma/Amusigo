@@ -160,12 +160,11 @@ $username = $_SESSION["username"];
                     LEFT JOIN user_musicbank AS um ON u.Student_ID = um.Student_ID
                     WHERE u.Student_ID != $student_id and u.role != 'admin'
                     GROUP BY u.Student_ID
-                    ORDER BY cs DESC
-                    ;
-                    ";
+                    ORDER BY cs DESC;";
                     if ($result2 = $mysqli->query($sugg)) {
                         while ($row2 = $result2->fetch_array()) {
                             echo '<div>';
+                            echo '<a href="mateProfile.php?friend=' . $row2[1] . '">';
                             echo '<img src="' . $row2[7] . '" class="user-img">';
                             echo '<p class="user-name" >' . $row2[1] . '</p>';
                             echo '</div>';
