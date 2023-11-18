@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
         <h2>Update Artist</h2>
         <div class="input-label">
                 <label>Artist Name</label>
-                <input type="text" name="name" placeholder="Name" >
+                <input type="text" name="name" placeholder="Name" value="<?php echo $artist_Name; ?>">
         </div>
         <div class="input-label">
 
