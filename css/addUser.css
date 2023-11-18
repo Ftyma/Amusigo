@@ -109,6 +109,34 @@
     background-color: transparent;
   }
   
+  input[type="email"] {
+    
+    font-size: 1rem;
+
+    outline: 5px;
+    width: 100%;
+    color: rgb(0, 25, 254);
+    background-color: transparent;
+    border-bottom:  2px solid  rgba(186, 116, 205, 0.35);
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+  }
+
+  input[type="password"] {
+    
+    font-size: 1rem;
+
+    outline: 5px;
+    width: 100%;
+    color: rgb(0, 25, 254);
+    background-color: transparent;
+    border-bottom:  2px solid  rgba(186, 116, 205, 0.35);
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+  }
+
   select {
     appearance: none;
     /*  safari  */
@@ -127,8 +155,8 @@
     max-width: 100%;
   }
   @media screen and (max-width: 768px) {
-    .global-right {
-      margin-left: 80px;
+    .user {
+      margin-left: none;
     }
     select {
       width: 50%; 
@@ -183,20 +211,20 @@
     padding-left: 100px;
 }
   #btn-add{
-    justify-content: center;
-        background: linear-gradient(
-        90.11deg,
-        rgba(83, 219, 142, 0.18) 32.29166567325592%,
-        rgba(83, 219, 103, 0.1) 100% );
-        border-radius: 25px;
-        border-style: solid;
-        border-color: #15d383;
-        border-width: 3px;
-        width: 200px;
-        height: 30px;
-        position: relative;
-        font: 600 16px "NotoSans-SemiBold", sans-serif;
-        color: #15d383;
+    margin: 25px;
+    background: linear-gradient(
+    90.11deg,
+    rgba(200, 83, 219, 0.18) 32.29166567325592%,
+    rgba(200, 83, 219, 0.1) 100% );
+    border-radius: 25px;
+    border-style: solid;
+    border-color: #a654d8;
+    border-width: 3px;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    font: 600 16px "NotoSans-SemiBold", sans-serif;
+    color: #a654d8;
         
   }
 .forbtn{

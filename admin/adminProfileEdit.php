@@ -10,11 +10,37 @@ $q = "SELECT * FROM users where Username='$uname';";
 $result = $mysqli->query($q);
 $row = mysqli_fetch_row($result);
 
-$id = $row[0];
-$email = $row[2];
-$name = $row[6];
-$line= $row[3];
-$role = $row[8];
+$id = $row['Student_ID'];
+$email = $row['Email'];
+$name = $row['Name'];
+$line= $row['Line_ID'];
+$role = $row['role'];
+
+if (isset($_POST['submit'])) {
+    echo "Form submitted";
+    
+
+    // $q = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
+    // $res = mysqli_query($mysqli, $q);
+
+    if ($resUpdate) {
+        $artistID = mysqli_fetch_row($resUpdate)[0];
+
+        $sql = "UPDATE `artist` SET Name='$name', Bio='$bio', Country='$country', Website='$website',Birth_Date='$birthdate', Age='$age', Image_Url='$imgUrl' where Artist_ID = $id";
+        $result = mysqli_query($mysqli, $sql);
+
+        if ($result) {
+            echo "update successful!";
+            header("Location: adminArtist.php");
+            exit(); 
+        } else {
+            echo "update failed: " . mysqli_error($mysqli);
+        }
+    } else {
+        echo "Error fetching artist: " . mysqli_error($mysqli);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +48,7 @@ $role = $row[8];
     <head>
         <title>Amusigo</title>
         <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
-        <link rel="stylesheet" href="../css/adminDashboard.css">
+        <link rel="stylesheet" href="../css/addAlbum.css">
         
         <link
             rel="stylesheet"
@@ -32,86 +58,43 @@ $role = $row[8];
             referrerpolicy="no-referrer"
         />
     </head>
-    <body id="dashboard">
+    <body id="global">
         <?php include('adminSidebar.php'); ?>
 
-        <div class="dashboard-right">
+        <div class="global-right">
             <h1 class="home-title" style="color:#8328ba">Admin Dashboard</h1>
-            <div class="dashboard-list">
-                <a href="adminGlobal.php">
-                    <div class="list-card">
-                        <h2>Global Music Bank</h2>
-                        <?php
-                            $q= "SELECT COUNT(*) as count from global_musicbank";
-                            $result = $mysqli->query($q);
-                            $row=$result->fetch_array();
-                            echo "<p>" . $row['count'] ." songs</p>";
-                        ?>
-                        
-                    </div>
-                </a>
-
-                <a href="adminUser.php">
-                    <div class="list-card">
-                        <h2>Users List</h2>
-                        <?php
-                            $q= "SELECT COUNT(*) as count from users";
-                            $result = $mysqli->query($q);
-                            $row=$result->fetch_array();
-                            echo "<p>" . $row['count'] ." users</p>";
-                        ?>
-                    </div>
-                </a>
-
-                <a href="adminArtist.php">
-                    <div class="list-card">
-                        <h2>Artist List</h2>
-                        <?php
-                            $q= "SELECT COUNT(*) as count from artist";
-                            $result = $mysqli->query($q);
-                            $row=$result->fetch_array();
-                            echo "<p>" . $row['count'] ." artists</p>";
-                        ?>
-                    </div>
-                </a>
-
-                <a href="adminAlbum.php">
-                    <div class="list-card">
-                        <h2>Album List</h2>
-                        <?php
-                            $q= "SELECT COUNT(*) as count from album";
-                            $result = $mysqli->query($q);
-                            $row=$result->fetch_array();
-                            echo "<p>" . $row['count'] ." albums</p>";
-                        ?>
-                    </div>
-                </a>
-                
-            </div>
-            <br/>
-            <br/>
+          
+         
             <hr/>
             <div>
                 <div class="profile-top">
-                    <h2 class="home-title" style="color:#8328ba">Admin Profile</h2>
-                    <button class="edit-btn">Edit Profile</button>
+                        <h2 class="home-title" style="color:#8328ba">Admin Profile</h2>
+                        
                 </div>
+
                 <div class="profile-body">
-                    <div class="body-label">
-                        <p class="label">Admin ID: </p>
-                        <p class="label">Full Name: </p>
-                        <p class="label">Email: </p>
-                        <p class="label">Line ID: </p>
-                        <p class="label">Role: </p>
+                <div class="input-label">       
+                    <label for="link">Admin ID: </label><input type="text" name="imgUrl" placeholder="Profile image link" value="<?php echo $id;?>">
+                </div>
+                <div class="input-label">       
+                    <label for="link">Full Name: </label><input type="text" name="imgUrl" placeholder="Profile image link" value="<?php echo $name;?>">
+                </div>
+                <div class="input-label">       
+                    <label for="link">Email: </label><input type="text" name="imgUrl" placeholder="Profile image link" value="<?php echo $email;?>">
+                </div>
+                <div class="input-label">       
+                    <label for="link">Line ID: </label><input type="text" name="imgUrl" placeholder="Profile image link" value="<?php echo $line;?>">
+                </div>
+                <div class="input-label">       
+                    <label for="link">Role: </label><input type="text" name="imgUrl" placeholder="Profile image link" value="<?php echo $role;?>">
+                </div>
+                    
+                    
+                    <div class="forbtn">
+                        <button type ="submit" name ="submit" class="edit-btn">Submit Edit</button>
                     </div>
                     
-                    <div class="body-info">
-                        <p ><?php echo $id;?></p>
-                        <p ><?php echo $name;?></p>
-                        <p ><?php echo $email;?></p>
-                        <p ><?php echo $line;?></p>
-                        <p ><?php echo $role;?></p>
-                    </div>
+                
                 </div>
                 
             </div>

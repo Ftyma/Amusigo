@@ -106,7 +106,7 @@ $role = $row[8];
             <div>
                 <div class="profile-top">
                     <h2 class="home-title" style="color:#8328ba">Admin Profile</h2>
-                    <a href="adminProfileEdit"><button class="edit-btn">Edit Profile</button></a>
+                    <a href="adminProfileEdit.php"><button class="edit-btn">Edit Profile</button></a>
                 </div>
                 <div class="profile-body">
                     <div class="body-label">
