@@ -1,12 +1,6 @@
 <?php
 require_once('../connect.php');
 session_start();
-
-$title = '';
-$artist_Name = '';
-$genre = '';
-
-if (isset($_GET['songid'])){
     $id = $_GET['songid'];
     $updateQ = "SELECT global_musicbank.*, artist.Name, genre.Genre_name 
     FROM global_musicbank join artist on artist.Artist_ID = global_musicbank.Artist_ID 
@@ -24,9 +18,7 @@ if (isset($_GET['songid'])){
     // Handle case where the song ID isn't found or there's no data retrieved
         echo "Song not found or data retrieval issue.";
          exit();
-}
-
-
+    }   
     if (isset($_POST['submit'])) {
         echo "Form submitted";
         $title = $_POST["title"];
@@ -36,11 +28,13 @@ if (isset($_GET['songid'])){
 
         $artistq = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
         $resArtist = mysqli_query($mysqli, $artistq);
-        $artist_ID = mysqli_fetch_row($resArtist );
+        $artistData = mysqli_fetch_assoc($resArtist);
+        $artist_ID = $artistData['Artist_ID'];
 
         $genreIDQ = "SELECT Genre_ID from genre where Genre_name = '$genre';";
         $resGenre = mysqli_query($mysqli, $genreIDQ );
-        $genre_ID = mysqli_fetch_row($resGenre );
+        $genreData = mysqli_fetch_assoc($resGenre);
+        $genre_ID = $genreData['Genre_ID'];
         //$artistID = mysqli_fetch_row($resUpdate)[0];
 
         $sql = "UPDATE `global_musicbank` SET Title='$title', Artist_ID=$artist_ID, Genre_ID=$genre_ID where Song_ID = $id";
@@ -54,9 +48,9 @@ if (isset($_GET['songid'])){
             echo "update failed: " . mysqli_error($mysqli);
         }
     } 
-} else{
-    echo "cant get songid";
-}
+    else{
+        echo "cant get songid";
+    }
 
 
 
@@ -83,7 +77,7 @@ if (isset($_GET['songid'])){
     <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
     <br></br>
     <div class="container-main">
-        <form action= "adminEditSongInfo.php" method="post">
+        <form method="post">
                     <h2>Edit Song Information</h2>
                     <div class="input-label">
                         <label for="title">Title</label>

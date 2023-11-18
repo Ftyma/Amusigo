@@ -2,12 +2,12 @@
 require_once('../connect.php');
 session_start();
 
-$username = $_GET['Username'];
-echo $updateQ = "SELECT * FROM users WHERE Username = $username";
+$id = $_GET['userid'];
+echo $updateQ = "SELECT * FROM users WHERE Student_ID = $id";
 $resUpdate = mysqli_query($mysqli, $updateQ);
 $row = mysqli_fetch_array($resUpdate);
 
-//$username = $row['Username'];
+$username = $row['Username'];
 $email = $row['Email'];
 $lineid = $row['Line_ID'];
 $faculty = $row['Faculty'];
@@ -15,6 +15,42 @@ $year = $row['Year'];
 $name = $row['Name'];
 $profileUrl = $row['profile_url'];
 $stdid = $row['Student_ID'];
+
+if (isset($_POST['submit'])) {
+    echo "Form submitted";
+    $username = $_POST["username"];
+    $fname = $_POST["fname"];
+    $lname = $_POST["lname"];
+    $name = "$fname $lname";
+    $email = $_POST["email"];
+    //$passwd = $_POST["passwd"];
+    $stdid = $_POST["stdid"];
+    $faculty = $_POST["faculty"];
+    $year = $_POST["year"];
+    $line = $_POST["line"];
+    $profile = $_POST["profile"];
+
+    // $q = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
+    // $res = mysqli_query($mysqli, $q);
+
+    if ($resUpdate) {
+        //$artistID = mysqli_fetch_row($res)[0];
+
+        $sql = "UPDATE `users` SET Username = '$username', Email = '$email', Line_ID='$lineid', Faculty='$faculty',
+        Year='$year', Name = '$name', profile_url='$profileUrl' WHERE Student_ID = $id";
+        $result = mysqli_query($mysqli, $sql);
+
+        if ($result) {
+            echo "update successful!";
+            header("Location: adminUser.php");
+            exit(); 
+        } else {
+            echo "update failed: " . mysqli_error($mysqli);
+        }
+    } else {
+        echo "Error fetching artist: " . mysqli_error($mysqli);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +72,7 @@ $stdid = $row['Student_ID'];
     <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
     <br></br>
     <div class="container-main">
-    <form action="adminEditUser.php" method="post" >
+    <form method="post" >
                 <div class="form1">
                     <h1 class="subtitle">Personal Information</h1>
                     <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
@@ -60,10 +96,10 @@ $stdid = $row['Student_ID'];
                         <input type="email" name="email" required value="<?php echo $email; ?>">
                     </div>
                     
-                    <div class="input-label">
+                    <!-- <div class="input-label">
                         <label class="required">Password</label>
                         <input type="password" name="passwd" required>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="form2">
@@ -118,39 +154,5 @@ $stdid = $row['Student_ID'];
 <?php
 //$id = $_GET['userid'];
 
-if (isset($_POST['submit'])) {
-    echo "Form submitted";
-    $username = $_POST["username"];
-    $fname = $_POST["fname"];
-    $lname = $_POST["lname"];
-    $name = "$fname $lname";
-    $email = $_POST["email"];
-    $passwd = $_POST["passwd"];
-    $stdid = $_POST["stdid"];
-    $faculty = $_POST["faculty"];
-    $year = $_POST["year"];
-    $line = $_POST["line"];
-    $profile = $_POST["profile"];
 
-    // $q = "SELECT Artist_ID FROM `artist` WHERE Name = '$artist_Name';";
-    // $res = mysqli_query($mysqli, $q);
-
-    if ($resUpdate) {
-        //$artistID = mysqli_fetch_row($res)[0];
-
-        $sql = "UPDATE `users` SET Username = '$username', Email = '$email', Line_ID='$lineid', Faculty='$faculty',
-        Year='$year', Name = '$name', profile_url='$profileUrl' WHERE Student_ID = $id";
-        $result = mysqli_query($mysqli, $sql);
-
-        if ($result) {
-            echo "update successful!";
-            header("Location: adminUser.php");
-            exit(); 
-        } else {
-            echo "update failed: " . mysqli_error($mysqli);
-        }
-    } else {
-        echo "Error fetching artist: " . mysqli_error($mysqli);
-    }
-}
 ?>

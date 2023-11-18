@@ -65,11 +65,11 @@ if (isset($_POST['submit'])) {
     <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
     <br></br>
     <div class="container-main">
-    <form action = "adminEditArtist.php" method="post">
+    <form method="post">
         <h2>Update Artist</h2>
         <div class="input-label">
                 <label>Artist Name</label>
-                <input type="text" name="name" placeholder="Name" value="<?php echo $artist_Name; ?>">
+                <input type="text" name="name" placeholder="Name">
         </div>
         <div class="input-label">
 
