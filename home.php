@@ -8,7 +8,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
     exit();
 }
 
-$userName = $_SESSION["username"]; 
+$username = $_SESSION["username"]; 
 ?>
 
 <script>
@@ -38,7 +38,7 @@ $userName = $_SESSION["username"];
             <!-- profile button -->
             <?php include('profile.php'); ?>
            
-            <h1 class="home-title" style="color:#8328ba">Welcome! <?php echo $userName;?>
+            <h1 class="home-title" style="color:#8328ba">Welcome! <?php echo $username;?>
 </h1>
             
             <!-- Search bar -->
@@ -47,36 +47,82 @@ $userName = $_SESSION["username"];
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
 
-            <h2 class="subtitle">Your possible music mates...</h2>
+            <h2 class="subtitle">Mates based on same artist...</h2>
             <div class="user-profile">
             <?php 
-                
-                $userQ = 'SELECT * from Users;';
-                if($result=$mysqli->query($userQ)){
-                    while($row=$result->fetch_array()){
-                        echo '<div>';
-                        echo '<a href="mateProfile.php?friend='.$row[1].'">';
-                        echo '<img class="user-img" src="' . $row[7] . '" >';
-                        echo '</a>';
-                        echo '<p class="user-name"> ' . $row[1] . ' </p>';
-                        echo '</div>';
-                    }
-                }else {
-                    echo 'Query error: '.$mysqli->error;
-                }
-            ?>
+               $songQold = "SELECT * FROM users WHERE Username = '$username'";
+               $result1 = $mysqli->query($songQold);
+               
+               if ($result1 !== false) {
+                   while ($row1 = $result1->fetch_array()) {
+                       $student_id = $row1['Student_ID'];
+                   }
+               } else {
+                   echo "Error in query execution: " . $mysqli->error;
+               }
+               
+               $maxartist = "SELECT count(u.Song_ID) as c, a.Artist_ID FROM user_musicbank as u 
+                   INNER JOIN global_musicbank as g ON u.Song_ID = g.Song_ID 
+                   INNER JOIN artist as a ON g.Artist_ID = a.Artist_ID
+                   WHERE u.Student_ID = $student_id 
+                   GROUP BY a.Artist_ID 
+                   ORDER BY c DESC 
+                   LIMIT 1";
+               
+               if ($resultm = $mysqli->query($maxartist)) {
+                   while ($rowm = $resultm->fetch_array()) {
+                       $artist = $rowm[1];
+                       
+                   }
+               } else {
+                   echo 'Query error: ' . $mysqli->error;
+               }
+               
+               $userQ = "SELECT u.* FROM users AS u 
+                   INNER JOIN (SELECT um.Student_ID 
+                       FROM user_musicbank AS um 
+                       INNER JOIN global_musicbank AS gm ON um.Song_ID = gm.Song_ID 
+                       WHERE gm.Artist_ID = $artist 
+                       GROUP BY um.Student_ID 
+                       ORDER BY COUNT(um.Song_ID) DESC 
+                       ) AS max_user 
+                   ON u.Student_ID = max_user.Student_ID
+                   WHERE u.Student_ID != $student_id and u.role != 'admin';";
+               
+               if ($result = $mysqli->query($userQ)) {
+                   while ($row = $result->fetch_array()) {
+                       echo '<div>';
+                       echo '<a href="mateProfile.php?friend=' . $row[1] . '">';
+                       echo '<img class="user-img" src="' . $row[7] . '" >';
+                       echo '</a>';
+                       echo '<p class="user-name"> ' . $row[1] . ' </p>';
+                       echo '</div>';
+                   }
+               } else {
+                   echo 'Query error: ' . $mysqli->error;
+               }
+               ?>
+               
+               
             </div>
 
 
-            <h2 class="subtitle">Suggested Artists...</h2>
+            <h2 class="subtitle">Suggested Mates...</h2>
             <div class="user-profile">
                 <?php
-                    $userQ = 'SELECT * from Users;';
-                    if ($result = $mysqli->query($userQ)) {
-                        while ($row = $result->fetch_array()) {
+                    $userQ = "SELECT u.*, count(um.Song_ID) AS cs
+                    FROM users AS u
+                    LEFT JOIN user_musicbank AS um ON u.Student_ID = um.Student_ID
+                    WHERE u.Student_ID != $student_id and u.role != 'admin'
+                    GROUP BY u.Student_ID
+                    ORDER BY cs DESC
+                    ;
+                    ";
+                    if ($result2 = $mysqli->query($userQ)) {
+                        while ($row2 = $result2->fetch_array()) {
                             echo '<div>';
-                            echo '<img src="' . $row[7] . '" class="user-img">';
-                            echo '<p class="user-name" >' . $row[1] . '</p>';
+                            echo '<img src="' . $row2[7] . '" class="user-img">';
+                            echo '<p class="user-name" >' . $row2[1] . '</p>';
                             echo '</div>';
                         }
                     } else {

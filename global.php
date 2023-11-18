@@ -47,9 +47,8 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                 <?php
 $songQ = "SELECT * 
         FROM global_musicbank as Songs
-        INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
-        INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
-        INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID";
+        INNER JOIN Genre as G on Songs.Genre_ID = G.Genre_ID
+        INNER JOIN Artist as A on Songs.Artist_ID = A.Artist_ID";
 if ($result = $mysqli->query($songQ)) {
     while ($row = $result->fetch_array()) {
         echo "<tr>

@@ -147,6 +147,9 @@ if (isset($_POST['submit'])) {
                         <label>Profile URL</label>
                         <input type="text" name="profile" value="<?php echo $profileUrl; ?>" >
                     </div>
+
+           
+
                 </div>
         <br></br>
         <div class="forbtn">
