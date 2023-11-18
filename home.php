@@ -105,12 +105,57 @@ $username = $_SESSION["username"];
                
                
             </div>
+               
+            <h2 class="subtitle">Mates based on same genre...</h2>
+            <div class="user-profile">
+                <?php
+                     $maxgenre = "SELECT count(u.Song_ID) as c, genre.Genre_ID FROM user_musicbank as u 
+                     INNER JOIN global_musicbank as g ON u.Song_ID = g.Song_ID 
+                     INNER JOIN genre ON g.Genre_ID = genre.Genre_ID
+                     WHERE u.Student_ID = $student_id 
+                     GROUP BY genre.Genre_ID 
+                     ORDER BY c DESC 
+                     LIMIT 1";
+                 
+                 if ($resultg = $mysqli->query($maxgenre)) {
+                     while ($rowg= $resultg->fetch_array()) {
+                         $genre = $rowg[1];
+                         
+                     }
+                 } else {
+                     echo 'Query error: ' . $mysqli->error;
+                 }
 
+                 $userg = "SELECT u.* FROM users AS u 
+                 INNER JOIN (SELECT um.Student_ID, COUNT(um.Song_ID) as cc
+                     FROM user_musicbank AS um 
+                     INNER JOIN global_musicbank AS gm ON um.Song_ID = gm.Song_ID 
+                     WHERE gm.Genre_ID = $genre 
+                     GROUP BY um.Student_ID 
+                     ORDER BY cc desc
+                     ) AS max_g
+                 ON u.Student_ID = max_g.Student_ID
+                 WHERE u.Student_ID != $student_id and u.role != 'admin';";
+               
+               if ($res = $mysqli->query($userg)) {
+                   while ($row9 = $res->fetch_array()) {
+                       echo '<div>';
+                       echo '<a href="mateProfile.php?friend=' . $row9[1] . '">';
+                       echo '<img class="user-img" src="' . $row9[7] . '" >';
+                       echo '</a>';
+                       echo '<p class="user-name"> ' . $row9[1] . ' </p>';
+                       echo '</div>';
+                   }
+               } else {
+                   echo 'Query error: ' . $mysqli->error;
+               }
+                ?>
+            </div>
 
             <h2 class="subtitle">Suggested Mates...</h2>
             <div class="user-profile">
                 <?php
-                    $userQ = "SELECT u.*, count(um.Song_ID) AS cs
+                    $sugg = "SELECT u.*, count(um.Song_ID) AS cs
                     FROM users AS u
                     LEFT JOIN user_musicbank AS um ON u.Student_ID = um.Student_ID
                     WHERE u.Student_ID != $student_id and u.role != 'admin'
@@ -118,7 +163,7 @@ $username = $_SESSION["username"];
                     ORDER BY cs DESC
                     ;
                     ";
-                    if ($result2 = $mysqli->query($userQ)) {
+                    if ($result2 = $mysqli->query($sugg)) {
                         while ($row2 = $result2->fetch_array()) {
                             echo '<div>';
                             echo '<img src="' . $row2[7] . '" class="user-img">';

@@ -68,7 +68,7 @@ $username = $_SESSION["username"];
         }
         
 
-            $songQ = "SELECT S.title, A.name, G.Genre_name
+            $songQ = "SELECT Songs.Song_ID, S.title, A.name, G.Genre_name
                     FROM user_musicbank as Songs
                     INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
                     INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
@@ -81,7 +81,7 @@ $username = $_SESSION["username"];
                         <td>" . $row2['name']."</td>
                         <td>" . $row2['Genre_name']."</td>
                         <td>
-                            <a href='#'><i class='fa-regular fa-circle-plus'></i></a>
+                            <a href='addfromuser.php?songid=" . $row2['Song_ID'] . "'><i class='fa-regular fa-circle-plus'></i></a>
                         </td>
                     </tr>";
                 }
