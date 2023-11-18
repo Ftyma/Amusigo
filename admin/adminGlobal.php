@@ -66,25 +66,20 @@ if ($result = $mysqli->query($songQ)) {
         echo "<tr>
                 <td> " . $row['Title'] . "</td>
                 <td>" . $row['Name'] . "</td>
-                <td>" . $row['Genre_name'] . "</td>
-                <td>
-                <a href='adminEditSong.php?song_id=" .$row[0]. "'><button class='edit-btn'>Edit</button></a>
-                <a href='adminDelete.php?song_id=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
-                </td>
-            </tr>";
-        // if ($_SESSION['role'] == 'admin') {
-        //     echo "<td>
-        //             <a href='adminEditSong.php?songid=" . $row['Song_ID'] . "'><button class='edit-btn'>Edit</button></a>
-        //             <a href='adminDelete.php?songid=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
-        //         </td>";
-        //  }
-        //else {
-        //     echo "<td>
-        //             <a href='../add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
-        //         </td>";
-        // }
+                <td>" . $row['Genre_name'] . "</td>";
 
-        //echo "</tr>";
+        if ($_SESSION['role'] == 'admin') {
+            echo "<td>
+                    <a href='adminEditSong.php?songid=" . $row['Song_ID'] . "'><button class='edit-btn'>Edit</button></a>
+                    <a href='adminDelete.php?songid=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
+                </td>";
+        }else {
+            echo "<td>
+                    <a href='../add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
+                </td>";
+        }
+
+        echo "</tr>";
     }
 }
 ?>

@@ -2,12 +2,15 @@
 require_once('../connect.php');
 session_start();
 
-$id = $_GET['song_id'];
+
+    $id = $_GET['songid'];
+    $songid = mysqli_real_escape_string($mysqli, $id);
+    echo $songid;
 $updateQ = "SELECT * 
 FROM global_musicbank as Songs
 INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
 INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
-INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID";
+INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID where Songs.Song_ID = '$songid'";
 $resUpdate = mysqli_query($mysqli, $updateQ);
 $row = mysqli_fetch_array($resUpdate);
 
@@ -15,8 +18,12 @@ $title = $row['Title'];
 $artist_Name = $row['Name'];
 $genre = $row['Genre_name'];
 
-if (isset($_POST['submit'])) {
+
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
     echo "Form submitted";
+
+    $songid = $_POST["songid"];
     $title = $_POST["title"];
     $artist_Name = $_POST["artist"];
     $genre = $_POST["genre"];
@@ -30,12 +37,12 @@ if (isset($_POST['submit'])) {
     if ($res && $res1) {
         $artistID = mysqli_fetch_row($res)[0];
         $genreID = mysqli_fetch_row($res1)[0];
-        $sql = "UPDATE `global_musicbank` SET Title='$title', Artist_ID=$artistID, Genre_ID = $genreID  WHERE Song_ID = $id";
+        echo $sql = "UPDATE global_musicbank SET Title='$title', Artist_ID=$artistID, Genre_ID = $genreID  WHERE Song_ID = $songid";
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
             echo "update successful!";
-            header("Location: adminGlobal.php");
+            //header("Location: adminGlobal.php");
             exit(); 
         } else {
             echo "update failed: " . mysqli_error($mysqli);
@@ -106,6 +113,7 @@ if (isset($_POST['submit'])) {
         </div>
 
         <br></br>
+        <input type="hidden" name="songid" value="<?php echo $id; ?>">
         <div class="forbtn">
              <button id = "btn-add" type="submit" name="submit">Update</button>
         </div>
