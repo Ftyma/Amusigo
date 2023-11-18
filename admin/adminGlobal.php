@@ -35,11 +35,20 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
             <h1 class="home-title" style="color:#8328ba"><strong>Global Music Bank</strong></h1>
 
             <!-- Search bar -->
-            <div class="input-container">
+            <!-- <div class="input-container">
                 <input class="search" type="text" placeholder="In your music bank ... ">            
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+            </div> -->
             
+            <form method="POST" action="search.php">
+                <div class="input-container">
+                    <input class="search" type="text" name="search" placeholder="In your music bank ... ">
+                    <a href="search.php">
+                    <i class="search-icon fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </div>
+            </form>
+
             <?php
                 if ($_SESSION['role'] == 'admin') {
                     echo "<a href='addSong.php'>
