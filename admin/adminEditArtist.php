@@ -1,4 +1,10 @@
 <?php
+function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+?>
+
+<?php
 require_once('../connect.php');
 session_start();
 
@@ -35,8 +41,10 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
-            echo "update successful!";
-            header("Location: adminArtist.php");
+            phpAlert("Update Artist Sucessfuly"); 
+            echo '<script>
+                      window.location.href = "adminArtist.php";
+                   </script>';
             exit(); 
         } else {
             echo "update failed: " . mysqli_error($mysqli);
@@ -69,19 +77,19 @@ if (isset($_POST['submit'])) {
         <h2>Update Artist</h2>
         <div class="input-label">
                 <label>Artist Name</label>
-                <input type="text" name="name" placeholder="Name">
+                <input type="text" name="name" placeholder="Name" value="<?php echo $artist_Name; ?>" >
         </div>
         <div class="input-label">
 
                 <label for="link">Profile Link</label>
-                <input type="text" name="imgUrl" placeholder="Profile image link">
+                <input type="text" name="imgUrl" placeholder="Profile image link" value="<?php echo $img ?>">
             </div>
 
             
 
             <div class="input-label">
                 <label>Bio</label>
-                <input type="text" name="bio" placeholder="artist bio">
+                <input type="text" name="bio" placeholder="artist bio" value="<?php echo $bio ?>">
             </div>
 
             <div class="input-label">
@@ -339,12 +347,12 @@ if (isset($_POST['submit'])) {
             
             <div class="input-label">
                 <label>Website Link</label>
-                <input type="text" name="website" placeholder="artist website link">
+                <input type="text" name="website" placeholder="artist website link" value="<?php echo $website; ?>">
             </div>
 
             <div class="input-label">
                 <label>Birthdate</label>
-                <input type="date" name="date" placeholder="artist birthdate">
+                <input type="date" name="date" placeholder="artist birthdate" value="<?php echo $bdate ; ?>">
         
         <br></br>
         <div class="forbtn">

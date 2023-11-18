@@ -1,4 +1,10 @@
 <?php
+   function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+    }
+?>
+
+<?php
 require_once('../connect.php');
 session_start();
 
@@ -25,8 +31,12 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
-            echo "update successful!";
-            header("Location: adminAlbum.php");
+            
+            phpAlert("Update Album Sucessfuly"); 
+            echo '<script>
+                      window.location.href = "adminArtist.php";
+                   </script>';
+
             exit(); 
         } else {
             echo "update failed: " . mysqli_error($mysqli);

@@ -1,4 +1,10 @@
 <?php
+function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+?>
+
+<?php
 require_once('../connect.php');
 session_start();
 

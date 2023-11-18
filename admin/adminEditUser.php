@@ -1,4 +1,10 @@
 <?php
+function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+?>
+
+<?php
 require_once('../connect.php');
 session_start();
 
@@ -54,9 +60,12 @@ if (isset($_POST['submit'])) {
         WHERE Username='$username'";
         $result1=$mysqli->query($updatelogin);
 
-            echo '<script>alert("Updated successfully!");
-            window.location.href = "adminUser.php";</script>';
-            exit(); 
+        phpAlert("Update User Sucessfuly"); 
+        echo '<script>
+                  window.location.href = "adminUser.php";
+               </script>';
+        exit(); 
+
         } else {
             echo "update failed: " . mysqli_error($mysqli);
         }

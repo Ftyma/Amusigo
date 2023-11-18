@@ -21,6 +21,11 @@ $profileUrl = $row['profile_url'];
 $stdid = $row['Student_ID'];
 $role = $row['role'];
 
+$nameParts = explode(' ', $name);
+$fName = $nameParts[0];
+$lName = $nameParts[1];
+
+
 if (isset($_POST['submit'])) {
     echo "Form submitted";
     $username = $_POST["username"];
@@ -92,12 +97,12 @@ if (isset($_POST['submit'])) {
 
                     <div class="input-label">
                         <label class="required">First name</label>
-                        <input type="text" name="fname" required>
+                        <input type="text" name="fname" required value="<?php echo $fName; ?>" >
                     </div>
 
                     <div class="input-label">
                         <label class="required">Last name</label>
-                        <input type="text" name="lname" required>
+                        <input type="text" name="lname" required value="<?php echo $lName; ?>">
                     </div>
 
                     <div class="input-label">
@@ -143,7 +148,7 @@ if (isset($_POST['submit'])) {
                     
                     <div class="input-label">
                         <label>Profile URL</label>
-                        <input type="text" name="profile">
+                        <input type="text" name="profile" value="<?php echo $profileUrl; ?>">
                     </div>
                     
                     <div class="forbtn">

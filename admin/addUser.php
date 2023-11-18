@@ -39,11 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         else{
             $insertLogin = "Insert into login(Username, Password) values('$username','$hashedPassword')";
             $qLogin = $mysqli->query($insertLogin);
-            echo '<script>alert("Updated successfully!");
+            echo '<script>alert("Added user successfully!");
             window.location.href = "adminUser.php";</script>';
         }
     }  
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -157,7 +158,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="btn-container">
                     <button type="submit" id = "btn-add"class="btn-register">Add User</button>
                 </div>
+               
         </form>
+        <div>
+      
+        </div>
+       
         </div>
         </div>
         </div>

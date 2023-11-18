@@ -1,4 +1,10 @@
 <?php
+function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+?>
+
+<?php
 require_once('../connect.php');
 session_start();
     $id = $_GET['songid'];
@@ -20,7 +26,7 @@ session_start();
          exit();
     }   
     if (isset($_POST['submit'])) {
-        echo "Form submitted";
+
         $title = $_POST["title"];
         $artist_Name = $_POST["artist"];
         $genre = $_POST["genre"];
@@ -41,12 +47,15 @@ session_start();
         $result = mysqli_query($mysqli, $sql);
 
         if ($result) {
-            echo "update successful!";
-            header("Location: adminGlobal.php");
-            exit(); 
+            phpAlert("Updated Song Sucessfully!");
+            echo '<script>
+                      window.location.href = "adminGlobal.php";
+                   </script>';
+            exit();
         } else {
-            echo "update failed: " . mysqli_error($mysqli);
+            echo "Update failed: " . mysqli_error($mysqli);
         }
+        
     } 
     else{
         echo "cant get songid";
