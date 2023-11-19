@@ -24,9 +24,10 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
 </head>
 
 <body id="music-mate">
-<?php include('sidebar.php'); ?>
+
 
 <?php $username = $_SESSION["username"]; ?>
+<?php include('sidebar.php'); ?>
     <div class="musicmate-right">
         
         <div class="top-container">
@@ -37,15 +38,21 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                 <input class="search" type="text" placeholder="In your music bank ... ">            
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
-            <div>
-                <!-- profile button -->
-                <?php include('profile.php'); ?>
-                <!-- <a href='userprofile.php'><button id='profile-btn' class="fa-regular fa-user"></button></a> -->
-            </div>
-            
            
-        </div>
+                <!-- profile button -->
+                <!-- <?php include('profile.php'); ?> -->
+            <a href="userprofile.php"><button class="profile-btn">
+            <i class="fa-regular fa-user"></i>
+                &nbsp;Profile 
+        </button>
+    </a>
 
+        </div>
+            <!-- Search bar -->
+        <div class="input-container-2">
+                <input class="search" type="text" placeholder="In your music bank ... ">            
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+        </div>
         <div>
         <table>
         <tr>

@@ -19,12 +19,12 @@ require_once('connect.php');
 </head>
 
 <body id="signup">
-    <div class="sidebar">
-        <?php include('sidebar.php')?>
-    </div>
     
     <?php session_start();
-        $uname= $_SESSION['username'];?>
+        $uname= $_SESSION["username"];?>
+    <?php include('sidebar.php')?>
+    
+    
     <div class="edit-right">
         <h1 class="title1">Edit your profile</h1>
         <div class="container" >

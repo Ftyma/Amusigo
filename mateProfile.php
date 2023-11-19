@@ -21,9 +21,6 @@ session_start();
 <?php include('sidebar.php'); ?>
 <?php $friend = $_GET["friend"];
 $username = $_SESSION["username"]; 
-
-
-
  ?>
     <div class="container">
         

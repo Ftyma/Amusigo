@@ -56,7 +56,7 @@ if (isset($song_id)) {
         echo "<script>
         Swal.fire({
            icon: 'success',
-           title: 'Song Alraedy In Music Bank',
+           title: 'Song Already In Music Bank',
            showConfirmButton: false,
            timer: 3000
         });

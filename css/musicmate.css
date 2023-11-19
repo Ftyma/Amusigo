@@ -21,12 +21,13 @@
   display: flex;
   align-content: center;
   margin: 2rem;
+
 }
 
 .input-container-1 {
   display: flex;
   align-items: center;
-  /* padding: 10px; */
+  padding: 10px;
   border-radius: 20px;
   background-color: #e0d1ff;
   width: 35%;
@@ -96,8 +97,10 @@ td {
 }
 .delete-btn:hover {
   background-color: lightcoral;
+  scale: 110%;
+  border-style: none;
 }
-button {
+.delete-btn {
   background-color: transparent;
   width: 60px;
   text-align: center;
@@ -107,22 +110,43 @@ button {
   border-color: black;
 
 }
-button:hover {
-  scale: 110%;
-  border-style: none;
-}
 
-#profile-btn{
-  display: flex;
+
+.profile-btn{
+  /* display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 20px;
-  background-color: #bf9ffe;
+  background-color: #e9baff;
   width: 100%;
   justify-content: center;
   margin-inline: auto;
+  margin-right: 2rem;
+  border: none;
+  font-size: large; */
+  margin: 25px;
+  background: linear-gradient(
+    90.11deg,
+    rgba(200, 83, 219, 0.18) 32.29166567325592%,
+    rgba(200, 83, 219, 0.1) 100%
+  );
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #a654d8;
+  border-width: 2px;
+  width: 150px;
+  height: 40px;
+  position: relative;
+  font: 600  "NotoSans-SemiBold", sans-serif;
+  color: #a654d8;
+  font-size: 1.2rem;
+
 }
 
 .fa-regular fa-user{
   font-size: 20px;
+}
+
+a{
+  text-decoration: none;
 }
