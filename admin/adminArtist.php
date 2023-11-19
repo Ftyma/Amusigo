@@ -31,11 +31,14 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
            
             <h1 class="home-title" style="color:#8328ba">Artist Lists</h1>
 
-            <!-- Search bar -->
-            <div class="input-container">
-                <input class="search" type="text" placeholder="In your music bank ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+            <!-- search bar -->
+            <form action ="searchArtist.php"  method="POST">
+                <div class="input-container">
+                    <input type="text" name="searchSong" placeholder="In your music bank ... ">
+                    <a href="searchArtist.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    </a>
+                </div>
+            </form>
 
             <a href='addArtist.php'>
                 <button class="add-btn"> + Add Artists</button>

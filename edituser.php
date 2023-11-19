@@ -22,7 +22,7 @@ require_once('connect.php');
     <div class="sidebar">
         <?php include('sidebar.php')?>
     </div>
-    
+     
     <?php session_start();
         $uname= $_SESSION['username'];?>
     <div class="edit-right">
@@ -160,3 +160,8 @@ if (isset($_POST['confirm'])) {
     }
     }
 ?>
+
+
+               
+
+                 

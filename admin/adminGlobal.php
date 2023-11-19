@@ -40,11 +40,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div> -->
             
-            <form method="POST" action="search.php">
+            <form action ="search.php"  method="POST">
                 <div class="input-container">
-                    <input class="search" type="text" name="search" placeholder="In your music bank ... ">
-                    <a href="search.php">
-                    <i class="search-icon fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="searchSong" placeholder="In your music bank ... ">
+                    <a href="search.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
                     </a>
                 </div>
             </form>
@@ -65,32 +64,32 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     <th>Action</th>
                 </tr>
                 <?php
-$songQ = "SELECT * 
-        FROM global_musicbank as Songs
-        INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
-        INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
-        INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID";
-if ($result = $mysqli->query($songQ)) {
-    while ($row = $result->fetch_array()) {
-        echo "<tr>
-                <td> " . $row['Title'] . "</td>
-                <td>" . $row['Name'] . "</td>
-                <td>" . $row['Genre_name'] . "</td>";
+                    $songQ = "SELECT * 
+                            FROM global_musicbank as Songs
+                            INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
+                            INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
+                            INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID";
+                    if ($result = $mysqli->query($songQ)) {
+                        while ($row = $result->fetch_array()) {
+                            echo "<tr>
+                                    <td> " . $row['Title'] . "</td>
+                                    <td>" . $row['Name'] . "</td>
+                                    <td>" . $row['Genre_name'] . "</td>";
 
-        if ($_SESSION['role'] == 'admin') {
-            echo "<td>
-                    <a href='adminEditSongInfo.php?songid=" . $row[0] . "'><button class='edit-btn'>Edit</button></a>
-                    <a href='adminDelete.php?songid=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
-                </td>";
-        }else {
-            echo "<td>
-                    <a href='../add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
-                </td>";
-        }
+                            if ($_SESSION['role'] == 'admin') {
+                                echo "<td>
+                                        <a href='adminEditSongInfo.php?songid=" . $row[0] . "'><button class='edit-btn'>Edit</button></a>
+                                        <a href='adminDelete.php?songid=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
+                                    </td>";
+                            }else {
+                                echo "<td>
+                                        <a href='../add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
+                                    </td>";
+                            }
 
-        echo "</tr>";
-    }
-}
+                            echo "</tr>";
+                        }
+                    }
 ?>
 
             </table>
