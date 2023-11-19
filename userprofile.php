@@ -1,5 +1,18 @@
 <?php require_once('connect.php');
-session_start(); ?>
+session_start(); 
+$username = $_SESSION["username"]; 
+?>
+
+<?php
+        $profileimg = "SELECT * FROM users WHERE Username = '$username'";
+        $res = $mysqli->query($profileimg);
+        if ($res !== false && $res->num_rows) {
+            while ($row = $res->fetch_array()) {
+               $profile = $row[7];
+            }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }?>
 
 <!DOCTYPE html>
 <html>
@@ -18,15 +31,15 @@ session_start(); ?>
 </head>
 
 <body id="userprofile">
-    <?php $username = $_SESSION["username"]; 
+    <?php 
     include('sidebar.php')?>
     
     <div class="userprofile-right">
         <div  class="top-container" style="display:flex; align-content:center; margin: 2rem;  ">
             <h1 style="color:#8328BA">Your Account</h1>
-            <a href='edituser.php'><button class="btn-edit">Edit</button></a>
+            <a href='edituser.php'><button class="btn-edit">Edit profile</button></a>
         </div>
-        <img style="border-radius: 50%; width: 150px; margin-left:3.5rem" class="profile-img" src="https://miro.medium.com/v2/resize:fit:1400/1*YMJDp-kqus7i-ktWtksNjg.jpeg">
+        <img style="border-radius: 50%; width: 250px; margin-left:3.5rem" class="profile-img" src=<?php echo $profile?>>
         <div id="container">
             <div id="personal-container">
                 <h2>Personal Information</h2>
@@ -60,11 +73,8 @@ session_start(); ?>
             <div id="school-container">
                 <h2>School Information</h2>
                 <label><b>Student ID: </b><?php echo $student_id; ?></label>
-
                 <label><b>Faculty: </b><?php echo $faculty; ?></label>
-
                 <label><b>Current Study Year: </b><?php echo $year; ?></label>
-
                 <label><b>Line ID: </b><?php echo $line; ?></label>
             </div>
         </div>

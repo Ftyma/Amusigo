@@ -7,7 +7,7 @@ require_once('connect.php');
 <head>
 
 <title>Amusigo</title>
-<link rel="stylesheet" href="css/signup.css">
+<link rel="stylesheet" href="css/edituser.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -19,10 +19,13 @@ require_once('connect.php');
 </head>
 
 <body id="signup">
-    <!-- <?php include('sidebar.php')?> -->
+    <div class="sidebar">
+        <?php include('sidebar.php')?>
+    </div>
+    
     <?php session_start();
         $uname= $_SESSION['username'];?>
-    <div class="main">
+    <div class="edit-right">
         <h1 class="title1">Edit your profile</h1>
         <div class="container" >
             <form action="edituser.php" method="post" >

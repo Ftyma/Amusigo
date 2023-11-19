@@ -37,16 +37,13 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                 <input class="search" type="text" placeholder="In your music bank ... ">            
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
-
-            <!-- profile button -->
-            <?php include('profile.php'); ?>
+            <div>
+                <!-- profile button -->
+                <?php include('profile.php'); ?>
+                <!-- <a href='userprofile.php'><button id='profile-btn' class="fa-regular fa-user"></button></a> -->
+            </div>
+            
            
-        </div>
-
-        <!-- Search bar -->
-        <div class="input-container-2">
-                <input class="search" type="text" placeholder="In your music bank ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
         </div>
 
         <div>
@@ -71,7 +68,8 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                     echo "<tr>
                         <td> " . $row['username']."</td>
                         <td>
-                            <a href='delete.php?mate_id=" . $row['friend_id'] . "'><i class='fa-regular fa-circle-plus'></i></a>
+                            <a href='delete.php?mate_id=" . $row['friend_id'] . "'><button class='delete-btn' 
+                            style='font-size: medium;font-weight: bold;'> - </button></a>
                         </td>
                     </tr>";
                 }
@@ -81,6 +79,9 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         } else {
             echo "Error in query execution: " . $mysqli->error;
         }
+
+        
+
         ?>
     </table>
         </div>

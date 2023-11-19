@@ -38,7 +38,7 @@ $username = $_SESSION["username"];
             <!-- profile button -->
             <?php include('profile.php'); ?>
            
-            <h1 class="home-title" style="color:#8328ba">Welcome! <?php echo $username;?>
+            <h1 class="home-title" style="color:#8328ba">Welcome <?php echo $username;?> !
 </h1>
             
             <!-- Search bar -->
@@ -166,6 +166,7 @@ $username = $_SESSION["username"];
                             echo '<div>';
                             echo '<a href="mateProfile.php?friend=' . $row2[1] . '">';
                             echo '<img src="' . $row2[7] . '" class="user-img">';
+                            echo '</a>';
                             echo '<p class="user-name" >' . $row2[1] . '</p>';
                             echo '</div>';
                         }

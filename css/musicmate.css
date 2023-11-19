@@ -26,7 +26,7 @@
 .input-container-1 {
   display: flex;
   align-items: center;
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 20px;
   background-color: #e0d1ff;
   width: 35%;
@@ -68,9 +68,9 @@ input[type="text"] {
     padding: 5px;
     border-radius: 20px;
     background-color: #e0d1ff;
-    width: 90%;
+    /* width: 90%; */
     justify-content: center;
-    margin-inline: auto;
+    /* margin-inline: auto; */
     margin-bottom: 2.5rem;
   }
 }
@@ -93,4 +93,36 @@ th {
 
 td {
   padding-block: 0.5rem;
+}
+.delete-btn:hover {
+  background-color: lightcoral;
+}
+button {
+  background-color: transparent;
+  width: 60px;
+  text-align: center;
+  border-radius: 20px;
+  /* padding-block: 5px; */
+  border-style: 0.5px solid;
+  border-color: black;
+
+}
+button:hover {
+  scale: 110%;
+  border-style: none;
+}
+
+#profile-btn{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #bf9ffe;
+  width: 100%;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.fa-regular fa-user{
+  font-size: 20px;
 }

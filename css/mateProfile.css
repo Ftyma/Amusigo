@@ -57,3 +57,8 @@ th {
 td {
   padding-block: 0.5rem;
 }
+
+.hidden {
+  display: none;
+}
+
