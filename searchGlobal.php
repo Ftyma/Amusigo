@@ -1,10 +1,6 @@
 <?php 
-require_once('../connect.php'); 
+require_once('connect.php'); 
 session_start();
-
-if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION["login"] !== true) {
-    header("Location: ../signin.php"); 
-} 
 
 //$search= $_SESSION['search'];
 ?>
@@ -13,7 +9,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 <html class="bg-color">
     <head>
         <title>Amusigo</title>
-        <link rel="stylesheet" href="../css/adminGlobal.css">
+        <link rel="stylesheet" href="css\searchGlobal.css">
 
         <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link
@@ -26,7 +22,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
     </head>
     <body id="global">   
         <?php 
-            include('adminSidebar.php');
+            include('sidebar.php');
          ?>
 
         <div class="global-right">
@@ -34,10 +30,10 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
            
             <h1 class="home-title" style="color:#8328ba"><strong>Global Music Bank</strong></h1>
             <!-- search bar -->
-            <form action ="search.php"  method="POST">
+            <form action ="searchMate.php"  method="POST">
                 <div class="input-container">
-                    <input type="text" name="searchSong" placeholder="In your music bank ... ">
-                    <a href="search.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" name="searchSong" placeholder="Search for mate ... ">
+                    <a href="searchMate.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
                     </a>
                 </div>
             </form>
@@ -52,7 +48,6 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                 
             ?>
 
-<!-- for global music bank  -->
                 <?php
                  if (isset($_POST['searchbtn'])) {
                     $search = $_POST["searchSong"];
@@ -86,9 +81,8 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                                         <td>" . $row['Artist'] . "</td>
                                         <td>" . $row['Genre'] . "</td>
                                         <td>
-                                        <a href='adminEditSongInfo.php?songid=" . $row['Song_ID'] . "'><button class='edit-btn'>Edit</button></a>
-                                        <a href='adminDelete.php?songid=" . $row['Song_ID'] . "'><button class='delete-btn'>Delete</button></a>
-                                    </td>
+                                            <a href='add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
+                                        </td>
                                     </tr>";
                             }
         
@@ -103,10 +97,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                     } else {
                         echo "<strong>No search term provided.";
                     }
-                }
-        
-                
-               
+                }               
                 ?>
 
         </div>

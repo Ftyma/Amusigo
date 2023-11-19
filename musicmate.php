@@ -31,13 +31,16 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
     <div class="musicmate-right">
         
         <div class="top-container">
-            <h1 style="color:#8328BA">Music Mate</h1>
+            <h1 style="color:#8328BA">Your Music Mates</h1>
 
-            <!-- Search bar -->
-            <div class="input-container-1">
-                <input class="search" type="text" placeholder="In your music bank ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+            <!-- search bar -->
+            <form action ="searchMate.php"  method="POST">
+                <div class="input-container">
+                    <input type="text" name="searchSong" placeholder="Search for mate ... ">
+                    <a href="searchMate.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    </a>
+                </div>
+            </form>
            
                 <!-- profile button -->
                 <!-- <?php include('profile.php'); ?> -->

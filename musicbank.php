@@ -33,21 +33,18 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
         <div class="top-container">
             <h1 style="color:#8328BA"><?php echo $username ?>'s Bank</h1>
 
-            <!-- Search bar -->
-            <div class="input-container-1">
-                <input class="search" type="text" placeholder="In your music bank ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+            <!-- search bar -->
+            <form action ="searchUserBank.php"  method="POST">
+                <div class="input-container">
+                    <input type="text" name="searchSong" placeholder="In your music bank ... ">
+                    <a href="searchUserBank.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    </a>
+                </div>
+            </form>
 
             <!-- profile button -->
             <?php include('profile.php'); ?>
            
-        </div>
-
-        <!-- Search bar -->
-        <div class="input-container-2">
-                <input class="search" type="text" placeholder="In your music bank ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
         </div>
 
         <div>

@@ -27,7 +27,7 @@
   justify-content: center;
   margin-inline: auto;
   margin-top: 3rem;
-  margin-bottom: 5rem;
+    
 }
 
 i.fas {
@@ -87,4 +87,14 @@ input[type="text"] {
   .subtitle {
     font-size: 1.2rem;
   }
+}
+
+button{
+  background-color: transparent;
+  width: 60px;
+  text-align: center;
+  border-radius: 20px;
+  padding-block: 5px;
+  border-style: 0.5px solid;
+  border-color: black;
 }

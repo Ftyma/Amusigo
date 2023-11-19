@@ -41,11 +41,14 @@ $username = $_SESSION["username"];
             <h1 class="home-title" style="color:#8328ba">Welcome <?php echo $username;?> !
 </h1>
             
-            <!-- Search bar -->
-            <div class="input-container">
-                <input class="search" type="text" placeholder="Search for music ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+            <!-- search bar -->
+            <form action ="searchGlobal.php"  method="POST">
+                <div class="input-container">
+                    <input type="text" name="searchSong" placeholder="In your music bank ... ">
+                    <a href="searchGlobal.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    </a>
+                </div>
+            </form>
 
             <h2 class="subtitle">Mates based on same artist...</h2>
             <div class="user-profile">
