@@ -8,6 +8,7 @@ $username = $_SESSION["username"];
         $res = $mysqli->query($profileimg);
         if ($res !== false && $res->num_rows) {
             while ($row = $res->fetch_array()) {
+                $stdid = $row[0];
                $profile = $row[7];
             }
         } else {
@@ -37,6 +38,8 @@ $username = $_SESSION["username"];
     <div class="userprofile-right">
         <div  class="top-container" style="display:flex; align-content:center; margin: 2rem;  ">
             <h1 style="color:#8328BA">Your Account</h1>
+            <!-- <?php echo $stdid?> -->
+            <!-- <a href='edituser.php?userid=<?php echo $stdid?>'><button class="btn-edit">Edit profile</button></a> -->
             <a href='edituser.php'><button class="btn-edit">Edit profile</button></a>
         </div>
         <img style="border-radius: 50%; width: 250px; margin-left:3.5rem" class="profile-img" src=<?php echo $profile?>>
