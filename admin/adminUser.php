@@ -28,11 +28,15 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 
         <div class="user-right">
             <h1 class="home-title" style="color:#8328ba; font-size:50px;">Users List</h1>
-            <!-- Search bar -->
-            <div class="input-container">
-                <input class="search" type="text" placeholder="In your music bank ... ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-            </div>
+            <!-- search bar -->
+            <form action ="searchUser.php"  method="POST">
+                <div class="input-container">
+                    <input type="text" name="searchSong" placeholder="Search for users ... ">
+                    <a href="searchUser.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    </a>
+                </div>
+            </form>
+
             <a href='addUser.php'>
                 <button id = "add-btn" class="add-btn" type="submit"> + Add User</button>
             </a>
