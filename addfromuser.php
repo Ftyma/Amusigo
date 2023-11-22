@@ -9,8 +9,20 @@ require_once('connect.php');
 session_start();
 $username = $_SESSION["username"];
 $song_id = $_GET['songid'];
+$friend = $_GET["friend"];
+
+
 
 if (isset($song_id)) {
+    $frnd = "SELECT * FROM users WHERE Username = '$friend'";
+        $result = $mysqli->query($frnd);
+        if ($result !== false) {
+            while ($row = $result->fetch_array()) {
+                $friend_id = $row[0];
+            }
+        } else {
+            echo "Error in query execution: " . $mysqli->error;
+        }
     $song = "SELECT * FROM users WHERE Username = '$username'";
     $result1 = $mysqli->query($song);
 
@@ -21,7 +33,7 @@ if (isset($song_id)) {
     } else {
         echo "Error in query execution: " . $mysqli->error;
     }
-
+        
     $check_query = "SELECT COUNT(*) as count FROM user_musicbank WHERE Song_ID = $song_id AND Student_id = $student_id";
     $check_result = $mysqli->query($check_query);
 
@@ -45,9 +57,9 @@ if (isset($song_id)) {
                icon: 'success',
                title: 'Song Added',
                showConfirmButton: false,
-               timer: 3000
+               timer: 0
             }).then(function() {
-               window.location.href = 'mateprofile.php'; 
+                window.location.href = 'mateProfile.php?friend=<?php echo $friend_id; ?>';
             });
          </script>";
         }
@@ -58,7 +70,10 @@ if (isset($song_id)) {
            icon: 'success',
            title: 'Song Already In Music Bank',
            showConfirmButton: false,
-           timer: 3000
+           timer: 0
+        }).then(function() {
+            window.location.href = 'mateProfile.php?friend=<?php echo $friend_id; ?>';
+ 
         });
      </script>";
     }

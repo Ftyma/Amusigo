@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
 
 
 <div class = "global-right">
-    <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
+    <h1 class="home-title" style="color:#8328ba">Edit user information </h1>
     <br></br>
     <div class="container-main">
     <form method="post" >

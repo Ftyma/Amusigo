@@ -117,8 +117,8 @@ $username = $_SESSION["username"];
     } else {
         echo "You are already following this user.<br>";
     }
-        echo "Student ID: " . $student_id . "<br>";
-        echo "Friend ID: " . $friendid . "<br>";
+        // echo "Student ID: " . $student_id . "<br>";
+        // echo "Friend ID: " . $friendid . "<br>";
 
                 // $insert = "INSERT INTO friend VALUES ($student_id,$friendid)";
                 // $result3 = $mysqli->query($insert);

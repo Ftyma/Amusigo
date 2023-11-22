@@ -30,10 +30,10 @@ session_start();
            
             <h1 class="home-title" style="color:#8328ba"><strong>Global Music Bank</strong></h1>
             <!-- search bar -->
-            <form action ="searchMate.php"  method="POST">
+            <form action ="searchGlobal.php"  method="POST">
                 <div class="input-container">
-                    <input type="text" name="searchSong" placeholder="Search for mate ... ">
-                    <a href="searchMate.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" name="searchSong" placeholder="Search for songs ... ">
+                    <a href="searchGlobal.php"><button type="submit" name ="searchbtn"><i class="search-icon fa-solid fa-magnifying-glass"></i></button>
                     </a>
                 </div>
             </form>

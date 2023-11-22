@@ -78,11 +78,6 @@ session_start();
         
     <div class = "global-right">
         <h1 class="home-title" style="color:#8328ba"><strong>Admin Page</h1>
-        <!-- Search bar -->
-        <div class="input-container">
-                <input class="search" type="text" placeholder="Check if song exists . . . ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-        </div>
         <br></br>
         <div class="container">
             <div class="form-left"> 

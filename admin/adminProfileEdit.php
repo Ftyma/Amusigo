@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
         <?php include('adminSidebar.php'); ?>
 
         <div class="global-right">
-            <h1 class="home-title" style="color:#8328ba">Admin Profile</h1>
+            <h1 class="home-title" style="color:#8328ba">Admin Edit Profile</h1>
           
          
             <form method="post">
