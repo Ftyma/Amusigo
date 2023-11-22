@@ -53,7 +53,7 @@ $username = $_SESSION["username"];
         $result = $mysqli->query($frnd);
         if ($result !== false) {
             while ($row = $result->fetch_array()) {
-                $friend_id = $row[0];
+                $friendid = $row[0];
             }
         } else {
             echo "Error in query execution: " . $mysqli->error;
@@ -74,7 +74,7 @@ $username = $_SESSION["username"];
                     INNER JOIN global_musicbank as S on Songs.Song_ID = S.Song_ID
                     INNER JOIN Genre as G on S.Genre_ID = G.Genre_ID
                     INNER JOIN Artist as A on S.Artist_ID = A.Artist_ID
-                    WHERE Student_ID = $friend_id";
+                    WHERE Student_ID = $friendid";
             if($result2=$mysqli->query($songQ)){
                 while($row2=$result2->fetch_array()){
                     echo "<tr>
@@ -82,7 +82,7 @@ $username = $_SESSION["username"];
                         <td>" . $row2['name']."</td>
                         <td>" . $row2['Genre_name']."</td>
                         <td>
-                            <a href='addfromuser.php?songid=" . $row2['Song_ID'] . "'><i class='fa-regular fa-circle-plus'></i></a>
+                            <a href='addfromuser.php?songid=" . $row2['Song_ID'] . "&friend=" . $friend . "'><i class='fa-regular fa-circle-plus'></i></a>
                         </td>
                     </tr>";
                 }

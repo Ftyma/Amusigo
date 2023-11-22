@@ -11,8 +11,6 @@ $username = $_SESSION["username"];
 $song_id = $_GET['songid'];
 $friend = $_GET["friend"];
 
-
-
 if (isset($song_id)) {
     $frnd = "SELECT * FROM users WHERE Username = '$friend'";
         $result = $mysqli->query($frnd);
@@ -57,9 +55,9 @@ if (isset($song_id)) {
                icon: 'success',
                title: 'Song Added',
                showConfirmButton: false,
-               timer: 0
+               timer: 3000
             }).then(function() {
-                window.location.href = 'mateProfile.php?friend=<?php echo $friend_id; ?>';
+                window.location.href = 'mateProfile.php?friend=" . $friend . "';
             });
          </script>";
         }
@@ -70,9 +68,9 @@ if (isset($song_id)) {
            icon: 'success',
            title: 'Song Already In Music Bank',
            showConfirmButton: false,
-           timer: 0
+           timer: 3000
         }).then(function() {
-            window.location.href = 'mateProfile.php?friend=<?php echo $friend_id; ?>';
+            window.location.href = 'mateProfile.php?friend=" . $friend . "';
  
         });
      </script>";
