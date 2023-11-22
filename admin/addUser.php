@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <title>Amusigo</title>
         <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link rel="stylesheet" href="../css/addUser.css">
+        <link rel="stylesheet" href="../css/default.css">
+        
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -69,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="user-right">
             <div class="titles">
-                <h1 class="home-title" style="color:#8328ba">Add User Account</h1>
+                <h1 class="edit-title">Add User Account</h1>
             
             </div>
             
@@ -156,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                
             
                 <div class="btn-container">
-                    <button type="submit" id = "btn-add"class="btn-register">Add User</button>
+                    <button type="submit" id = "add-btn" class="add-btn">Add User</button>
                 </div>
                
         </form>

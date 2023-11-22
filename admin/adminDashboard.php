@@ -23,6 +23,11 @@ $role = $row[8];
         <title>Amusigo</title>
         <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link rel="stylesheet" href="../css/adminDashboard.css">
+        <link rel="stylesheet" href="../css/default.css">
+      
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&family=Playfair+Display:ital,wght@1,400;1,500;1,800&family=Quicksand:wght@300;500;600&family=Roboto+Slab&family=Shantell+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
         
         <link
             rel="stylesheet"
@@ -105,10 +110,10 @@ $role = $row[8];
             <hr/>
             <div>
                 <div class="profile-top">
-                    <h2 class="home-title" style="color:#8328ba">Admin Profile</h2>
+                    <h2 class="sub-title">Admin Profile</h2>
                     <!-- <a href="adminProfileEdit.php"><button class="edit-btn">Edit Profile</button></a> -->
                     <?php
-                    echo "<a href='adminProfileEdit.php?userid=$id'><button class='edit-btn'>Edit Profile</button></a>";
+                    echo "<a href='adminProfileEdit.php?userid=$id'><button class='main-btn'>Edit Profile</button></a>";
                     ?>
                     
                 </div>

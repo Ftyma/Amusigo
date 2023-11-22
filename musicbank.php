@@ -16,6 +16,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
 <head>
 <title>Amusigo</title>
 <link rel="stylesheet" href="css/musicbank.css">
+<link rel="stylesheet" href="css/default.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -80,7 +81,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                         <td>" . $row['name']."</td>
                         <td>" . $row['Genre_name']."</td>
                         <td>
-                            <a href='delete.php?song_id=" . $row['Song_ID'] . "'><button class='delete-btn' 
+                            <a href='delete.php?song_id=" . $row['Song_ID'] . "'><button class='remove-btn' 
                             style='font-size: medium;font-weight: bold;'> - </button></a>
                         </td>
                     </tr>";

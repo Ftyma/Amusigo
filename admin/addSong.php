@@ -60,7 +60,9 @@ session_start();
 <head>
     <title>Amusigo</title>
     <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
+    
     <link rel="stylesheet" href="../css/addSong.css">
+    <link rel="stylesheet" href="../css/default.css">
     
     <link
   
@@ -77,13 +79,12 @@ session_start();
  
         
     <div class = "global-right">
-        <h1 class="home-title" style="color:#8328ba"><strong>Admin Page</h1>
+        
         <br></br>
         <div class="container">
             <div class="form-left"> 
+                <h1 class="edit-title" ><strong>Add New Song</h1>
                 <form action= "addSong.php" method="post">
-                
-                    <h2>Add Song</h2>
                     <div class="input-label">
                         <label for="title">Title</label>
                         <input type="text" name="title" placeholder="Song title">
@@ -141,7 +142,7 @@ session_start();
                     
                     <br></br>
                     <div class="forbtn">
-                        <button id="add" name= "addsong" type="submit">Add Song</button>
+                        <button id="add-btn" class="add-btn" name= "addsong" type="submit">Add Song</button>
                     </div>
                     
                 </form>  

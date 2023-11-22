@@ -1,10 +1,7 @@
-
-
 #dashboard {
   height: 100%;
   display: grid;
   background: rgb(242, 214, 255);
-  
 }
 
 .dashboard-right {
@@ -13,7 +10,6 @@
   flex: 1;
   overflow-y: auto;
   margin-left: 400px;
- 
 }
 
 @media screen and (max-width: 768px) {
@@ -29,6 +25,7 @@
   margin-left: 1rem;
   overflow-x: hidden;
   width: 100%;
+  padding: 1rem;
 }
 
 .list-card {
@@ -36,6 +33,12 @@
   border-radius: 15px;
   padding: 0.5rem 1rem;
   color: #8328ba;
+  font-size: 14px;
+
+  box-shadow: rgba(215, 182, 227, 0.2) 2px 2px 18px -14px inset,
+    rgba(168, 108, 190, 0.2) 0px -1px 2px, rgba(168, 108, 190, 0.2) 0 2px 4px,
+    rgba(168, 108, 190, 0.2) 0 4px 0px, rgba(168, 108, 190, 0.2) 6px 3px 13px,
+    rgba(168, 108, 190, 0.2) 0px -2px 17px 0px;
 }
 
 .profile-top {
@@ -44,12 +47,13 @@
   width: 90%;
 }
 
-.edit-btn {
+/* .edit-btn {
   margin: 25px;
   background: linear-gradient(
-  90.11deg,
-  rgba(200, 83, 219, 0.18) 32.29166567325592%,
-  rgba(200, 83, 219, 0.1) 100% );
+    90.11deg,
+    rgba(200, 83, 219, 0.18) 32.29166567325592%,
+    rgba(200, 83, 219, 0.1) 100%
+  );
   border-radius: 25px;
   border-style: solid;
   border-color: #a654d8;
@@ -64,7 +68,7 @@
   scale: 110%;
   background-color: #8328ba;
   color: white;
-}
+} */
 
 .profile-body {
   display: grid;

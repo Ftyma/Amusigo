@@ -13,6 +13,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
         <title>Amusigo</title>
         <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link rel="stylesheet" href="../css/adminArtist.css">
+        <link rel="stylesheet" href="../css/default.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -41,7 +42,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
             </form>
 
             <a href='addAlbum.php'>
-                <button class="add-btn"> + Add album</button>
+                <button class="main-btn"> + Add album</button>
             </a>
             <br></br>
             <table>

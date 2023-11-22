@@ -80,6 +80,7 @@ if (isset($_POST['submit'])) {
 <head>
     <title>Amusigo</title>
     <link rel="stylesheet" href="../css/addAlbum.css">
+    <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous"
@@ -92,12 +93,13 @@ if (isset($_POST['submit'])) {
 
 
 <div class = "global-right">
-    <h1 class="home-title" style="color:#8328ba">Edit user information </h1>
+    
     <br></br>
     <div class="container-main">
     <form method="post" >
+    <h1 class="home-title" style="color:#8328ba">Edit User Information </h1>
                 <div class="form1">
-                    <h1 class="subtitle">Personal Information</h1>
+                    <h2 class="subtitle">Personal Information</h2>
                     <!-- <p class="subtitle">Please fill in the informaiton correctly</p> -->
                     <div class="input-label">
                         <label class="required">Username</label>
@@ -136,7 +138,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form2">
-                    <h1 class="subtitle">School Information</h1>
+                    <h2 class="subtitle">School Information</h2>
                     <div  class="input-label">
                         <label class="required">Student ID</label>
                         <input type="text" name="stdid" required value="<?php echo $stdid; ?>">
@@ -174,7 +176,7 @@ if (isset($_POST['submit'])) {
                 </div>
         <br></br>
         <div class="forbtn">
-             <button id = "btn-add" type="submit" name="submit">Update</button>
+             <button id = "btn-add" type="submit" name="submit" class="add-btn">Update</button>
         </div>
        
 

@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <title>Amusigo</title>
         
         <link rel="stylesheet" href="../css/addGenre.css">
+        <link rel="stylesheet" href="../css/default.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="text" name="genre" placeholder="Song title">
                     </div>
                     <div class="forbtn">
-                        <button id = "btn-add" type="submit">Add Genre</button>
+                        <button id = "add-btn" class="add-btn" type="submit">Add Genre</button>
                     </div>
                 </form>
                 

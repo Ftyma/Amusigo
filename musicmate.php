@@ -14,6 +14,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
 <head>
 <title>Amusigo</title>
 <link rel="stylesheet" href="css/musicmate.css">
+<link rel="stylesheet" href="css/default.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -43,10 +44,10 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
             </form>
            
                 <!-- profile button -->
-                <!-- <?php include('profile.php'); ?> -->
-            <a href="userprofile.php"><button class="profile-btn">
+                 <?php include('profile.php'); ?> 
+            <!-- <a href="userprofile.php"><button class="profile-btn">
             <i class="fa-regular fa-user"></i>
-                &nbsp;Profile 
+                &nbsp;Profile  -->
         </button>
     </a>
 
@@ -78,7 +79,7 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
                     echo "<tr>
                         <td> " . $row['username']."</td>
                         <td>
-                            <a href='delete.php?mate_id=" . $row['friend_id'] . "'><button class='delete-btn' 
+                            <a href='delete.php?mate_id=" . $row['friend_id'] . "'><button class='remove-btn' 
                             style='font-size: medium;font-weight: bold;'> - </button></a>
                         </td>
                     </tr>";

@@ -11,8 +11,9 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
 <html class="bg-color">
     <head>
         <title>Amusigo</title>
-        
+        <link rel="stylesheet" href="../css/default.css">
         <link rel="stylesheet" href="../css/adminUser.css">
+        
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -34,7 +35,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
                 <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
             <a href='addUser.php'>
-                <button id = "add-btn" class="add-btn" type="submit"> + Add User</button>
+                <button id = "add-btn" class="main-btn" type="submit"> + Add User</button>
             </a>
             <br></br>
             

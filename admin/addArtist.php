@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <title>Amusigo</title>
 
 <link rel="stylesheet" href="../css/addArtist.css">
+<link rel="stylesheet" href="../css/default.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -59,18 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body id="admin">
 <?php include('adminSidebar.php'); ?>
     <div class="global-right">
-        <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
-        <!-- Search bar -->
-        <div class="input-container">
-                <input class="search" type="text" placeholder="Check if song exists . . . ">            
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
-        </div>
-        <br></br>
+        
 
         <div class="container-main">
            <div class="form-inside"></div>
+           <h1 class="edit-title">Add Artist</h1>
             <form action="addArtist.php" method="post">
-            <h2>Add Artist</h2>
             <div class="input-label">
 
                 <label for="link">Profile Link</label>
@@ -353,7 +348,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
                 <div class="forbtn">
-                <button id = "btn-add" type="submit">Add</button>
+                <button id = "add-btn" class="add-btn" type="submit">Add</button>
             </div>
           
             </form> 

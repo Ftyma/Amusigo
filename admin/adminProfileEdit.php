@@ -70,7 +70,7 @@ if (isset($_POST['submit'])) {
         <title>Amusigo</title>
         <!-- <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet"> -->
         <link rel="stylesheet" href="../css/addAlbum.css">
-        
+        <link rel="stylesheet" href="../css/default.css">
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -152,7 +152,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     
                     <div class="forbtn">
-                        <button id="btn-add" type ="submit" name ="submit" class="edit-btn">Submit Edit</button>
+                        <button id="btn-add" type ="submit" name ="submit" class="add-btn" style="width:150px !important">Submit Edit</button>
                     </div>
             </form>
             

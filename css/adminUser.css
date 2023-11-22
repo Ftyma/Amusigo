@@ -1,9 +1,10 @@
-
+body {
+  font-family: "Quicksand", sans-serif;
+}
 #user {
   height: 100%;
   display: grid;
   background: rgb(242, 214, 255);
-  
 }
 .user-right {
   display: flex;
@@ -43,38 +44,29 @@ table {
   margin: auto;
   width: 95%;
 }
-tr:first-child th:first-child { border-top-left-radius: 10px; }
-tr:first-child th:first-child { border-bottom-left-radius: 10px; }
-tr:first-child th:last-child { border-top-right-radius: 10px; }
-tr:first-child th:last-child { border-bottom-right-radius: 10px; }
+tr:first-child th:first-child {
+  border-top-left-radius: 10px;
+}
+tr:first-child th:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr:first-child th:last-child {
+  border-top-right-radius: 10px;
+}
+tr:first-child th:last-child {
+  border-bottom-right-radius: 10px;
+}
 th,
 td {
   padding-inline: 2rem;
   text-align: left;
 }
 
-th {
-  background: #e9baff;
-  padding-block: 1rem;
-}
-
 td {
   padding-block: 0.5rem;
 }
 
-.view-btn:hover {
-  background-color: lightgreen;
-}
-
-.edit-btn:hover {
-  background-color: lightblue;
-}
-
-.delete-btn:hover {
-  background-color: lightcoral;
-}
-
-button {
+/* button {
   background-color: transparent;
   width: 60px;
   text-align: center;
@@ -103,7 +95,7 @@ button:hover {
     position: relative;
     font: 600 16px "NotoSans-SemiBold", sans-serif;
     color: #a654d8;
-}
+} */
 
 .user-pic {
   width: 50px;

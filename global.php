@@ -12,6 +12,8 @@ if (!isset($_SESSION["username"]) || $_SESSION["login"] !== true) {
     <head>
         <title>Amusigo</title>
         <link rel="stylesheet" href="css\adminGlobal.css">
+        <link rel="stylesheet" href="css\default.css">
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -59,7 +61,7 @@ if ($result = $mysqli->query($songQ)) {
                 <td>" . $row['Name'] . "</td>
                 <td>" . $row['Genre_name'] . "</td>
                 <td>
-                    <a href='add.php?songid=" . $row['Song_ID'] . "'><button>+</button></a>
+                    <a href='add.php?songid=" . $row['Song_ID'] . "'><button class='add-btn' style='width:50px; background-color:#D177FC !important'>+</button></a>
                 </td>
                 </tr>";
     }

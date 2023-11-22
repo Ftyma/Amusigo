@@ -1,7 +1,7 @@
 #admin {
   height: 100%;
   display: grid;
-  background: rgb(242, 223, 250);
+  background: rgb(242, 214, 255);
 }
 .global-right {
   display: flex;
@@ -12,18 +12,14 @@
 }
 .container-main {
   display: block;
-
   font-size: 20px;
-  margin: 50px;
-
+  /* margin: 50px; */
   justify-content: space-between;
 
   width: 90%;
-  margin: auto;
+  /* margin: auto; */
   padding-block: 1rem;
   border-radius: 10px;
-  background: rgb(239, 212, 255);
-  background: rgb(239, 212, 255);
 }
 form {
   padding-block: 1rem;
@@ -66,8 +62,13 @@ form {
   margin-block: 1rem;
 }
 
+label {
+  font-size: large;
+  font-weight: bolder;
+}
+
 .input-label {
-  margin-block: 10px;
+  margin-block: 20px;
 }
 
 .previewlabel {
@@ -108,7 +109,7 @@ input[type="password"] {
   width: 100%;
   color: #8328ba;
   background-color: transparent;
-  border-bottom: 2px solid rgba(186, 116, 205, 0.35);
+  border-bottom: 2px solid #8328ba;
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
@@ -196,7 +197,7 @@ td {
     border-color: black;
   }*/
 
-#btn-add {
+/* #btn-add {
   margin: 25px;
   background: linear-gradient(
     90.11deg,
@@ -212,7 +213,7 @@ td {
   position: relative;
   font: 600 16px "NotoSans-SemiBold", sans-serif;
   color: #a654d8;
-}
+} */
 .forbtn {
   display: flex;
 

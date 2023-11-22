@@ -27,7 +27,6 @@
   justify-content: center;
   margin-inline: auto;
   margin-top: 3rem;
-    
 }
 
 i.fas {
@@ -45,9 +44,11 @@ input[type="text"] {
 }
 
 .user-img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .user-name {
@@ -62,9 +63,8 @@ input[type="text"] {
   margin-block: 1.5rem;
 }
 
-
-
 .subtitle {
+  color: #854ca9;
   margin-left: 2rem;
 }
 
@@ -77,8 +77,8 @@ input[type="text"] {
     padding: 5px;
   }
   .user-img {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
   }
   .user-name {
     font-size: small;
@@ -89,7 +89,7 @@ input[type="text"] {
   }
 }
 
-button{
+button {
   background-color: transparent;
   width: 60px;
   text-align: center;

@@ -61,6 +61,7 @@ if (isset($_POST['submit'])) {
     <title>Amusigo</title>
     
     <link rel="stylesheet" href="../css/addAlbum.css">
+    <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous"
@@ -70,11 +71,11 @@ if (isset($_POST['submit'])) {
 <body id="admin">
 <?php include('adminSidebar.php'); ?>
 <div class = "global-right">
-    <h1 class="home-title" style="color:#8328ba">Admin Page</h1>
+   
     <br></br>
     <div class="container-main">
     <form method="post">
-        <h2>Update Artist</h2>
+    <h1 class="home-title">Edit Artist Information</h1>
         <div class="input-label">
                 <label>Artist Name</label>
                 <input type="text" name="name" placeholder="Name" value="<?php echo $artist_Name; ?>" >
@@ -356,7 +357,7 @@ if (isset($_POST['submit'])) {
         
         <br></br>
         <div class="forbtn">
-             <button id = "btn-add" type="submit" name="submit">Update</button>
+             <button id = "btn-add" class="add-btn" type="submit" name="submit">Update</button>
         </div>
        
 

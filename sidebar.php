@@ -25,6 +25,10 @@ if(isset($_GET['logout'])) {
 <head>
 
 <link rel="stylesheet" href="css/sidebar.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&family=Playfair+Display:ital,wght@1,400;1,500;1,800&family=Quicksand:wght@300;500;600&family=Roboto+Slab&family=Shantell+Sans&family=Space+Grotesk&display=swap" rel="stylesheet">
+        
 
 </head>
 
@@ -38,7 +42,7 @@ if(isset($_GET['logout'])) {
         <div class="sidebar-menu">
             <div>
                 <a  class="sidebar-menu-item" href="home.php">
-                    <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-house"></i>
                     <p> Home</p>
                 </a>
             

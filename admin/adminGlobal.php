@@ -12,7 +12,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
     <head>
         <title>Amusigo</title>
         <link rel="stylesheet" href="../css/adminGlobal.css">
-
+        <link rel="stylesheet" href="../css/default.css">
         <link href = "https://fonts.googleapis.com/css2?family=Lato&display=swap" rel = "stylesheet">
         <link
             rel="stylesheet"
@@ -51,7 +51,7 @@ if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin' || $_SESSION[
             <?php
                 if ($_SESSION['role'] == 'admin') {
                     echo "<a href='addSong.php'>
-                            <button class='add-btn'> + Add Song</button>
+                            <button class='main-btn'> + Add Song</button>
                         </a>
                         <br></br>";
                 }
