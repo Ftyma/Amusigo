@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
             
             phpAlert("Update Album Sucessfuly"); 
             echo '<script>
-                      window.location.href = "adminArtist.php";
+                      window.location.href = "adminAlbum.php";
                    </script>';
 
             exit(); 
